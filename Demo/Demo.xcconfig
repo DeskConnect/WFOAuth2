@@ -1,0 +1,20 @@
+//
+//  Demo.xcconfig
+//  WFOAuth2
+//
+//  Created by Conrad Kramer on 3/24/16.
+//  Copyright © 2016 DeskConnect, Inc. All rights reserved.
+//
+
+#include "../Carthage/Checkouts/xcconfigs/iOS/iOS-Application.xcconfig"
+
+PRODUCT_NAME = Demo
+INFOPLIST_FILE = Demo/Info.plist
+PRODUCT_BUNDLE_IDENTIFIER = com.deskconnect.WFOAuth2.demo
+ALWAYS_SEARCH_USER_PATHS = NO
+CLANG_ENABLE_MODULES = YES
+CLANG_ENABLE_OBJC_ARC = YES
+
+ONLY_ACTIVE_ARCH[config=Debug] = YES
+GCC_OPTIMIZATION_LEVEL[config=Debug] = 0
+COPY_PHASE_STRIP[config=Debug] = NO

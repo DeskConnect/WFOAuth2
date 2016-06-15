@@ -1,0 +1,19 @@
+//
+//  WFOAuth2.xcconfig
+//  WFOAuth2
+//
+//  Created by Conrad Kramer on 3/24/16.
+//  Copyright © 2016 DeskConnect, Inc. All rights reserved.
+//
+
+PRODUCT_NAME = WFOAuth2
+INFOPLIST_FILE = Sources/WFOAuth2/Info.plist
+PRODUCT_BUNDLE_IDENTIFIER = com.deskconnect.WFOAuth2
+ALWAYS_SEARCH_USER_PATHS = NO
+CLANG_ENABLE_OBJC_ARC = YES
+CLANG_ENABLE_MODULES = YES
+OTHER_CFLAGS = -Wall -Wextra -Wpedantic -Wno-gnu-conditional-omitted-operand
+
+ONLY_ACTIVE_ARCH[config=Debug] = YES
+GCC_OPTIMIZATION_LEVEL[config=Debug] = 0
+COPY_PHASE_STRIP[config=Debug] = NO

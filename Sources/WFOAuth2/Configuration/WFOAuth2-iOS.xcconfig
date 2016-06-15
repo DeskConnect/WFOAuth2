@@ -1,0 +1,10 @@
+//
+//  WFOAuth2-iOS.xcconfig
+//  WFOAuth2
+//
+//  Created by Conrad Kramer on 3/24/16.
+//  Copyright © 2016 DeskConnect, Inc. All rights reserved.
+//
+
+#include "../../../Carthage/Checkouts/xcconfigs/iOS/iOS-Framework.xcconfig"
+#include "WFOAuth2.xcconfig"

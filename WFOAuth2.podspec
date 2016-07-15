@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "WFOAuth2"
-  s.version      = "0.1.0"
+  s.version      = "0.1.1"
   s.summary      = "WFOAuth2 is an extensible OAuth 2 library for macOS, iOS, tvOS and watchOS"
 
   s.description  = <<-DESC

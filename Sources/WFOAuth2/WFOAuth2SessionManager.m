@@ -203,7 +203,6 @@ NSString * const WFOAuth2GrantTypeRefreshToken = @"refresh_token";
                                  tokenPath:(NSString *)tokenPath
                          completionHandler:(WFOAuth2AuthenticationHandler)completionHandler {
     NSParameterAssert(authorizationURL);
-    NSParameterAssert(redirectURI);
     NSParameterAssert(tokenPath);
     NSParameterAssert(completionHandler);
     

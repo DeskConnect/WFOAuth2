@@ -240,7 +240,7 @@ NSString * const WFOAuth2GrantTypeRefreshToken = @"refresh_token";
     
     [webView setDecisionHandler:^(NSURLRequest *request) {
         NSURLComponents *components = [NSURLComponents componentsWithURL:request.URL resolvingAgainstBaseURL:NO];
-        NSURLComponents *redirectComponents = [NSURLComponents componentsWithURL:redirectURI resolvingAgainstBaseURL:NO];
+        NSURLComponents *redirectComponents = (redirectURI ? [NSURLComponents componentsWithURL:redirectURI resolvingAgainstBaseURL:NO] : nil);
 
         NSMutableDictionary *responseObject = [NSMutableDictionary new];
         for (NSURLQueryItem *item in components.queryItems)
@@ -255,13 +255,21 @@ NSString * const WFOAuth2GrantTypeRefreshToken = @"refresh_token";
         [redirectComponents setFragment:nil];
         if ([redirectComponents.path hasSuffix:@"/"])
             redirectComponents.path = [redirectComponents.path substringToIndex:(redirectComponents.path.length - 1)];
-        
-        // Uber redirects errors to a different endpoint
-        if (![components isEqual:redirectComponents] && !responseObject[@"error"])
+	
+        if (redirectURI) {
+            // Uber redirects errors to a different endpoint
+            if (![components isEqual:redirectComponents] && !responseObject[@"error"])
+                return WKNavigationActionPolicyAllow;
+            
+            callbackHandler(responseObject);
+            return WKNavigationActionPolicyCancel;
+        } else {
+            if ((responseObject[@"code"] && responseObject[@"state"]) || responseObject[@"error"]) {
+                callbackHandler(responseObject);
+                return WKNavigationActionPolicyCancel;
+            }
             return WKNavigationActionPolicyAllow;
-
-        callbackHandler(responseObject);
-        return WKNavigationActionPolicyCancel;
+        }        
     }];
     
     // Google puts the code in the title of the web view

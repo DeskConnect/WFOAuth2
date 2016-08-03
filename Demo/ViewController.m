@@ -40,12 +40,20 @@ NS_ASSUME_NONNULL_BEGIN
     [uberButton addTarget:self action:@selector(uberPressed:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:uberButton];
     
+    UIButton *squareButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    squareButton.translatesAutoresizingMaskIntoConstraints = NO;
+    [squareButton setTitle:@"Login to Square" forState:UIControlStateNormal];
+    [squareButton addTarget:self action:@selector(squarePressed:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:squareButton];
+    
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:googleButton attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.0f constant:0.0f]];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:googleButton attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterY multiplier:0.8f constant:0.0f]];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:slackButton attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.0f constant:0.0f]];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:slackButton attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterY multiplier:1.0f constant:0.0f]];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:uberButton attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.0f constant:0.0f]];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:uberButton attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterY multiplier:1.2f constant:0.0f]];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:squareButton attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.0f constant:0.0f]];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:squareButton attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterY multiplier:1.4f constant:0.0f]];
 }
 
 - (void)googlePressed:(nullable id)sender {
@@ -61,6 +69,19 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)uberPressed:(nullable id)sender {
     WFUberOAuth2SessionManager *sessionManager = [[WFUberOAuth2SessionManager alloc] initWithClientID:@"FVZC8i9VfAn2DIi0TdBG0-I5T7RcU3_j" clientSecret:@"8mj8sI-liVAmhSe8duMGQO2SKqPAnGeMDgzuUXyB"];
     [self loginWithSessionManager:sessionManager scope:WFUberUserProfileScope redirectURI:[NSURL URLWithString:@"https://localhost"]];
+}
+
+- (void)squarePressed:(nullable id)sender {
+    NSString *clienetID = @"";
+    NSString *clientSecret = @"";
+    if (!clientSecret.length || !clientSecret.length) {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Need client credentials" message:@"There was no clientID or client secret given." preferredStyle:UIAlertControllerStyleAlert];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+        [self presentViewController:alertController animated:YES completion:nil];
+        return;
+    }
+    WFSquareOAuth2SessionManager *sessionManager = [[WFSquareOAuth2SessionManager alloc] initWithClientID:clienetID clientSecret:clientSecret];
+    [self loginWithSessionManager:sessionManager scope:WFSquareMerchantProfileReadScope redirectURI:nil];
 }
 
 - (void)loginWithSessionManager:(WFOAuth2SessionManager<WFOAuth2ProviderSessionManager> *)sessionManager scope:(nullable NSString *)scope redirectURI:(nullable NSURL *)redirectURI {

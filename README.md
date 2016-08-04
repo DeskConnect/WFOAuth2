@@ -13,6 +13,7 @@
   <tr><td><img src="https://s3.amazonaws.com/workflow-actions/icons/com.google.GoogleMobile@2x.png" alt="Google" width="29"/></td><td>Google</td></tr>
   <tr><td><img src="https://s3.amazonaws.com/workflow-actions/icons/com.tinyspeck.chatlyio@2x.png" alt="Slack" width="29"/></td><td>Slack</td></tr>
   <tr><td><img src="https://s3.amazonaws.com/workflow-actions/icons/com.ubercab.UberClient@2x.png" alt="Uber" width="29"/></td><td>Uber</td></tr>
+  <tr><td><img src="https://s3.amazonaws.com/workflow-actions/icons/com.squareup.square@2x.png" alt="Square" width="29"/></td><td>Square</td></tr>
 </table>
 
 **...and more to come!**

@@ -659,7 +659,7 @@
 		D084DA131CA48D4700F92933 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Conrad Kramer";
 				TargetAttributes = {
 					D084DA1A1CA48D4700F92933 = {

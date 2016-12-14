@@ -6,10 +6,10 @@
 //  Copyright © 2016 DeskConnect, Inc. All rights reserved.
 //
 
-#include "../../Sources/WFOAuth2/Configuration/WFOAuth2.xcconfig"
+#include "../../../Sources/WFOAuth2/Configuration/WFOAuth2.xcconfig"
 
 PRODUCT_NAME = Tests
-INFOPLIST_FILE = Tests/Info.plist
+INFOPLIST_FILE = Tests/WFOAuth2Tests/Info.plist
 PRODUCT_BUNDLE_IDENTIFIER = com.deskconnect.WFOAuth2.tests
 ALWAYS_SEARCH_USER_PATHS = NO
 CLANG_ENABLE_OBJC_ARC = YES

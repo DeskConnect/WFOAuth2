@@ -6,5 +6,5 @@
 //  Copyright © 2016 DeskConnect, Inc. All rights reserved.
 //
 
-#include "../../Carthage/Checkouts/xcconfigs/tvOS/tvOS-Framework.xcconfig"
+#include "../../../Carthage/Checkouts/xcconfigs/tvOS/tvOS-Framework.xcconfig"
 #include "Tests.xcconfig"

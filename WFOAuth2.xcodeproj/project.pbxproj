@@ -984,6 +984,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D084DA521CA493C600F92933 /* WFOAuth2-Mac.xcconfig */;
 			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 			};
 			name = Debug;
 		};
@@ -991,6 +992,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D084DA521CA493C600F92933 /* WFOAuth2-Mac.xcconfig */;
 			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 			};
 			name = Release;
 		};

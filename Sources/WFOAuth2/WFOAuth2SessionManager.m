@@ -380,7 +380,7 @@ static void *WFOAuth2WebViewTitleContext = &WFOAuth2WebViewTitleContext;
     _realNavigationDelegate = navigationDelegate;
 }
 
-- (id)forwardingTargetForSelector:(SEL)selector {
+- (nullable id)forwardingTargetForSelector:(SEL)selector {
     BOOL navigationDelegateMethod = (protocol_getMethodDescription(@protocol(WKNavigationDelegate), selector, NO, YES).name != NULL);
     return (navigationDelegateMethod && ![super respondsToSelector:selector] ? _realNavigationDelegate : nil);
 }

@@ -25,7 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 + (NSURL *)baseURL {
-    return nil;
+    return (NSURL * __nonnull)nil;
 }
 
 + (NSString *)tokenPath {
@@ -33,7 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 + (NSURL *)authorizationURL {
-    return nil;
+    return (NSURL * __nonnull)nil;
 }
 
 + (WFOAuth2ResponseType)responseType {

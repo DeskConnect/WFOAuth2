@@ -39,6 +39,8 @@ NSString * const WFSquareTimecardsWriteScope = @"TIMECARDS_WRITE";
     return [NSURL URLWithString:@"https://connect.squareup.com/oauth2/authorize"];
 }
 
+#pragma mark - WFOAuth2RevocableSessionManager
+
 - (void)revokeCredential:(WFOAuth2Credential *)credential completionHandler:(void (^__nullable)(BOOL success, NSError * __nullable error))completionHandler {
     NSParameterAssert(credential);
     

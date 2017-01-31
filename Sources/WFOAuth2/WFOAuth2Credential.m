@@ -21,7 +21,7 @@ static inline __nullable id WFEnforceClass(id __nullable obj, Class objectClass)
     if (!self)
         return nil;
     
-    _accessToken = [WFEnforceClass(responseObject[@"access_token"], [NSString class]) copy];
+    _accessToken = (NSString * __nonnull)[WFEnforceClass(responseObject[@"access_token"], [NSString class]) copy];
     if (!_accessToken.length)
         return nil;
     

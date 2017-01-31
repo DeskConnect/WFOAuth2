@@ -32,6 +32,8 @@ NSString * const WFLyftOfflineScope = @"offline";
     return [NSURL URLWithString:@"https://api.lyft.com/oauth/authorize"];
 }
 
+#pragma mark - WFOAuth2RevocableSessionManager
+
 - (void)revokeCredential:(WFOAuth2Credential *)credential
        completionHandler:(void (^__nullable)(BOOL success, NSError * __nullable error))completionHandler {
     NSParameterAssert(credential);

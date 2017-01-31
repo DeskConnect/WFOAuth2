@@ -27,6 +27,8 @@ NSString * const WFGoogleProfileScope = @"profile";
     return [NSURL URLWithString:@"https://accounts.google.com/o/oauth2/auth"];
 }
 
+#pragma mark - WFOAuth2RevocableSessionManager
+
 - (void)revokeCredential:(WFOAuth2Credential *)credential
        completionHandler:(void (^__nullable)(BOOL success, NSError * __nullable error))completionHandler {
     NSParameterAssert(credential);

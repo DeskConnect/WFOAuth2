@@ -78,7 +78,7 @@ NS_ASSUME_NONNULL_BEGIN
     return !!self.sessionManager;
 }
 
-- (WFOAuth2ProviderSessionManager *)sessionManager {
+- (nullable WFOAuth2ProviderSessionManager *)sessionManager {
     if (!_clientID)
         return nil;
     

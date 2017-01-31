@@ -25,9 +25,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 #endif
 
-NSString * const WFOAuth2GrantTypeResourceOwnerPasswordCredentials = @"password";
-NSString * const WFOAuth2GrantTypeAuthorizationCode = @"authorization_code";
-NSString * const WFOAuth2GrantTypeRefreshToken = @"refresh_token";
+typedef NSString *WFOAuth2GrantType NS_EXTENSIBLE_STRING_ENUM;
+WFOAuth2GrantType const WFOAuth2GrantTypeResourceOwnerPasswordCredentials = @"password";
+WFOAuth2GrantType const WFOAuth2GrantTypeAuthorizationCode = @"authorization_code";
+WFOAuth2GrantType const WFOAuth2GrantTypeRefreshToken = @"refresh_token";
 
 @implementation WFOAuth2SessionManager
 

@@ -2,7 +2,8 @@
 
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/WFOAuth2.svg)](https://img.shields.io/cocoapods/v/WFOAuth2.svg)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-brightgreen.svg)](https://github.com/Carthage/Carthage)
-![Swift Package Manager](https://img.shields.io/badge/SPM-compatible-brightgreen.svg) 
+![Swift Package Manager](https://img.shields.io/badge/SPM-compatible-brightgreen.svg)
+[![Travis CI](https://img.shields.io/travis/DeskConnect/WFOAuth2.svg)](https://travis-ci.org/DeskConnect/WFOAuth2)
 [![Platform](https://img.shields.io/cocoapods/p/WFOAuth2.svg?style=flat)](http://cocoadocs.org/docsets/WFOAuth2)
 
 **WFOAuth2** is an extensible OAuth 2 library for macOS, iOS, tvOS and watchOS. It aims to simplify authenticating your app with a variety of services.

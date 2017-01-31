@@ -181,6 +181,8 @@
 		D082BB571E407BC5002CDC37 /* WFLyftOAuth2SessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WFLyftOAuth2SessionManager.m; sourceTree = "<group>"; };
 		D082BB701E40963A002CDC37 /* WFOAuth2ProviderSessionManagerSubclass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WFOAuth2ProviderSessionManagerSubclass.h; path = include/WFOAuth2/WFOAuth2ProviderSessionManagerSubclass.h; sourceTree = "<group>"; };
 		D082BB751E409645002CDC37 /* WFOAuth2ProviderSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WFOAuth2ProviderSessionManager.m; sourceTree = "<group>"; };
+		D082BB851E411BC5002CDC37 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		D082BB861E411BC5002CDC37 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		D084DA1B1CA48D4700F92933 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D084DA1F1CA48D4700F92933 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D084DA211CA48D4700F92933 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -296,12 +298,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D082BB841E411B9D002CDC37 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				D082BB851E411BC5002CDC37 /* Debug.xcconfig */,
+				D082BB861E411BC5002CDC37 /* Release.xcconfig */,
+			);
+			name = Configuration;
+			path = Carthage/Checkouts/xcconfigs/Base/Configurations;
+			sourceTree = SOURCE_ROOT;
+		};
 		D084DA121CA48D4700F92933 = {
 			isa = PBXGroup;
 			children = (
 				D084DA3E1CA492B500F92933 /* Sources */,
 				D0B8F7CD1CA89ED7006B1E0D /* Tests */,
 				D084DA1D1CA48D4700F92933 /* Demo */,
+				D082BB841E411B9D002CDC37 /* Configuration */,
 				D084DA1C1CA48D4700F92933 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -942,12 +955,14 @@
 /* Begin XCBuildConfiguration section */
 		D084DA301CA48D4800F92933 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D082BB851E411BC5002CDC37 /* Debug.xcconfig */;
 			buildSettings = {
 			};
 			name = Debug;
 		};
 		D084DA311CA48D4800F92933 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D082BB861E411BC5002CDC37 /* Release.xcconfig */;
 			buildSettings = {
 			};
 			name = Release;

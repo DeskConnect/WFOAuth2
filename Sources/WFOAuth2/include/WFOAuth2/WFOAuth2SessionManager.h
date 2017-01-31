@@ -35,7 +35,7 @@ typedef void (^WFOAuth2AuthenticationHandler)(WFOAuth2Credential * __nullable cr
  - When building a convenience class for authenticating with a specific provider. This subclass should adhere to the `WFOAuth2ProviderSessionManager` protocol if it builds in provider specific behavior.
  - When handling strong deviations from the OAuth 2 spec.
  
- @see [RFC6749](https://tools.ietf.org/html/rfc6749)
+ @see [RFC 6749](https://tools.ietf.org/html/rfc6749)
  */
 @interface WFOAuth2SessionManager : NSObject
 

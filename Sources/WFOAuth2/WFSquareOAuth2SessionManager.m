@@ -87,7 +87,7 @@ static NSString * const WFSquareOAuth2TokenPath = @"token";
 - (WKWebView *)authorizationWebViewWithScope:(nullable NSString *)scope
                                  redirectURI:(nullable NSURL *)redirectURI
                            completionHandler:(WFOAuth2AuthenticationHandler)completionHandler {
-    return [super authorizationWebViewWithURL:[NSURL URLWithString:@"https://connect.squareup.com/oauth2/authorize"] scope:scope redirectURI:redirectURI tokenPath:WFSquareOAuth2TokenPath completionHandler:completionHandler];
+    return [super authorizationWebViewWithURL:[NSURL URLWithString:@"https://connect.squareup.com/oauth2/authorize"] responseType:WFOAuth2ResponseTypeCode scope:scope redirectURI:redirectURI tokenPath:WFSquareOAuth2TokenPath completionHandler:completionHandler];
 }
 
 #endif

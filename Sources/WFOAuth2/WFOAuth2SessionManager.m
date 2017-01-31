@@ -204,13 +204,21 @@ WFOAuth2ResponseType const WFOAuth2ResponseTypeToken = @"token";
 #if __has_include(<WebKit/WebKit.h>)
 
 - (WKWebView *)authorizationWebViewWithURL:(NSURL *)authorizationURL
+                              responseType:(WFOAuth2ResponseType)responseType
                                      scope:(nullable NSString *)scope
                                redirectURI:(nullable NSURL *)redirectURI
-                                 tokenPath:(NSString *)tokenPath
+                                 tokenPath:(nullable NSString *)tokenPath
                          completionHandler:(WFOAuth2AuthenticationHandler)completionHandler {
     NSParameterAssert(authorizationURL);
-    NSParameterAssert(tokenPath);
+    NSParameterAssert(responseType);
     NSParameterAssert(completionHandler);
+    NSAssert(tokenPath || ![responseType isEqualToString:WFOAuth2ResponseTypeCode],
+             @"A token path must be provided for response type \"code\"");
+    
+    NSDictionary<WFOAuth2ResponseType, NSString *> *mapping = @{WFOAuth2ResponseTypeCode: @"code",
+                                                                WFOAuth2ResponseTypeToken: @"access_token"};
+    NSString *responseKey = mapping[responseType];
+    NSAssert(responseKey, @"Unknown response type \"%@\"", responseType);
     
     NSString *state = [[[[NSUUID UUID] UUIDString] stringByReplacingOccurrencesOfString:@"-" withString:@""] lowercaseString];
     
@@ -226,15 +234,22 @@ WFOAuth2ResponseType const WFOAuth2ResponseTypeToken = @"token";
             return;
         }
         
-        if (![responseObject[@"code"] length]) {
-            completionHandler(nil, [NSError errorWithDomain:WFOAuth2ErrorDomain code:WFOAuth2InvalidCallbackError userInfo:@{NSLocalizedDescriptionKey: @"The code parameter on the received callback was missing."}]);
+        NSString *value = responseObject[responseKey];
+        if (!value.length) {
+            completionHandler(nil, [NSError errorWithDomain:WFOAuth2ErrorDomain code:WFOAuth2InvalidCallbackError userInfo:@{NSLocalizedDescriptionKey: [NSString stringWithFormat: @"The \"%@\" parameter on the received callback was missing.", responseKey]}]);
             return;
         }
         
-        [self authenticateWithPath:tokenPath
-                              code:responseObject[@"code"]
-                       redirectURI:redirectURI
-                 completionHandler:completionHandler];
+        if ([responseType isEqualToString:WFOAuth2ResponseTypeCode]) {
+            [self authenticateWithPath:tokenPath
+                                  code:value
+                           redirectURI:redirectURI
+                     completionHandler:completionHandler];
+        } else if ([responseType isEqualToString:WFOAuth2ResponseTypeToken]) {
+            NSError *error = WFRFC6749Section5_2ErrorFromResponse(responseObject);
+            WFOAuth2Credential *credential = [[WFOAuth2Credential alloc] initWithResponseObject:responseObject];
+            completionHandler(credential, error);
+        }
     };
     
     WKWebViewConfiguration *configuration = [WKWebViewConfiguration new];
@@ -250,6 +265,11 @@ WFOAuth2ResponseType const WFOAuth2ResponseTypeToken = @"token";
 
         NSMutableDictionary *responseObject = [NSMutableDictionary new];
         for (NSURLQueryItem *item in components.queryItems)
+            [responseObject setValue:item.value forKey:item.name];
+        
+        NSURLComponents *fragmentComponents = [NSURLComponents new];
+        fragmentComponents.percentEncodedQuery = components.fragment;
+        for (NSURLQueryItem *item in fragmentComponents.queryItems)
             [responseObject setValue:item.value forKey:item.name];
         
         [components setQuery:nil];
@@ -270,7 +290,7 @@ WFOAuth2ResponseType const WFOAuth2ResponseTypeToken = @"token";
             callbackHandler(responseObject);
             return WKNavigationActionPolicyCancel;
         } else {
-            if ((responseObject[@"code"] && responseObject[@"state"]) || responseObject[@"error"]) {
+            if ((responseObject[responseKey] && responseObject[@"state"]) || responseObject[@"error"]) {
                 callbackHandler(responseObject);
                 return WKNavigationActionPolicyCancel;
             }
@@ -290,14 +310,14 @@ WFOAuth2ResponseType const WFOAuth2ResponseTypeToken = @"token";
                 [responseObject setValue:item.value forKey:item.name];
         }
         
-        if (responseObject[@"code"] || responseObject[@"state"] || responseObject[@"error"]) {
+        if (responseObject[responseKey] || responseObject[@"state"] || responseObject[@"error"]) {
             [weakWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
             callbackHandler(responseObject);
         }
     }];
     
     [webView loadRequest:[self authorizationRequestWithURL:authorizationURL
-                                              responseType:WFOAuth2ResponseTypeCode
+                                              responseType:responseType
                                                      scope:scope
                                                redirectURI:redirectURI
                                                      state:state]];

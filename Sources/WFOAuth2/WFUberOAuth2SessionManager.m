@@ -58,7 +58,7 @@ static NSString * const WFUberOAuth2TokenPath = @"token";
 - (WKWebView *)authorizationWebViewWithScope:(nullable NSString *)scope
                                  redirectURI:(nullable NSURL *)redirectURI
                            completionHandler:(WFOAuth2AuthenticationHandler)completionHandler {
-    return [super authorizationWebViewWithURL:[NSURL URLWithString:@"https://login.uber.com/oauth/v2/authorize"] scope:scope redirectURI:redirectURI tokenPath:WFUberOAuth2TokenPath completionHandler:completionHandler];
+    return [super authorizationWebViewWithURL:[NSURL URLWithString:@"https://login.uber.com/oauth/v2/authorize"] responseType:WFOAuth2ResponseTypeToken scope:scope redirectURI:redirectURI tokenPath:WFUberOAuth2TokenPath completionHandler:completionHandler];
 }
 
 #endif

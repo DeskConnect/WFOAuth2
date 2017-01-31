@@ -67,7 +67,7 @@ static NSString * const WFSlackOAuth2TokenPath = @"oauth.access";
 - (WKWebView *)authorizationWebViewWithScope:(nullable NSString *)scope
                                  redirectURI:(nullable NSURL *)redirectURI
                            completionHandler:(WFOAuth2AuthenticationHandler)completionHandler {
-    return [super authorizationWebViewWithURL:[NSURL URLWithString:@"https://slack.com/oauth/authorize"] scope:scope redirectURI:redirectURI tokenPath:WFSlackOAuth2TokenPath completionHandler:completionHandler];
+    return [super authorizationWebViewWithURL:[NSURL URLWithString:@"https://slack.com/oauth/authorize"] responseType:WFOAuth2ResponseTypeCode scope:scope redirectURI:redirectURI tokenPath:WFSlackOAuth2TokenPath completionHandler:completionHandler];
 }
 
 #endif

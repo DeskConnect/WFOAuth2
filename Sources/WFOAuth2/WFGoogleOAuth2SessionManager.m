@@ -54,7 +54,7 @@ static NSString * const WFGoogleOAuth2TokenPath = @"token";
 - (WKWebView *)authorizationWebViewWithScope:(nullable NSString *)scope
                                  redirectURI:(nullable NSURL *)redirectURI
                            completionHandler:(WFOAuth2AuthenticationHandler)completionHandler {
-    return [super authorizationWebViewWithURL:[NSURL URLWithString:@"https://accounts.google.com/o/oauth2/auth"] scope:scope redirectURI:redirectURI tokenPath:WFGoogleOAuth2TokenPath completionHandler:completionHandler];
+    return [super authorizationWebViewWithURL:[NSURL URLWithString:@"https://accounts.google.com/o/oauth2/auth"] responseType:WFOAuth2ResponseTypeCode scope:scope redirectURI:redirectURI tokenPath:WFGoogleOAuth2TokenPath completionHandler:completionHandler];
 }
 
 #endif

@@ -169,9 +169,10 @@ typedef void (^WFOAuth2AuthenticationHandler)(WFOAuth2Credential * __nullable cr
  @see [Section 4.1](https://tools.ietf.org/html/rfc6749#section-4.1)
  */
 - (WKWebView *)authorizationWebViewWithURL:(NSURL *)authorizationURL
+                              responseType:(WFOAuth2ResponseType)responseType
                                      scope:(nullable NSString *)scope
                                redirectURI:(nullable NSURL *)redirectURI
-                                 tokenPath:(NSString *)tokenPath
+                                 tokenPath:(nullable NSString *)tokenPath
                          completionHandler:(WFOAuth2AuthenticationHandler)completionHandler;
 #endif
 

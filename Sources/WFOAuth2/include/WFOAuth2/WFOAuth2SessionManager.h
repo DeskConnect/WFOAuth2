@@ -96,6 +96,18 @@ typedef void (^WFOAuth2AuthenticationHandler)(WFOAuth2Credential * __nullable cr
                                 clientSecret:(nullable NSString *)clientSecret NS_DESIGNATED_INITIALIZER;
 
 /**
+ Authenticates with the provider using a client credentials credentials grant. Most OAuth 2 providers do not support this grant type.
+ 
+ @param path The relative path of the token endpoint.
+ @param scope The desired scope of the requested grant as defined in [Section 3.3](https://tools.ietf.org/html/rfc6749#section-3.3) of the OAuth 2 spec.
+ @param completionHandler A block object to be executed when the request finishes. This block has no return value and takes two arguments: the credential if the request succeeds, and the error that occurred, if any.
+ @see [Section 4.4](https://tools.ietf.org/html/rfc6749#section-4.3)
+ */
+- (void)authenticateWithPath:(NSString *)path
+                       scope:(nullable NSString *)scope
+           completionHandler:(WFOAuth2AuthenticationHandler)completionHandler;
+
+/**
  Authenticates with the provider using a password credentials grant with the specified username and password. Most OAuth 2 providers do not support this grant type.
  
  @param path The relative path of the token endpoint.

@@ -30,7 +30,13 @@ WF_EXTERN NSString * const WFSquareTimecardsWriteScope;
 
 @interface WFSquareOAuth2SessionManager : WFOAuth2SessionManager <WFOAuth2ProviderSessionManager, WFOAuth2RevocableSessionManager>
 
-- (instancetype)initWithClientID:(NSString *)clientID clientSecret:(nullable NSString *)clientSecret;
+- (void)authenticateWithScope:(nullable NSString *)scope
+            completionHandler:(WFOAuth2AuthenticationHandler)completionHandler NS_UNAVAILABLE;
+
+- (void)authenticateWithUsername:(NSString *)username
+                        password:(NSString *)password
+                           scope:(nullable NSString *)scope
+               completionHandler:(WFOAuth2AuthenticationHandler)completionHandler NS_UNAVAILABLE;
 
 @end
 

@@ -54,6 +54,9 @@ NS_ASSUME_NONNULL_BEGIN
                                     clientID:(NSString *)clientID
                                 clientSecret:(nullable NSString *)clientSecret;
 
+- (void)authenticateWithScope:(nullable NSString *)scope
+            completionHandler:(WFOAuth2AuthenticationHandler)completionHandler;
+
 - (void)authenticateWithUsername:(NSString *)username
                         password:(NSString *)password
                            scope:(nullable NSString *)scope

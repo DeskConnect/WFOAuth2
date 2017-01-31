@@ -13,6 +13,7 @@
 #import <WFOAuth2/WFOAuth2Error.h>
 
 #import <WFOAuth2/WFGoogleOAuth2SessionManager.h>
+#import <WFOAuth2/WFLyftOAuth2SessionManager.h>
 #import <WFOAuth2/WFSlackOAuth2SessionManager.h>
 #import <WFOAuth2/WFUberOAuth2SessionManager.h>
 #import <WFOAuth2/WFSquareOAuth2SessionManager.h>

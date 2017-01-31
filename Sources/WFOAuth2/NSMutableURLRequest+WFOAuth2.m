@@ -45,6 +45,12 @@ static inline NSData * WFHTTPBodyFromQueryItems(NSArray<NSURLQueryItem *> * __nu
     }
 }
 
+- (void)wfo_setAuthorizationWithUsername:(NSString *)username password:(nullable NSString *)password {
+    NSParameterAssert(username);
+    NSString *authenticaton = [[[NSString stringWithFormat:@"%@:%@", username, (password ?: @"")] dataUsingEncoding:NSUTF8StringEncoding] base64EncodedStringWithOptions:0];
+    [self setValue:[@"Basic " stringByAppendingString:authenticaton] forHTTPHeaderField:@"Authorization"];
+}
+
 - (void)wfo_setBodyWithQueryItems:(nullable NSArray<NSURLQueryItem *> *)queryItems {
     [self setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
     [self setHTTPBody:WFHTTPBodyFromQueryItems(queryItems)];

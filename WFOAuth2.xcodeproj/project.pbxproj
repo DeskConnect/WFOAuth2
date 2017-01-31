@@ -18,6 +18,14 @@
 		D04429151CB65052005837F9 /* WFSlackOAuth2SessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D044290F1CB65052005837F9 /* WFSlackOAuth2SessionManager.m */; };
 		D04429161CB65052005837F9 /* WFSlackOAuth2SessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D044290F1CB65052005837F9 /* WFSlackOAuth2SessionManager.m */; };
 		D04429171CB65052005837F9 /* WFSlackOAuth2SessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D044290F1CB65052005837F9 /* WFSlackOAuth2SessionManager.m */; };
+		D082BB581E407BC5002CDC37 /* WFLyftOAuth2SessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D082BB561E407BC5002CDC37 /* WFLyftOAuth2SessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D082BB591E407BC5002CDC37 /* WFLyftOAuth2SessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D082BB561E407BC5002CDC37 /* WFLyftOAuth2SessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D082BB5A1E407BC5002CDC37 /* WFLyftOAuth2SessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D082BB561E407BC5002CDC37 /* WFLyftOAuth2SessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D082BB5B1E407BC5002CDC37 /* WFLyftOAuth2SessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D082BB561E407BC5002CDC37 /* WFLyftOAuth2SessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D082BB5C1E407BC5002CDC37 /* WFLyftOAuth2SessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D082BB571E407BC5002CDC37 /* WFLyftOAuth2SessionManager.m */; };
+		D082BB5D1E407BC5002CDC37 /* WFLyftOAuth2SessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D082BB571E407BC5002CDC37 /* WFLyftOAuth2SessionManager.m */; };
+		D082BB5E1E407BC5002CDC37 /* WFLyftOAuth2SessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D082BB571E407BC5002CDC37 /* WFLyftOAuth2SessionManager.m */; };
+		D082BB5F1E407BC5002CDC37 /* WFLyftOAuth2SessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D082BB571E407BC5002CDC37 /* WFLyftOAuth2SessionManager.m */; };
 		D084DA201CA48D4700F92933 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D084DA1F1CA48D4700F92933 /* main.m */; };
 		D084DA231CA48D4700F92933 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D084DA221CA48D4700F92933 /* AppDelegate.m */; };
 		D084DA261CA48D4700F92933 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D084DA251CA48D4700F92933 /* ViewController.m */; };
@@ -158,6 +166,8 @@
 		D0412B8D1D06B18C002CA55A /* WFOAuth2FormEncodingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WFOAuth2FormEncodingTests.m; sourceTree = "<group>"; };
 		D044290E1CB65052005837F9 /* WFSlackOAuth2SessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WFSlackOAuth2SessionManager.h; path = include/WFOAuth2/WFSlackOAuth2SessionManager.h; sourceTree = "<group>"; };
 		D044290F1CB65052005837F9 /* WFSlackOAuth2SessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WFSlackOAuth2SessionManager.m; sourceTree = "<group>"; };
+		D082BB561E407BC5002CDC37 /* WFLyftOAuth2SessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WFLyftOAuth2SessionManager.h; path = include/WFOAuth2/WFLyftOAuth2SessionManager.h; sourceTree = "<group>"; };
+		D082BB571E407BC5002CDC37 /* WFLyftOAuth2SessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WFLyftOAuth2SessionManager.m; sourceTree = "<group>"; };
 		D084DA1B1CA48D4700F92933 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D084DA1F1CA48D4700F92933 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D084DA211CA48D4700F92933 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -360,6 +370,8 @@
 				D0B8F7BD1CA60AF1006B1E0D /* WFOAuth2RevocableSessionManager.h */,
 				D0B8F7A11CA5FCE6006B1E0D /* WFGoogleOAuth2SessionManager.h */,
 				D0B8F7A21CA5FCE6006B1E0D /* WFGoogleOAuth2SessionManager.m */,
+				D082BB561E407BC5002CDC37 /* WFLyftOAuth2SessionManager.h */,
+				D082BB571E407BC5002CDC37 /* WFLyftOAuth2SessionManager.m */,
 				D044290E1CB65052005837F9 /* WFSlackOAuth2SessionManager.h */,
 				D044290F1CB65052005837F9 /* WFSlackOAuth2SessionManager.m */,
 				D0B8F80A1CA8BBA2006B1E0D /* WFUberOAuth2SessionManager.h */,
@@ -439,6 +451,7 @@
 				D0B8F7701CA4973F006B1E0D /* WFOAuth2SessionManager.h in Headers */,
 				D04429101CB65052005837F9 /* WFSlackOAuth2SessionManager.h in Headers */,
 				D0B8F7841CA49B14006B1E0D /* NSMutableURLRequest+WFOAuth2.h in Headers */,
+				D082BB581E407BC5002CDC37 /* WFLyftOAuth2SessionManager.h in Headers */,
 				D0B8F77A1CA49840006B1E0D /* WFOAuth2Credential.h in Headers */,
 				D0B8F80C1CA8BBA2006B1E0D /* WFUberOAuth2SessionManager.h in Headers */,
 				E9BD9FD71D4962F1004BC387 /* WFSquareOAuth2SessionManager.h in Headers */,
@@ -459,6 +472,7 @@
 				D0B8F7711CA4973F006B1E0D /* WFOAuth2SessionManager.h in Headers */,
 				D04429111CB65052005837F9 /* WFSlackOAuth2SessionManager.h in Headers */,
 				D0B8F7851CA49B14006B1E0D /* NSMutableURLRequest+WFOAuth2.h in Headers */,
+				D082BB591E407BC5002CDC37 /* WFLyftOAuth2SessionManager.h in Headers */,
 				D0B8F77B1CA49840006B1E0D /* WFOAuth2Credential.h in Headers */,
 				D0B8F80D1CA8BBA2006B1E0D /* WFUberOAuth2SessionManager.h in Headers */,
 				E9BD9FD81D4962F1004BC387 /* WFSquareOAuth2SessionManager.h in Headers */,
@@ -479,6 +493,7 @@
 				D0B8F7721CA4973F006B1E0D /* WFOAuth2SessionManager.h in Headers */,
 				D04429121CB65052005837F9 /* WFSlackOAuth2SessionManager.h in Headers */,
 				D0B8F7861CA49B14006B1E0D /* NSMutableURLRequest+WFOAuth2.h in Headers */,
+				D082BB5A1E407BC5002CDC37 /* WFLyftOAuth2SessionManager.h in Headers */,
 				D0B8F77C1CA49840006B1E0D /* WFOAuth2Credential.h in Headers */,
 				D0B8F80E1CA8BBA2006B1E0D /* WFUberOAuth2SessionManager.h in Headers */,
 				E9BD9FD91D4962F1004BC387 /* WFSquareOAuth2SessionManager.h in Headers */,
@@ -499,6 +514,7 @@
 				D0B8F7731CA4973F006B1E0D /* WFOAuth2SessionManager.h in Headers */,
 				D04429131CB65052005837F9 /* WFSlackOAuth2SessionManager.h in Headers */,
 				D0B8F7871CA49B14006B1E0D /* NSMutableURLRequest+WFOAuth2.h in Headers */,
+				D082BB5B1E407BC5002CDC37 /* WFLyftOAuth2SessionManager.h in Headers */,
 				D0B8F77D1CA49840006B1E0D /* WFOAuth2Credential.h in Headers */,
 				D0B8F80F1CA8BBA2006B1E0D /* WFUberOAuth2SessionManager.h in Headers */,
 				E9BD9FDA1D4962F1004BC387 /* WFSquareOAuth2SessionManager.h in Headers */,
@@ -782,6 +798,7 @@
 				D0B8F8101CA8BBA2006B1E0D /* WFUberOAuth2SessionManager.m in Sources */,
 				D04429141CB65052005837F9 /* WFSlackOAuth2SessionManager.m in Sources */,
 				D0B8F7741CA4973F006B1E0D /* WFOAuth2SessionManager.m in Sources */,
+				D082BB5C1E407BC5002CDC37 /* WFLyftOAuth2SessionManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -797,6 +814,7 @@
 				D0B8F8111CA8BBA2006B1E0D /* WFUberOAuth2SessionManager.m in Sources */,
 				D04429151CB65052005837F9 /* WFSlackOAuth2SessionManager.m in Sources */,
 				D0B8F7751CA4973F006B1E0D /* WFOAuth2SessionManager.m in Sources */,
+				D082BB5D1E407BC5002CDC37 /* WFLyftOAuth2SessionManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -812,6 +830,7 @@
 				D0B8F8121CA8BBA2006B1E0D /* WFUberOAuth2SessionManager.m in Sources */,
 				D04429161CB65052005837F9 /* WFSlackOAuth2SessionManager.m in Sources */,
 				D0B8F7761CA4973F006B1E0D /* WFOAuth2SessionManager.m in Sources */,
+				D082BB5E1E407BC5002CDC37 /* WFLyftOAuth2SessionManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -827,6 +846,7 @@
 				D0B8F8131CA8BBA2006B1E0D /* WFUberOAuth2SessionManager.m in Sources */,
 				D04429171CB65052005837F9 /* WFSlackOAuth2SessionManager.m in Sources */,
 				D0B8F7771CA4973F006B1E0D /* WFOAuth2SessionManager.m in Sources */,
+				D082BB5F1E407BC5002CDC37 /* WFLyftOAuth2SessionManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

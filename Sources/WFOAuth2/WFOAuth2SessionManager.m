@@ -27,6 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 typedef NSString *WFOAuth2GrantType NS_EXTENSIBLE_STRING_ENUM;
 WFOAuth2GrantType const WFOAuth2GrantTypeResourceOwnerPasswordCredentials = @"password";
+WFOAuth2GrantType const WFOAuth2GrantTypeClientCredentials = @"client_credentials";
 WFOAuth2GrantType const WFOAuth2GrantTypeAuthorizationCode = @"authorization_code";
 WFOAuth2GrantType const WFOAuth2GrantTypeRefreshToken = @"refresh_token";
 
@@ -59,6 +60,19 @@ WFOAuth2ResponseType const WFOAuth2ResponseTypeToken = @"token";
     _clientSecret = [clientSecret copy];
 
     return self;
+}
+
+- (void)authenticateWithPath:(NSString *)path
+                       scope:(nullable NSString *)scope
+           completionHandler:(WFOAuth2AuthenticationHandler)completionHandler{
+    NSParameterAssert(path);
+    
+    NSArray<NSURLQueryItem *> *parameters = @[[NSURLQueryItem queryItemWithName:@"grant_type" value:WFOAuth2GrantTypeClientCredentials]];
+    
+    if (scope)
+        parameters = [parameters arrayByAddingObject:[NSURLQueryItem queryItemWithName:@"scope" value:scope]];
+    
+    [self authenticateWithPath:path parameters:parameters completionHandler:completionHandler];
 }
 
 - (void)authenticateWithPath:(NSString *)path
@@ -123,8 +137,7 @@ WFOAuth2ResponseType const WFOAuth2ResponseTypeToken = @"token";
     [request setHTTPMethod:@"POST"];
     
     if (self.basicAuthEnabled) {
-        NSString *authenticaton = [[[NSString stringWithFormat:@"%@:%@", self.clientID, (self.clientSecret ?: @"")] dataUsingEncoding:NSUTF8StringEncoding] base64EncodedStringWithOptions:0];
-        [request setValue:[@"Basic " stringByAppendingString:authenticaton] forHTTPHeaderField:@"Authorization"];
+        [request wfo_setAuthorizationWithUsername:self.clientID password:self.clientSecret];
     } else {
         parameters = [parameters arrayByAddingObject:[NSURLQueryItem queryItemWithName:@"client_id" value:self.clientID]];
         

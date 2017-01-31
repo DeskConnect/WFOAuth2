@@ -45,6 +45,11 @@ static NSString * const WFSlackOAuth2TokenPath = @"oauth.access";
     return [super initWithSessionConfiguration:configuration baseURL:[NSURL URLWithString:@"https://slack.com/api"] basicAuthEnabled:NO clientID:clientID clientSecret:clientSecret];
 }
 
+- (void)authenticateWithScope:(nullable NSString *)scope
+            completionHandler:(WFOAuth2AuthenticationHandler)completionHandler {
+    [super authenticateWithPath:WFSlackOAuth2TokenPath scope:scope completionHandler:completionHandler];
+}
+
 - (void)authenticateWithUsername:(NSString *)username
                         password:(NSString *)password
                            scope:(nullable NSString *)scope

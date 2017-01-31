@@ -34,6 +34,9 @@ WF_EXTERN NSString * const WFSlackMultipartyDirectMessageReadScope;
 
 @interface WFSlackOAuth2SessionManager : WFOAuth2SessionManager <WFOAuth2ProviderSessionManager>
 
+- (void)authenticateWithScope:(nullable NSString *)scope
+            completionHandler:(WFOAuth2AuthenticationHandler)completionHandler NS_UNAVAILABLE;
+
 - (void)authenticateWithUsername:(NSString *)username
                         password:(NSString *)password
                            scope:(nullable NSString *)scope

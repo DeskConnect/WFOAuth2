@@ -36,6 +36,11 @@ static NSString * const WFUberOAuth2TokenPath = @"token";
     return [super initWithSessionConfiguration:configuration baseURL:[NSURL URLWithString:@"https://login.uber.com/oauth/v2"] basicAuthEnabled:NO clientID:clientID clientSecret:clientSecret];
 }
 
+- (void)authenticateWithScope:(nullable NSString *)scope
+            completionHandler:(WFOAuth2AuthenticationHandler)completionHandler {
+    [super authenticateWithPath:WFUberOAuth2TokenPath scope:scope completionHandler:completionHandler];
+}
+
 - (void)authenticateWithUsername:(NSString *)username
                         password:(NSString *)password
                            scope:(nullable NSString *)scope

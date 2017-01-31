@@ -20,6 +20,14 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)wfo_setAuthorizationWithCredential:(nullable WFOAuth2Credential *)credential;
 
 /**
+ Sets the authorization header of the request with the provider username and password.
+ 
+ @param username The username to set in the authorization header.
+ @param password The password to set in the authorization header.
+ */
+- (void)wfo_setAuthorizationWithUsername:(NSString *)username password:(nullable NSString *)password;
+
+/**
  Sets the body of the request with the provided query items using form encoding. This method
  also sets the Content-Type header to @"application/x-www-form-urlencoded"
  

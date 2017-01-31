@@ -1,25 +1,24 @@
 //
-//  WFGoogleOAuth2SessionManager.m
+//  WFLyftOAuth2SessionManager.m
 //  WFOAuth2
 //
-//  Created by Conrad Kramer on 3/24/16.
-//  Copyright © 2016 DeskConnect, Inc. All rights reserved.
+//  Created by Conrad Kramer on 1/31/17.
+//  Copyright © 2017 DeskConnect, Inc. All rights reserved.
 //
 
+#import <WFOAuth2/WFLyftOAuth2SessionManager.h>
 #import <WFOAuth2/WFOAuth2SessionManagerPrivate.h>
-#import <WFOAuth2/WFOAuth2Error.h>
+#import <WFOAuth2/NSMutableURLRequest+WFOAuth2.h>
 
-#import <WFOAuth2/WFGoogleOAuth2SessionManager.h>
+NSString * const WFLyftPublicScope = @"public";
+NSString * const WFLyftReadRidesScope = @"rides.read";
+NSString * const WFLyftRequestRidesScope = @"rides.request";
+NSString * const WFLyftProfileScope = @"profile";
+NSString * const WFLyftOfflineScope = @"offline";
 
-NS_ASSUME_NONNULL_BEGIN
+static NSString * const WFLyftOAuth2TokenPath = @"token";
 
-NSString * const WFGoogleNativeRedirectURIString = @"urn:ietf:wg:oauth:2.0:oob:auto";
-NSString * const WFGoogleEmailScope = @"email";
-NSString * const WFGoogleProfileScope = @"profile";
-
-static NSString * const WFGoogleOAuth2TokenPath = @"token";
-
-@implementation WFGoogleOAuth2SessionManager
+@implementation WFLyftOAuth2SessionManager
 
 - (instancetype)initWithClientID:(NSString *)clientID
                     clientSecret:(nullable NSString *)clientSecret {
@@ -29,29 +28,29 @@ static NSString * const WFGoogleOAuth2TokenPath = @"token";
 - (instancetype)initWithSessionConfiguration:(nullable NSURLSessionConfiguration *)configuration
                                     clientID:(NSString *)clientID
                                 clientSecret:(nullable NSString *)clientSecret {
-    return [super initWithSessionConfiguration:configuration baseURL:[NSURL URLWithString:@"https://www.googleapis.com/oauth2/v4"] basicAuthEnabled:NO clientID:clientID clientSecret:clientSecret];
+    return [super initWithSessionConfiguration:configuration baseURL:[NSURL URLWithString:@"https://api.lyft.com/oauth"] basicAuthEnabled:YES clientID:clientID clientSecret:clientSecret];
 }
 
 - (void)authenticateWithScope:(nullable NSString *)scope
             completionHandler:(WFOAuth2AuthenticationHandler)completionHandler {
-    [super authenticateWithPath:WFGoogleOAuth2TokenPath scope:scope completionHandler:completionHandler];
+    [super authenticateWithPath:WFLyftOAuth2TokenPath scope:scope completionHandler:completionHandler];
 }
 
 - (void)authenticateWithUsername:(NSString *)username
                         password:(NSString *)password
                            scope:(nullable NSString *)scope
                completionHandler:(WFOAuth2AuthenticationHandler)completionHandler {
-    [super authenticateWithPath:WFGoogleOAuth2TokenPath username:username password:password scope:scope completionHandler:completionHandler];
+    [super authenticateWithPath:WFLyftOAuth2TokenPath username:username password:password scope:scope completionHandler:completionHandler];
 }
 
 - (void)authenticateWithCode:(NSString *)code
                  redirectURI:(nullable NSURL *)redirectURI
            completionHandler:(WFOAuth2AuthenticationHandler)completionHandler {
-    [super authenticateWithPath:WFGoogleOAuth2TokenPath code:code redirectURI:redirectURI completionHandler:completionHandler];
+    [super authenticateWithPath:WFLyftOAuth2TokenPath code:code redirectURI:redirectURI completionHandler:completionHandler];
 }
 
 - (void)authenticateWithRefreshCredential:(WFOAuth2Credential *)refreshCredential completionHandler:(WFOAuth2AuthenticationHandler)completionHandler {
-    [super authenticateWithPath:WFGoogleOAuth2TokenPath refreshCredential:refreshCredential completionHandler:completionHandler];
+    [super authenticateWithPath:WFLyftOAuth2TokenPath refreshCredential:refreshCredential completionHandler:completionHandler];
 }
 
 #if __has_include(<WebKit/WebKit.h>)
@@ -59,7 +58,7 @@ static NSString * const WFGoogleOAuth2TokenPath = @"token";
 - (WKWebView *)authorizationWebViewWithScope:(nullable NSString *)scope
                                  redirectURI:(nullable NSURL *)redirectURI
                            completionHandler:(WFOAuth2AuthenticationHandler)completionHandler {
-    return [super authorizationWebViewWithURL:[NSURL URLWithString:@"https://accounts.google.com/o/oauth2/auth"] responseType:WFOAuth2ResponseTypeCode scope:scope redirectURI:redirectURI tokenPath:WFGoogleOAuth2TokenPath completionHandler:completionHandler];
+    return [super authorizationWebViewWithURL:[NSURL URLWithString:@"https://api.lyft.com/oauth/authorize"] responseType:WFOAuth2ResponseTypeCode scope:scope redirectURI:redirectURI tokenPath:WFLyftOAuth2TokenPath completionHandler:completionHandler];
 }
 
 #endif
@@ -68,10 +67,17 @@ static NSString * const WFGoogleOAuth2TokenPath = @"token";
        completionHandler:(void (^__nullable)(BOOL success, NSError * __nullable error))completionHandler {
     NSParameterAssert(credential);
     
-    NSURLComponents *components = [NSURLComponents componentsWithString:@"https://accounts.google.com/o/oauth2/revoke"];
-    components.queryItems = @[[NSURLQueryItem queryItemWithName:@"token" value:credential.accessToken]];
-    
-    [[self.session dataTaskWithURL:components.URL completionHandler:^(NSData * __nullable data, NSURLResponse * __nullable response, NSError * __nullable error) {
+    NSURL *url = [self.baseURL URLByAppendingPathComponent:@"revoke_refresh_token"];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setHTTPMethod:@"POST"];
+    [request wfo_setAuthorizationWithUsername:self.clientID password:self.clientSecret];
+
+    NSMutableArray<NSURLQueryItem *> *parameters = [NSMutableArray new];
+    if (credential.refreshToken)
+        [parameters addObject:[NSURLQueryItem queryItemWithName:@"token" value:credential.refreshToken]];
+    [request wfo_setBodyWithQueryItems:parameters];
+
+    [[self.session dataTaskWithRequest:request completionHandler:^(NSData * __nullable data, NSURLResponse * __nullable response, NSError * __nullable error) {
         if (data.length) {
             NSDictionary *responseObject = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
             error = (WFRFC6749Section5_2ErrorFromResponse(responseObject) ?: error);
@@ -84,5 +90,3 @@ static NSString * const WFGoogleOAuth2TokenPath = @"token";
 }
 
 @end
-
-NS_ASSUME_NONNULL_END

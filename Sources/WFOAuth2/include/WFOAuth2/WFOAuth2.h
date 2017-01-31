@@ -12,6 +12,7 @@
 #import <WFOAuth2/WFOAuth2Credential.h>
 #import <WFOAuth2/WFOAuth2Error.h>
 
+#import <WFOAuth2/WFDropboxOAuth2SessionManager.h>
 #import <WFOAuth2/WFGoogleOAuth2SessionManager.h>
 #import <WFOAuth2/WFLyftOAuth2SessionManager.h>
 #import <WFOAuth2/WFSlackOAuth2SessionManager.h>

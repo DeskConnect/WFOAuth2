@@ -25,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         allConfigurations = @[
+            [self newWithClass:[WFDropboxOAuth2SessionManager class] clientID:@"k3869owh4bj3zbt" clientSecret:@"49jy1mdm6o30w3t" scope:nil redirectURI:[NSURL URLWithString:@"http://localhost"]],
             [self newWithClass:[WFGoogleOAuth2SessionManager class] clientID:@"266399808145-3avt9dudaqe71j6lr8haqigudqi91lf5.apps.googleusercontent.com" clientSecret:nil scope:WFGoogleProfileScope redirectURI:[NSURL URLWithString:WFGoogleNativeRedirectURIString]],
             [self newWithClass:[WFLyftOAuth2SessionManager class] clientID:@"1v3Ec3XqBbqE" clientSecret:@"CD_IcdcyH3xdRsaflrd-roCiv1rVnJJX" scope:[@[WFLyftOfflineScope, WFLyftProfileScope] componentsJoinedByString:@" "] redirectURI:[NSURL URLWithString:@"http://localhost"]],
             [self newWithClass:[WFSlackOAuth2SessionManager class] clientID:@"3214730525.4155085303" clientSecret:@"bac7521cf39042b46b35978b045d5ea0" scope:WFSlackChannelWriteScope redirectURI:[NSURL URLWithString:@"https://localhost"]],

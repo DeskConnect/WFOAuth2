@@ -11,6 +11,7 @@
 ## Supported Services
 
 <table>
+  <tr><td><img src="https://s3.amazonaws.com/workflow-actions/icons/com.getdropbox.Dropbox@2x.png" alt="Dropbox" width="29"/></td><td>Dropbox</td></tr>
   <tr><td><img src="https://s3.amazonaws.com/workflow-actions/icons/com.google.GoogleMobile@2x.png" alt="Google" width="29"/></td><td>Google</td></tr>
   <tr><td><img src="https://s3.amazonaws.com/workflow-actions/icons/com.zimride.instant@2x.png" alt="Lyft" width="29"/></td><td>Lyft</td></tr>
   <tr><td><img src="https://s3.amazonaws.com/workflow-actions/icons/com.tinyspeck.chatlyio@2x.png" alt="Slack" width="29"/></td><td>Slack</td></tr>

@@ -14,6 +14,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef NSString *WFOAuth2ResponseType NS_EXTENSIBLE_STRING_ENUM;
+extern WFOAuth2ResponseType const WFOAuth2ResponseTypeCode;
+extern WFOAuth2ResponseType const WFOAuth2ResponseTypeToken;
+
 /**
   A block object to be executed when a token request finishes. This block has no return value and takes two arguments: the credential if the request succeeds, and the error that occurred, if any.
  */
@@ -139,13 +143,15 @@ typedef void (^WFOAuth2AuthenticationHandler)(WFOAuth2Credential * __nullable cr
  Creates an authorization request to receive an authorization code.
  
  @param authorizationURL The full URL of the authorization endpoint. This can have a different base URL than the token endpoint.
- @param scope The desired scope of the code as defined in [Section 3.3](https://tools.ietf.org/html/rfc6749#section-3.3) of the OAuth 2 spec.
- @param redirectURI The redirect URI to use to receive the code as defined in [Section 3.1.2](https://tools.ietf.org/html/rfc6749#section-3.1.2) of the OAuth 2 spec.
+ @param responseType The response type to receive as defined in [Section 3.1.1](https://tools.ietf.org/html/rfc6749#section-3.1.1) of the OAuth 2 spec.
+ @param scope The desired scope of the grant as defined in [Section 3.3](https://tools.ietf.org/html/rfc6749#section-3.3) of the OAuth 2 spec.
+ @param redirectURI The redirect URI to use to receive the result as defined in [Section 3.1.2](https://tools.ietf.org/html/rfc6749#section-3.1.2) of the OAuth 2 spec.
  @param state The state parameter to use to unique the authorization code in order to prevent CSRF attacks as defined in [Section 4.1.1](https://tools.ietf.org/html/rfc6749#section-4.1.1) of the OAuth 2 spec.
  @return A URL request containing all of the specified parameters
  @see [Section 4.1.1](https://tools.ietf.org/html/rfc6749#section-4.1.1)
  */
 - (NSURLRequest *)authorizationRequestWithURL:(NSURL *)authorizationURL
+                                 responseType:(WFOAuth2ResponseType)responseType
                                         scope:(nullable NSString *)scope
                                   redirectURI:(nullable NSURL *)redirectURI
                                         state:(nullable NSString *)state;

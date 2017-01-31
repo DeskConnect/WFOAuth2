@@ -30,6 +30,9 @@ WFOAuth2GrantType const WFOAuth2GrantTypeResourceOwnerPasswordCredentials = @"pa
 WFOAuth2GrantType const WFOAuth2GrantTypeAuthorizationCode = @"authorization_code";
 WFOAuth2GrantType const WFOAuth2GrantTypeRefreshToken = @"refresh_token";
 
+WFOAuth2ResponseType const WFOAuth2ResponseTypeCode = @"code";
+WFOAuth2ResponseType const WFOAuth2ResponseTypeToken = @"token";
+
 @implementation WFOAuth2SessionManager
 
 - (instancetype)initWithBaseURL:(NSURL *)baseURL
@@ -174,15 +177,17 @@ WFOAuth2GrantType const WFOAuth2GrantTypeRefreshToken = @"refresh_token";
 }
 
 - (NSURLRequest *)authorizationRequestWithURL:(NSURL *)authorizationURL
+                                 responseType:(WFOAuth2ResponseType)responseType
                                         scope:(nullable NSString *)scope
                                   redirectURI:(nullable NSURL *)redirectURI
                                         state:(nullable NSString *)state {
     NSParameterAssert(authorizationURL);
+    NSParameterAssert(responseType);
     
     NSURLComponents *components = [NSURLComponents componentsWithURL:authorizationURL resolvingAgainstBaseURL:NO];
     
     NSMutableArray<NSURLQueryItem *> *parameters = ([components.queryItems mutableCopy] ?: [NSMutableArray new]);
-    [parameters addObject:[NSURLQueryItem queryItemWithName:@"response_type" value:@"code"]];
+    [parameters addObject:[NSURLQueryItem queryItemWithName:@"response_type" value:responseType]];
     [parameters addObject:[NSURLQueryItem queryItemWithName:@"client_id" value:self.clientID]];
     if (scope)
         [parameters addObject:[NSURLQueryItem queryItemWithName:@"scope" value:scope]];
@@ -291,7 +296,11 @@ WFOAuth2GrantType const WFOAuth2GrantTypeRefreshToken = @"refresh_token";
         }
     }];
     
-    [webView loadRequest:[self authorizationRequestWithURL:authorizationURL scope:scope redirectURI:redirectURI state:state]];
+    [webView loadRequest:[self authorizationRequestWithURL:authorizationURL
+                                              responseType:WFOAuth2ResponseTypeCode
+                                                     scope:scope
+                                               redirectURI:redirectURI
+                                                     state:state]];
     
     return webView;
 }

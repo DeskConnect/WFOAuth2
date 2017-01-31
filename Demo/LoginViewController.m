@@ -28,6 +28,7 @@ static void *LoginViewControllerTitleContext = &LoginViewControllerTitleContext;
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelPressed:)];
     
     __weak __typeof__(self) weakSelf = self;
+    _sessionManager = sessionManager;
     _webView = [sessionManager authorizationWebViewWithScope:scope redirectURI:redirectURI completionHandler:^(WFOAuth2Credential * __nullable credential, NSError * __nullable error) {
         id<LoginViewControllerDelegate> delegate = weakSelf.delegate;
         

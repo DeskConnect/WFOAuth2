@@ -8,10 +8,14 @@
 
 #import "ViewController.h"
 #import "LoginViewController.h"
+#import "ProviderConfiguration.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ViewController () <LoginViewControllerDelegate>
+@interface ViewController () <UIPickerViewDelegate, UIPickerViewDataSource, LoginViewControllerDelegate>
+
+@property (nonatomic, readonly, weak) UIButton *loginButton;
+@property (nonatomic, readonly, weak) UIPickerView *pickerView;
 
 @end
 
@@ -20,72 +24,45 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)loadView {
     [super loadView];
     
-    self.view.backgroundColor = [UIColor whiteColor];
+    UIView *view = self.view;
+    view.backgroundColor = [UIColor whiteColor];
     
-    UIButton *googleButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    googleButton.translatesAutoresizingMaskIntoConstraints = NO;
-    [googleButton setTitle:@"Login to Google" forState:UIControlStateNormal];
-    [googleButton addTarget:self action:@selector(googlePressed:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:googleButton];
-   
-    UIButton *slackButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    slackButton.translatesAutoresizingMaskIntoConstraints = NO;
-    [slackButton setTitle:@"Login to Slack" forState:UIControlStateNormal];
-    [slackButton addTarget:self action:@selector(slackPressed:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:slackButton];
+    UIButton *loginButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    loginButton.translatesAutoresizingMaskIntoConstraints = NO;
+    [loginButton setTitle:@"Login" forState:UIControlStateNormal];
+    [loginButton addTarget:self action:@selector(loginPressed) forControlEvents:UIControlEventTouchUpInside];
+    [view addSubview:loginButton];
+    _loginButton = loginButton;
     
-    UIButton *uberButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    uberButton.translatesAutoresizingMaskIntoConstraints = NO;
-    [uberButton setTitle:@"Login to Uber" forState:UIControlStateNormal];
-    [uberButton addTarget:self action:@selector(uberPressed:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:uberButton];
+    UIPickerView *pickerView = [[UIPickerView alloc] init];
+    pickerView.translatesAutoresizingMaskIntoConstraints = NO;
+    pickerView.delegate = self;
+    pickerView.dataSource = self;
+    [view addSubview:pickerView];
+    _pickerView = pickerView;
     
-    UIButton *squareButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    squareButton.translatesAutoresizingMaskIntoConstraints = NO;
-    [squareButton setTitle:@"Login to Square" forState:UIControlStateNormal];
-    [squareButton addTarget:self action:@selector(squarePressed:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:squareButton];
+    [NSLayoutConstraint activateConstraints:@[
+        [loginButton.centerXAnchor constraintEqualToAnchor:view.centerXAnchor],
+        [NSLayoutConstraint constraintWithItem:loginButton attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeCenterY multiplier:0.5f constant:0.0f],
+        [pickerView.bottomAnchor constraintEqualToAnchor:view.bottomAnchor],
+        [pickerView.leftAnchor constraintEqualToAnchor:view.leftAnchor],
+        [pickerView.rightAnchor constraintEqualToAnchor:view.rightAnchor],
+    ]];
     
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:googleButton attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.0f constant:0.0f]];
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:googleButton attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterY multiplier:0.8f constant:0.0f]];
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:slackButton attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.0f constant:0.0f]];
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:slackButton attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterY multiplier:1.0f constant:0.0f]];
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:uberButton attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.0f constant:0.0f]];
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:uberButton attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterY multiplier:1.2f constant:0.0f]];
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:squareButton attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.0f constant:0.0f]];
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:squareButton attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterY multiplier:1.4f constant:0.0f]];
+    [self pickerView:pickerView didSelectRow:0 inComponent:0];
 }
 
-- (void)googlePressed:(nullable id)sender {
-    WFGoogleOAuth2SessionManager *sessionManager = [[WFGoogleOAuth2SessionManager alloc] initWithClientID:@"266399808145-3avt9dudaqe71j6lr8haqigudqi91lf5.apps.googleusercontent.com" clientSecret:nil];
-    [self loginWithSessionManager:sessionManager scope:WFGoogleProfileScope redirectURI:[NSURL URLWithString:WFGoogleNativeRedirectURIString]];
-}
-
-- (void)slackPressed:(nullable id)sender {
-    WFSlackOAuth2SessionManager *sessionManager = [[WFSlackOAuth2SessionManager alloc] initWithClientID:@"3214730525.4155085303" clientSecret:@"bac7521cf39042b46b35978b045d5ea0"];
-    [self loginWithSessionManager:sessionManager scope:WFSlackChannelWriteScope redirectURI:[NSURL URLWithString:@"https://localhost"]];
-}
-
-- (void)uberPressed:(nullable id)sender {
-    WFUberOAuth2SessionManager *sessionManager = [[WFUberOAuth2SessionManager alloc] initWithClientID:@"FVZC8i9VfAn2DIi0TdBG0-I5T7RcU3_j" clientSecret:@"8mj8sI-liVAmhSe8duMGQO2SKqPAnGeMDgzuUXyB"];
-    [self loginWithSessionManager:sessionManager scope:WFUberUserProfileScope redirectURI:[NSURL URLWithString:@"https://localhost"]];
-}
-
-- (void)squarePressed:(nullable id)sender {
-    NSString *clienetID = @"";
-    NSString *clientSecret = @"";
-    if (!clientSecret.length || !clientSecret.length) {
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Need client credentials" message:@"There was no clientID or client secret given." preferredStyle:UIAlertControllerStyleAlert];
-        [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
-        [self presentViewController:alertController animated:YES completion:nil];
+- (void)loginPressed {
+    NSInteger row = [self.pickerView selectedRowInComponent:0];
+    if (row == -1)
         return;
-    }
-    WFSquareOAuth2SessionManager *sessionManager = [[WFSquareOAuth2SessionManager alloc] initWithClientID:clienetID clientSecret:clientSecret];
-    [self loginWithSessionManager:sessionManager scope:WFSquareMerchantProfileReadScope redirectURI:nil];
-}
+    
+    ProviderConfiguration *configuration = [[ProviderConfiguration allConfigurations] objectAtIndex:row];
+    WFOAuth2SessionManager<WFOAuth2ProviderSessionManager> *sessionManager = configuration.sessionManager;
+    if (!sessionManager)
+        return;
 
-- (void)loginWithSessionManager:(WFOAuth2SessionManager<WFOAuth2ProviderSessionManager> *)sessionManager scope:(nullable NSString *)scope redirectURI:(nullable NSURL *)redirectURI {
-    LoginViewController *loginViewController = [[LoginViewController alloc] initWithSessionManager:sessionManager scope:scope redirectURI:redirectURI];
+    LoginViewController *loginViewController = [[LoginViewController alloc] initWithSessionManager:sessionManager scope:configuration.scope redirectURI:configuration.redirectURI];
     loginViewController.delegate = self;
     
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
@@ -93,24 +70,78 @@ NS_ASSUME_NONNULL_BEGIN
     [self presentViewController:navigationController animated:YES completion:nil];
 }
 
+#pragma mark - LoginViewControllerDelegate
+
 - (void)loginViewController:(LoginViewController *)loginViewController didAuthenticateWithCredential:(WFOAuth2Credential *)credential {
     [loginViewController dismissViewControllerAnimated:YES completion:^{
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Access Token" message:credential.accessToken preferredStyle:UIAlertControllerStyleAlert];
-        [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+        WFOAuth2SessionManager<WFOAuth2ProviderSessionManager> *sessionManager = loginViewController.sessionManager;
+        UIAlertController *alertController = [UIAlertController
+                                              alertControllerWithTitle:@"Access Token"
+                                              message:credential.accessToken
+                                              preferredStyle:UIAlertControllerStyleAlert];
+        if ([sessionManager conformsToProtocol:@protocol(WFOAuth2RevocableSessionManager)]) {
+            WFOAuth2SessionManager<WFOAuth2RevocableSessionManager> *revocableSessionManager = (WFOAuth2SessionManager<WFOAuth2RevocableSessionManager> * )sessionManager;
+            [alertController addAction:[UIAlertAction actionWithTitle:@"Revoke" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                [revocableSessionManager revokeCredential:credential completionHandler:^(BOOL success, NSError * __nullable error) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        NSString *title = (success ? @"Revocation Succeeded" : @"Revocation Failed");
+                        UIAlertController *alertController = [UIAlertController
+                                                              alertControllerWithTitle:title
+                                                              message:nil
+                                                              preferredStyle:UIAlertControllerStyleAlert];
+                        
+                        [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+                        [self presentViewController:alertController animated:YES completion:nil];
+                    });
+                }];
+            }]];
+        } else {
+            [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+        }
+        
         [self presentViewController:alertController animated:YES completion:nil];
     }];
 }
 
 - (void)loginViewController:(LoginViewController *)loginViewController didFailWithError:(nullable NSError *)error {
     [loginViewController dismissViewControllerAnimated:YES completion:^{
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController *alertController = [UIAlertController
+                                              alertControllerWithTitle:@"Error"
+                                              message:error.localizedDescription
+                                              preferredStyle:UIAlertControllerStyleAlert];
         [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+        
         [self presentViewController:alertController animated:YES completion:nil];
     }];
 }
 
 - (void)loginViewControllerDidCancel:(LoginViewController *)loginViewController {
     [loginViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - UIPickerViewDelegate
+
+- (nullable NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    ProviderConfiguration *configuration = [[ProviderConfiguration allConfigurations] objectAtIndex:row];
+    return configuration.name;
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    ProviderConfiguration *configuration = [[ProviderConfiguration allConfigurations] objectAtIndex:row];
+    
+    UIButton *loginButton = self.loginButton;
+    loginButton.enabled = configuration.valid;
+    [loginButton setTitle:[NSString stringWithFormat:@"Login with %@", configuration.name] forState:UIControlStateNormal];
+}
+
+#pragma mark - UIPickerViewDataSource
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    return [[ProviderConfiguration allConfigurations] count];
 }
 
 @end

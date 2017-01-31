@@ -3,7 +3,7 @@
 //  WFOAuth2
 //
 //  Created by Curtis Thorne on 7/26/16.
-//  Copyright © 2016 Conrad Kramer. All rights reserved.
+//  Copyright © 2016 DeskConnect, Inc. All rights reserved.
 //
 
 #import <WFOAuth2/WFOAuth2ProviderSessionManager.h>

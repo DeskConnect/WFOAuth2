@@ -28,7 +28,7 @@ WF_EXTERN NSString * const WFSquareEmployeesWriteScope;
 WF_EXTERN NSString * const WFSquareTimecardsWriteScope;
 
 
-@interface WFSquareOAuth2SessionManager : WFOAuth2SessionManager <WFOAuth2ProviderSessionManager, WFOAuth2RevocableSessionManager>
+@interface WFSquareOAuth2SessionManager : WFOAuth2ProviderSessionManager <WFOAuth2RevocableSessionManager>
 
 - (void)authenticateWithScope:(nullable NSString *)scope
             completionHandler:(WFOAuth2AuthenticationHandler)completionHandler NS_UNAVAILABLE;

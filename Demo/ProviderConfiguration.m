@@ -28,8 +28,8 @@ NS_ASSUME_NONNULL_BEGIN
             [self newWithClass:[WFGoogleOAuth2SessionManager class] clientID:@"266399808145-3avt9dudaqe71j6lr8haqigudqi91lf5.apps.googleusercontent.com" clientSecret:nil scope:WFGoogleProfileScope redirectURI:[NSURL URLWithString:WFGoogleNativeRedirectURIString]],
             [self newWithClass:[WFLyftOAuth2SessionManager class] clientID:@"1v3Ec3XqBbqE" clientSecret:@"CD_IcdcyH3xdRsaflrd-roCiv1rVnJJX" scope:[@[WFLyftOfflineScope, WFLyftProfileScope] componentsJoinedByString:@" "] redirectURI:[NSURL URLWithString:@"http://localhost"]],
             [self newWithClass:[WFSlackOAuth2SessionManager class] clientID:@"3214730525.4155085303" clientSecret:@"bac7521cf39042b46b35978b045d5ea0" scope:WFSlackChannelWriteScope redirectURI:[NSURL URLWithString:@"https://localhost"]],
-            [self newWithClass:[WFUberOAuth2SessionManager class] clientID:@"FVZC8i9VfAn2DIi0TdBG0-I5T7RcU3_j" clientSecret:@"8mj8sI-liVAmhSe8duMGQO2SKqPAnGeMDgzuUXyB" scope:WFUberUserProfileScope redirectURI:[NSURL URLWithString:@"https://localhost"]],
             [self newWithClass:[WFSquareOAuth2SessionManager class] clientID:nil clientSecret:nil scope:nil redirectURI:nil],
+            [self newWithClass:[WFUberOAuth2SessionManager class] clientID:@"FVZC8i9VfAn2DIi0TdBG0-I5T7RcU3_j" clientSecret:nil scope:WFUberUserProfileScope redirectURI:[NSURL URLWithString:@"https://localhost"]],
         ];
     });
     return allConfigurations;
@@ -77,7 +77,7 @@ NS_ASSUME_NONNULL_BEGIN
     return !!self.sessionManager;
 }
 
-- (WFOAuth2SessionManager<WFOAuth2ProviderSessionManager> *)sessionManager {
+- (WFOAuth2ProviderSessionManager *)sessionManager {
     if (!_clientID)
         return nil;
     

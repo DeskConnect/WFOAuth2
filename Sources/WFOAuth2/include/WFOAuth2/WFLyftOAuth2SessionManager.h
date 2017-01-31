@@ -16,7 +16,7 @@ extern NSString * const WFLyftRequestRidesScope;
 extern NSString * const WFLyftProfileScope;
 extern NSString * const WFLyftOfflineScope;
 
-@interface WFLyftOAuth2SessionManager : WFOAuth2SessionManager <WFOAuth2ProviderSessionManager, WFOAuth2RevocableSessionManager>
+@interface WFLyftOAuth2SessionManager : WFOAuth2ProviderSessionManager <WFOAuth2RevocableSessionManager>
 
 - (void)authenticateWithUsername:(NSString *)username
                         password:(NSString *)password

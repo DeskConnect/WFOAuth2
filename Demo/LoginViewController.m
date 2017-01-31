@@ -20,7 +20,7 @@ static void *LoginViewControllerTitleContext = &LoginViewControllerTitleContext;
 
 @implementation LoginViewController
 
-- (instancetype)initWithSessionManager:(WFOAuth2SessionManager<WFOAuth2ProviderSessionManager> *)sessionManager scope:(nullable NSString *)scope redirectURI:(nullable NSURL *)redirectURI {
+- (instancetype)initWithSessionManager:(WFOAuth2ProviderSessionManager *)sessionManager scope:(nullable NSString *)scope redirectURI:(nullable NSURL *)redirectURI {
     self = [super initWithNibName:nil bundle:nil];
     if (!self)
         return nil;

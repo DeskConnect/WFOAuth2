@@ -6,6 +6,8 @@
 //  Copyright © 2016-2017 DeskConnect, Inc. All rights reserved.
 //
 
+#import <WFOAuth2/WFOAuth2ProviderSessionManagerSubclass.h>
+
 #import <WFOAuth2/WFSlackOAuth2SessionManager.h>
 
 NS_ASSUME_NONNULL_BEGIN
@@ -30,52 +32,19 @@ NSString * const WFSlackMultipartyDirectMessageWriteScope = @"mpim:write";
 NSString * const WFSlackMultipartyDirectMessageHistoryScope = @"mpim:history";
 NSString * const WFSlackMultipartyDirectMessageReadScope = @"mpim:read";
 
-static NSString * const WFSlackOAuth2TokenPath = @"oauth.access";
-
 @implementation WFSlackOAuth2SessionManager
 
-- (instancetype)initWithClientID:(NSString *)clientID
-                    clientSecret:(nullable NSString *)clientSecret {
-    return [self initWithSessionConfiguration:nil clientID:clientID clientSecret:clientSecret];
++ (NSURL *)baseURL {
+    return [NSURL URLWithString:@"https://slack.com/api"];
 }
 
-- (instancetype)initWithSessionConfiguration:(nullable NSURLSessionConfiguration *)configuration
-                                    clientID:(NSString *)clientID
-                                clientSecret:(nullable NSString *)clientSecret {
-    return [super initWithSessionConfiguration:configuration baseURL:[NSURL URLWithString:@"https://slack.com/api"] basicAuthEnabled:NO clientID:clientID clientSecret:clientSecret];
++ (NSString *)tokenPath {
+    return @"oauth.access";
 }
 
-- (void)authenticateWithScope:(nullable NSString *)scope
-            completionHandler:(WFOAuth2AuthenticationHandler)completionHandler {
-    [super authenticateWithPath:WFSlackOAuth2TokenPath scope:scope completionHandler:completionHandler];
++ (NSURL *)authorizationURL {
+    return [NSURL URLWithString:@"https://slack.com/oauth/authorize"];
 }
-
-- (void)authenticateWithUsername:(NSString *)username
-                        password:(NSString *)password
-                           scope:(nullable NSString *)scope
-               completionHandler:(WFOAuth2AuthenticationHandler)completionHandler {
-    [super authenticateWithPath:WFSlackOAuth2TokenPath username:username password:password scope:scope completionHandler:completionHandler];
-}
-
-- (void)authenticateWithCode:(NSString *)code
-                 redirectURI:(nullable NSURL *)redirectURI
-           completionHandler:(WFOAuth2AuthenticationHandler)completionHandler {
-    [super authenticateWithPath:WFSlackOAuth2TokenPath code:code redirectURI:redirectURI completionHandler:completionHandler];
-}
-
-- (void)authenticateWithRefreshCredential:(WFOAuth2Credential *)refreshCredential completionHandler:(WFOAuth2AuthenticationHandler)completionHandler {
-    [super authenticateWithPath:WFSlackOAuth2TokenPath refreshCredential:refreshCredential completionHandler:completionHandler];
-}
-
-#if __has_include(<WebKit/WebKit.h>)
-
-- (WKWebView *)authorizationWebViewWithScope:(nullable NSString *)scope
-                                 redirectURI:(nullable NSURL *)redirectURI
-                           completionHandler:(WFOAuth2AuthenticationHandler)completionHandler {
-    return [super authorizationWebViewWithURL:[NSURL URLWithString:@"https://slack.com/oauth/authorize"] responseType:WFOAuth2ResponseTypeCode scope:scope redirectURI:redirectURI tokenPath:WFSlackOAuth2TokenPath completionHandler:completionHandler];
-}
-
-#endif
 
 @end
 

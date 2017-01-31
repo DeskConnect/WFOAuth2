@@ -58,7 +58,7 @@ NS_ASSUME_NONNULL_BEGIN
         return;
     
     ProviderConfiguration *configuration = [[ProviderConfiguration allConfigurations] objectAtIndex:row];
-    WFOAuth2SessionManager<WFOAuth2ProviderSessionManager> *sessionManager = configuration.sessionManager;
+    WFOAuth2ProviderSessionManager *sessionManager = configuration.sessionManager;
     if (!sessionManager)
         return;
 
@@ -70,48 +70,96 @@ NS_ASSUME_NONNULL_BEGIN
     [self presentViewController:navigationController animated:YES completion:nil];
 }
 
+- (void)presentError:(NSError *)error {
+    UIAlertController *alertController = [UIAlertController
+                                          alertControllerWithTitle:@"Error"
+                                          message:(error.localizedFailureReason ?: error.localizedDescription)
+                                          preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
+- (void)presentCredential:(WFOAuth2Credential *)credential
+       fromSessionManager:(WFOAuth2ProviderSessionManager *)sessionManager {
+    
+    NSString *accessToken = credential.accessToken;
+    if (accessToken.length > 10)
+        accessToken = [[accessToken substringToIndex:10] stringByAppendingString:@"..."];
+    
+    NSString *refreshToken = credential.refreshToken;
+    if (refreshToken.length > 10)
+        refreshToken = [[refreshToken substringToIndex:10] stringByAppendingString:@"..."];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateStyle = NSDateFormatterMediumStyle;
+    dateFormatter.timeStyle = NSDateFormatterShortStyle;
+    
+    NSString *expirationDate = (credential.expirationDate ? [dateFormatter stringFromDate:credential.expirationDate] : nil);
+    
+    NSMutableArray<NSString *> *message = [NSMutableArray new];
+    if (accessToken)
+        [message addObject:[NSString stringWithFormat:@"Access Token: %@", accessToken]];
+    if (credential.tokenType)
+        [message addObject:[NSString stringWithFormat:@"Token Type: %@", credential.tokenType]];
+    if (refreshToken)
+        [message addObject:[NSString stringWithFormat:@"Refresh Token: %@", refreshToken]];
+    if (expirationDate)
+        [message addObject:[NSString stringWithFormat:@"Expires: %@", expirationDate]];
+    
+    UIAlertController *alertController = [UIAlertController
+                                          alertControllerWithTitle:@"Access Token"
+                                          message:[message componentsJoinedByString:@"\n"]
+                                          preferredStyle:UIAlertControllerStyleAlert];
+    
+    if (credential.refreshToken) {
+        [alertController addAction:[UIAlertAction actionWithTitle:@"Refresh" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            [sessionManager authenticateWithRefreshCredential:credential completionHandler:^(WFOAuth2Credential * __nullable credential, NSError * __nullable error) {
+                if (credential)
+                    [self presentCredential:credential fromSessionManager:sessionManager];
+                else if (error)
+                    [self presentError:error];
+            }];
+        }]];
+    }
+    
+    if ([sessionManager conformsToProtocol:@protocol(WFOAuth2RevocableSessionManager)]) {
+        id<WFOAuth2RevocableSessionManager> revocableSessionManager = (id<WFOAuth2RevocableSessionManager>)sessionManager;
+        [alertController addAction:[UIAlertAction actionWithTitle:@"Revoke" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            [revocableSessionManager revokeCredential:credential completionHandler:^(BOOL success, NSError * __nullable error) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (error)
+                        return [self presentError:error];
+                    
+                    NSString *title = (success ? @"Revocation Succeeded" : @"Revocation Failed");
+                    UIAlertController *alertController = [UIAlertController
+                                                          alertControllerWithTitle:title
+                                                          message:nil
+                                                          preferredStyle:UIAlertControllerStyleAlert];
+                    
+                    [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+                    [self presentViewController:alertController animated:YES completion:nil];
+                });
+            }];
+        }]];
+    }
+    
+    [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
 #pragma mark - LoginViewControllerDelegate
 
 - (void)loginViewController:(LoginViewController *)loginViewController didAuthenticateWithCredential:(WFOAuth2Credential *)credential {
     [loginViewController dismissViewControllerAnimated:YES completion:^{
-        WFOAuth2SessionManager<WFOAuth2ProviderSessionManager> *sessionManager = loginViewController.sessionManager;
-        UIAlertController *alertController = [UIAlertController
-                                              alertControllerWithTitle:@"Access Token"
-                                              message:credential.accessToken
-                                              preferredStyle:UIAlertControllerStyleAlert];
-        if ([sessionManager conformsToProtocol:@protocol(WFOAuth2RevocableSessionManager)]) {
-            WFOAuth2SessionManager<WFOAuth2RevocableSessionManager> *revocableSessionManager = (WFOAuth2SessionManager<WFOAuth2RevocableSessionManager> * )sessionManager;
-            [alertController addAction:[UIAlertAction actionWithTitle:@"Revoke" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-                [revocableSessionManager revokeCredential:credential completionHandler:^(BOOL success, NSError * __nullable error) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        NSString *title = (success ? @"Revocation Succeeded" : @"Revocation Failed");
-                        UIAlertController *alertController = [UIAlertController
-                                                              alertControllerWithTitle:title
-                                                              message:nil
-                                                              preferredStyle:UIAlertControllerStyleAlert];
-                        
-                        [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
-                        [self presentViewController:alertController animated:YES completion:nil];
-                    });
-                }];
-            }]];
-        } else {
-            [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
-        }
-        
-        [self presentViewController:alertController animated:YES completion:nil];
+        [self presentCredential:credential fromSessionManager:loginViewController.sessionManager];
     }];
 }
 
 - (void)loginViewController:(LoginViewController *)loginViewController didFailWithError:(nullable NSError *)error {
     [loginViewController dismissViewControllerAnimated:YES completion:^{
-        UIAlertController *alertController = [UIAlertController
-                                              alertControllerWithTitle:@"Error"
-                                              message:error.localizedDescription
-                                              preferredStyle:UIAlertControllerStyleAlert];
-        [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
-        
-        [self presentViewController:alertController animated:YES completion:nil];
+        [self presentError:error];
     }];
 }
 
@@ -122,8 +170,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - UIPickerViewDelegate
 
 - (nullable NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    ProviderConfiguration *configuration = [[ProviderConfiguration allConfigurations] objectAtIndex:row];
-    return configuration.name;
+    return [[[ProviderConfiguration allConfigurations] objectAtIndex:row] name];
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {

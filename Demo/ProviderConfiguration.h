@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, readonly) NSString *name;
 @property (nonatomic, readonly, getter=isValid) BOOL valid;
-@property (nonatomic, readonly) WFOAuth2SessionManager<WFOAuth2ProviderSessionManager> *sessionManager;
+@property (nonatomic, readonly) WFOAuth2ProviderSessionManager *sessionManager;
 
 @property (nonatomic, readonly, nullable) NSString *scope;
 @property (nonatomic, readonly, nullable) NSURL *redirectURI;

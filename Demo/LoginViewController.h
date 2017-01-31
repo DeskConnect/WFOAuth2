@@ -24,11 +24,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, weak) id<LoginViewControllerDelegate> delegate;
 
-@property (nonatomic, readonly) WFOAuth2SessionManager<WFOAuth2ProviderSessionManager> *sessionManager;
+@property (nonatomic, readonly) WFOAuth2ProviderSessionManager *sessionManager;
 
 - (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithNibName:(nullable NSString *)nibNameOrNil bundle:(nullable NSBundle *)nibBundleOrNil NS_UNAVAILABLE;
-- (instancetype)initWithSessionManager:(WFOAuth2SessionManager<WFOAuth2ProviderSessionManager> *)sessionManager scope:(nullable NSString *)scope redirectURI:(nullable NSURL *)redirectURI;
+- (instancetype)initWithSessionManager:(WFOAuth2ProviderSessionManager *)sessionManager scope:(nullable NSString *)scope redirectURI:(nullable NSURL *)redirectURI;
 
 @end
 

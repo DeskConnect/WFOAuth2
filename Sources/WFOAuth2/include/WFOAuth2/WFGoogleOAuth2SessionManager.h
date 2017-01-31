@@ -16,7 +16,7 @@ WF_EXTERN NSString * const WFGoogleNativeRedirectURIString;
 WF_EXTERN NSString * const WFGoogleEmailScope;
 WF_EXTERN NSString * const WFGoogleProfileScope;
 
-@interface WFGoogleOAuth2SessionManager : WFOAuth2SessionManager <WFOAuth2ProviderSessionManager, WFOAuth2RevocableSessionManager>
+@interface WFGoogleOAuth2SessionManager : WFOAuth2ProviderSessionManager <WFOAuth2RevocableSessionManager>
 
 - (void)authenticateWithScope:(nullable NSString *)scope
             completionHandler:(WFOAuth2AuthenticationHandler)completionHandler NS_UNAVAILABLE;

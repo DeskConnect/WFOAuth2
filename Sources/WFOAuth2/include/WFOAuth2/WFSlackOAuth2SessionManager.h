@@ -7,7 +7,6 @@
 //
 
 #import <WFOAuth2/WFOAuth2ProviderSessionManager.h>
-#import <WFOAuth2/WFOAuth2RevocableSessionManager.h>
 #import <WFOAuth2/WFOAuth2Defines.h>
 
 NS_ASSUME_NONNULL_BEGIN
@@ -32,7 +31,7 @@ WF_EXTERN NSString * const WFSlackMultipartyDirectMessageWriteScope;
 WF_EXTERN NSString * const WFSlackMultipartyDirectMessageHistoryScope;
 WF_EXTERN NSString * const WFSlackMultipartyDirectMessageReadScope;
 
-@interface WFSlackOAuth2SessionManager : WFOAuth2SessionManager <WFOAuth2ProviderSessionManager>
+@interface WFSlackOAuth2SessionManager : WFOAuth2ProviderSessionManager
 
 - (void)authenticateWithScope:(nullable NSString *)scope
             completionHandler:(WFOAuth2AuthenticationHandler)completionHandler NS_UNAVAILABLE;

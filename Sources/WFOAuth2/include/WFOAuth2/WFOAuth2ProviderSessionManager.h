@@ -15,44 +15,16 @@ NS_ASSUME_NONNULL_BEGIN
  
  It removes the `baseURL`, `path` and `authorizationURL` parameters from all public facing methods, because those can be defined in the subclasses.
  */
-@protocol WFOAuth2ProviderSessionManager <NSObject>
+@interface WFOAuth2ProviderSessionManager: NSObject
 
-- (instancetype)initWithBaseURL:(NSURL *)baseURL
-                       clientID:(NSString *)clientID
-                   clientSecret:(nullable NSString *)clientSecret NS_UNAVAILABLE;
-
-- (instancetype)initWithSessionConfiguration:(nullable NSURLSessionConfiguration *)configuration
-                                     baseURL:(NSURL *)baseURL
-                            basicAuthEnabled:(BOOL)basicAuthEnabled
-                                    clientID:(NSString *)clientID
-                                clientSecret:(nullable NSString *)clientSecret NS_UNAVAILABLE;
-
-- (void)authenticateWithPath:(NSString *)path
-                    username:(NSString *)username
-                    password:(NSString *)password
-                       scope:(nullable NSString *)scope
-           completionHandler:(WFOAuth2AuthenticationHandler)completionHandler NS_UNAVAILABLE;
-
-- (void)authenticateWithPath:(NSString *)path
-                        code:(NSString *)code
-                 redirectURI:(nullable NSURL *)redirectURI
-           completionHandler:(WFOAuth2AuthenticationHandler)completionHandler NS_UNAVAILABLE;
-
-- (void)authenticateWithPath:(NSString *)path
-           refreshCredential:(WFOAuth2Credential *)refreshCredential
-           completionHandler:(WFOAuth2AuthenticationHandler)completionHandler NS_UNAVAILABLE;
-
-- (NSURLRequest *)authorizationRequestWithURL:(NSURL *)authorizationURL
-                                        scope:(nullable NSString *)scope
-                                  redirectURI:(nullable NSURL *)redirectURI
-                                        state:(nullable NSString *)state NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 - (instancetype)initWithClientID:(NSString *)clientID
                     clientSecret:(nullable NSString *)clientSecret;
 
 - (instancetype)initWithSessionConfiguration:(nullable NSURLSessionConfiguration *)configuration
                                     clientID:(NSString *)clientID
-                                clientSecret:(nullable NSString *)clientSecret;
+                                clientSecret:(nullable NSString *)clientSecret NS_DESIGNATED_INITIALIZER;
 
 - (void)authenticateWithScope:(nullable NSString *)scope
             completionHandler:(WFOAuth2AuthenticationHandler)completionHandler;

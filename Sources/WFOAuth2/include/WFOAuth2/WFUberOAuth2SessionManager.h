@@ -20,7 +20,7 @@ WF_EXTERN NSString * const WFUberRequestRideScope;
 WF_EXTERN NSString * const WFUberRequestReceiptScope;
 WF_EXTERN NSString * const WFUberAllTripsScope;
 
-@interface WFUberOAuth2SessionManager : WFOAuth2SessionManager <WFOAuth2ProviderSessionManager, WFOAuth2RevocableSessionManager>
+@interface WFUberOAuth2SessionManager : WFOAuth2ProviderSessionManager <WFOAuth2RevocableSessionManager>
 
 - (void)authenticateWithScope:(nullable NSString *)scope
             completionHandler:(WFOAuth2AuthenticationHandler)completionHandler NS_UNAVAILABLE;

@@ -971,6 +971,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D084DA361CA490B900F92933 /* Demo.xcconfig */;
 			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Debug;
 		};
@@ -978,6 +979,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D084DA361CA490B900F92933 /* Demo.xcconfig */;
 			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Release;
 		};

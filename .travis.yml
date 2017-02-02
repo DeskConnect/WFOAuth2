@@ -15,7 +15,7 @@ matrix:
       osx_image: xcode8.2
       env:
         - XCODE_ACTION=test
-        - XCODE_DESTINATION="platform=iOS Simulator,name=Generic iOS Simulator Device"
+        - XCODE_DESTINATION="platform=iOS Simulator,OS=10.2,name=iPad Air 2"
     - xcode_scheme: "WFOAuth2-tvOS"
       xcode_sdk: appletvos
       osx_image: xcode8.2
@@ -46,3 +46,16 @@ matrix:
       env:
         - XCODE_ACTION=test
         - XCODE_DESTINATION="arch=x86_64"
+    - osx_image: xcode8.2
+      script:
+        - rm -rf Tests
+        - swift build
+    - osx_image: xcode8.2
+      script:
+        - pod lib lint --fail-fast --verbose
+    - xcode_scheme: "Demo"
+      xcode_sdk: iphonesimulator
+      osx_image: xcode8.2
+      env:
+        - XCODE_ACTION=build
+        - XCODE_DESTINATION="platform=iOS Simulator,OS=10.2,name=iPad Air 2"

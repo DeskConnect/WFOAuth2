@@ -14,8 +14,9 @@
 NS_ASSUME_NONNULL_BEGIN
 
 NSString * const WFGoogleNativeRedirectURIString = @"urn:ietf:wg:oauth:2.0:oob:auto";
-NSString * const WFGoogleEmailScope = @"email";
-NSString * const WFGoogleProfileScope = @"profile";
+
+WFGoogleOAuth2Scope const WFGoogleEmailScope = @"email";
+WFGoogleOAuth2Scope const WFGoogleProfileScope = @"profile";
 
 @implementation WFGoogleOAuth2SessionManager
 

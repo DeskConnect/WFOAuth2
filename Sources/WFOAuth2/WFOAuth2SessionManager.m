@@ -35,11 +35,10 @@ WFOAuth2AuthMethod const WFOAuth2AuthMethodClientSecretBasicAuth = @"client_secr
 
 - (instancetype)initWithSessionConfiguration:(nullable NSURLSessionConfiguration *)configuration
                                     tokenURL:(nullable NSURL *)tokenURL
-                            authorizationURL:(NSURL *)authorizationURL
+                            authorizationURL:(nullable NSURL *)authorizationURL
                         authenticationMethod:(WFOAuth2AuthMethod)authenticationMethod
                                     clientID:(NSString *)clientID
                                 clientSecret:(nullable NSString *)clientSecret {
-    NSParameterAssert(authorizationURL);
     NSParameterAssert(authenticationMethod);
     NSParameterAssert(clientID);
     self = [super init];

@@ -43,7 +43,7 @@ typedef void (^WFOAuth2AuthenticationHandler)(WFOAuth2Credential * __nullable cr
 /**
  The URL of the authorization endpoint which is displayed to the user.
  */
-@property (nonatomic, readonly, copy) NSURL *authorizationURL;
+@property (nonatomic, readonly, nullable, copy) NSURL *authorizationURL;
 
 /**
  The client ID of the application.
@@ -81,7 +81,7 @@ typedef void (^WFOAuth2AuthenticationHandler)(WFOAuth2Credential * __nullable cr
  */
 - (instancetype)initWithSessionConfiguration:(nullable NSURLSessionConfiguration *)configuration
                                     tokenURL:(nullable NSURL *)tokenURL
-                            authorizationURL:(NSURL *)authorizationURL
+                            authorizationURL:(nullable NSURL *)authorizationURL
                         authenticationMethod:(WFOAuth2AuthMethod)authenticationMethod
                                     clientID:(NSString *)clientID
                                 clientSecret:(nullable NSString *)clientSecret NS_DESIGNATED_INITIALIZER;

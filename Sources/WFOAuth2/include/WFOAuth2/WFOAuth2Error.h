@@ -31,7 +31,4 @@ enum {
 };
 WF_EXTERN NSString * const WFOAuth2ErrorDomain;
 
-WF_EXTERN NSString * const WFOAuth2GrantTypeAuthorizationCode;
-WF_EXTERN NSString * const WFOAuth2GrantTypeRefreshToken;
-
 NS_ASSUME_NONNULL_END

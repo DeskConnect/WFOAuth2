@@ -6,30 +6,36 @@
 //  Copyright © 2017 DeskConnect, Inc. All rights reserved.
 //
 
-#import <WFOAuth2/WFOAuth2ProviderSessionManagerSubclass.h>
+#import <WFOAuth2/WFOAuth2SessionManagerPrivate.h>
 #import <WFOAuth2/NSMutableURLRequest+WFOAuth2.h>
 #import <WFOAuth2/WFOAuth2Error.h>
 
 #import <WFOAuth2/WFLyftOAuth2SessionManager.h>
 
-NSString * const WFLyftPublicScope = @"public";
-NSString * const WFLyftReadRidesScope = @"rides.read";
-NSString * const WFLyftRequestRidesScope = @"rides.request";
-NSString * const WFLyftProfileScope = @"profile";
-NSString * const WFLyftOfflineScope = @"offline";
+WFLyftOAuth2Scope const WFLyftPublicScope = @"public";
+WFLyftOAuth2Scope const WFLyftReadRidesScope = @"rides.read";
+WFLyftOAuth2Scope const WFLyftRequestRidesScope = @"rides.request";
+WFLyftOAuth2Scope const WFLyftProfileScope = @"profile";
+WFLyftOAuth2Scope const WFLyftOfflineScope = @"offline";
 
 @implementation WFLyftOAuth2SessionManager
 
-+ (NSURL *)baseURL {
-    return [NSURL URLWithString:@"https://api.lyft.com/oauth"];
+- (instancetype)initWithClientID:(NSString *)clientID
+                    clientSecret:(nullable NSString *)clientSecret {
+    return [self initWithSessionConfiguration:nil
+                                     clientID:clientID
+                                 clientSecret:clientSecret];
 }
 
-+ (BOOL)basicAuthEnabled {
-    return YES;
-}
-
-+ (NSURL *)authorizationURL {
-    return [NSURL URLWithString:@"https://api.lyft.com/oauth/authorize"];
+- (instancetype)initWithSessionConfiguration:(nullable NSURLSessionConfiguration *)configuration
+                                    clientID:(NSString *)clientID
+                                clientSecret:(nullable NSString *)clientSecret {
+    return [self initWithSessionConfiguration:configuration
+                                     tokenURL:[NSURL URLWithString:@"https://api.lyft.com/oauth/token"]
+                             authorizationURL:[NSURL URLWithString:@"https://api.lyft.com/oauth/authorize"]
+                         authenticationMethod:WFOAuth2AuthMethodClientSecretBasicAuth
+                                     clientID:clientID
+                                 clientSecret:clientSecret];
 }
 
 #pragma mark - WFOAuth2RevocableSessionManager
@@ -38,7 +44,7 @@ NSString * const WFLyftOfflineScope = @"offline";
        completionHandler:(void (^__nullable)(BOOL success, NSError * __nullable error))completionHandler {
     NSParameterAssert(credential);
     
-    NSURL *url = [[[self class] baseURL] URLByAppendingPathComponent:@"revoke_refresh_token"];
+    NSURL *url = [NSURL URLWithString:@"https://api.lyft.com/oauth/revoke_refresh_token"];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setHTTPMethod:@"POST"];
     [request wfo_setAuthorizationWithUsername:self.clientID password:self.clientSecret];

@@ -6,33 +6,39 @@
 //  Copyright © 2016-2017 DeskConnect, Inc. All rights reserved.
 //
 
-#import <WFOAuth2/WFOAuth2ProviderSessionManagerSubclass.h>
+#import <WFOAuth2/WFOAuth2SessionManagerPrivate.h>
 #import <WFOAuth2/NSMutableURLRequest+WFOAuth2.h>
 
 #import <WFOAuth2/WFUberOAuth2SessionManager.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-NSString * const WFUberUserProfileScope = @"profile";
-NSString * const WFUberUserHistoryScope = @"history";
-NSString * const WFUberUserHistoryLiteScope = @"history_lite";
-NSString * const WFUberUserPlacesScope = @"places";
-NSString * const WFUberRequestRideScope = @"request";
-NSString * const WFUberRequestReceiptScope = @"request_receipt";
-NSString * const WFUberAllTripsScope = @"all_trips";
+WFUberOAuth2Scope const WFUberUserProfileScope = @"profile";
+WFUberOAuth2Scope const WFUberUserHistoryScope = @"history";
+WFUberOAuth2Scope const WFUberUserHistoryLiteScope = @"history_lite";
+WFUberOAuth2Scope const WFUberUserPlacesScope = @"places";
+WFUberOAuth2Scope const WFUberRequestRideScope = @"request";
+WFUberOAuth2Scope const WFUberRequestReceiptScope = @"request_receipt";
+WFUberOAuth2Scope const WFUberAllTripsScope = @"all_trips";
 
 @implementation WFUberOAuth2SessionManager
 
-+ (NSURL *)baseURL {
-    return [NSURL URLWithString:@"https://login.uber.com/oauth/v2/mobile"];
+- (instancetype)initWithClientID:(NSString *)clientID
+                    clientSecret:(nullable NSString *)clientSecret {
+    return [self initWithSessionConfiguration:nil
+                                     clientID:clientID
+                                 clientSecret:clientSecret];
 }
 
-+ (NSURL *)authorizationURL {
-    return [NSURL URLWithString:@"https://login.uber.com/oauth/v2/authorize"];
-}
-
-+ (WFOAuth2ResponseType)responseType {
-    return WFOAuth2ResponseTypeToken;
+- (instancetype)initWithSessionConfiguration:(nullable NSURLSessionConfiguration *)configuration
+                                    clientID:(NSString *)clientID
+                                clientSecret:(nullable NSString *)clientSecret {
+    return [self initWithSessionConfiguration:configuration
+                                     tokenURL:[NSURL URLWithString:@"https://login.uber.com/oauth/v2/mobile/token"]
+                             authorizationURL:[NSURL URLWithString:@"https://login.uber.com/oauth/v2/authorize"]
+                         authenticationMethod:WFOAuth2AuthMethodClientSecretPostBody
+                                     clientID:clientID
+                                 clientSecret:clientSecret];
 }
 
 #pragma mark - WFOAuth2RevocableSessionManager
@@ -44,8 +50,9 @@ NSString * const WFUberAllTripsScope = @"all_trips";
     NSArray<NSURLQueryItem *> *parameters = @[[NSURLQueryItem queryItemWithName:@"client_id" value:self.clientID],
                                               [NSURLQueryItem queryItemWithName:@"token" value:credential.accessToken]];
     
-    if (self.clientSecret)
-        parameters = [parameters arrayByAddingObject:[NSURLQueryItem queryItemWithName:@"client_secret" value:self.clientSecret]];
+    NSString *clientSecret = self.clientSecret;
+    if (clientSecret)
+        parameters = [parameters arrayByAddingObject:[NSURLQueryItem queryItemWithName:@"client_secret" value:clientSecret]];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://login.uber.com/oauth/revoke"]];
     [request setHTTPMethod:@"POST"];

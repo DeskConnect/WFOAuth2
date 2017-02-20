@@ -6,7 +6,7 @@
 //  Copyright © 2016-2017 DeskConnect, Inc. All rights reserved.
 //
 
-#import <WFOAuth2/WFOAuth2ProviderSessionManagerSubclass.h>
+#import <WFOAuth2/WFOAuth2SessionManagerPrivate.h>
 #import <WFOAuth2/WFOAuth2Error.h>
 
 #import <WFOAuth2/WFGoogleOAuth2SessionManager.h>
@@ -19,12 +19,22 @@ NSString * const WFGoogleProfileScope = @"profile";
 
 @implementation WFGoogleOAuth2SessionManager
 
-+ (NSURL *)baseURL {
-    return [NSURL URLWithString:@"https://www.googleapis.com/oauth2/v4"];
+- (instancetype)initWithClientID:(NSString *)clientID
+                    clientSecret:(nullable NSString *)clientSecret {
+    return [self initWithSessionConfiguration:nil
+                                     clientID:clientID
+                                 clientSecret:clientSecret];
 }
 
-+ (NSURL *)authorizationURL {
-    return [NSURL URLWithString:@"https://accounts.google.com/o/oauth2/auth"];
+- (instancetype)initWithSessionConfiguration:(nullable NSURLSessionConfiguration *)configuration
+                                    clientID:(NSString *)clientID
+                                clientSecret:(nullable NSString *)clientSecret {
+    return [self initWithSessionConfiguration:configuration
+                                     tokenURL:[NSURL URLWithString:@"https://www.googleapis.com/oauth2/v4/token"]
+                             authorizationURL:[NSURL URLWithString:@"https://accounts.google.com/o/oauth2/v2/auth"]
+                         authenticationMethod:WFOAuth2AuthMethodClientSecretPostBody
+                                     clientID:clientID
+                                 clientSecret:clientSecret];
 }
 
 #pragma mark - WFOAuth2RevocableSessionManager

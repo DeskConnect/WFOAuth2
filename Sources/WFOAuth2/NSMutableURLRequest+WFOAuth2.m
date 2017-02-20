@@ -17,7 +17,8 @@ static inline NSString * WFHTTPFormEncodedString(NSString * __nullable string) {
     
     NSMutableCharacterSet *alphanumericAndSpaces = [[NSCharacterSet alphanumericCharacterSet] mutableCopy];
     [alphanumericAndSpaces formUnionWithCharacterSet:[NSCharacterSet whitespaceCharacterSet]];
-    
+    [alphanumericAndSpaces addCharactersInString:@"-_.~"]; // RFC 3986 section 2.2
+
     string = [string stringByReplacingOccurrencesOfString:@"\r\n" withString:@"\n"];
     string = [string stringByReplacingOccurrencesOfString:@"\n" withString:@"\r\n"];
     string = [string stringByAddingPercentEncodingWithAllowedCharacters:alphanumericAndSpaces];

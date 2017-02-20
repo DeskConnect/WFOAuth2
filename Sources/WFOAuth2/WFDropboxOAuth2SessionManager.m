@@ -6,7 +6,7 @@
 //  Copyright © 2017 DeskConnect, Inc. All rights reserved.
 //
 
-#import <WFOAuth2/WFOAuth2ProviderSessionManagerSubclass.h>
+#import <WFOAuth2/WFOAuth2SessionManagerPrivate.h>
 #import <WFOAuth2/NSMutableURLRequest+WFOAuth2.h>
 #import <WFOAuth2/WFOAuth2Error.h>
 
@@ -16,12 +16,22 @@ NS_ASSUME_NONNULL_BEGIN
 
 @implementation WFDropboxOAuth2SessionManager
 
-+ (NSURL *)baseURL {
-    return [NSURL URLWithString:@"https://api.dropboxapi.com/1/oauth2"];
+- (instancetype)initWithClientID:(NSString *)clientID
+                    clientSecret:(nullable NSString *)clientSecret {
+    return [self initWithSessionConfiguration:nil
+                                     clientID:clientID
+                                 clientSecret:clientSecret];
 }
 
-+ (NSURL *)authorizationURL {
-    return [NSURL URLWithString:@"https://www.dropbox.com/1/oauth2/authorize"];
+- (instancetype)initWithSessionConfiguration:(nullable NSURLSessionConfiguration *)configuration
+                                    clientID:(NSString *)clientID
+                                clientSecret:(nullable NSString *)clientSecret {
+    return [self initWithSessionConfiguration:configuration
+                                     tokenURL:[NSURL URLWithString:@"https://api.dropboxapi.com/1/oauth2/token"]
+                             authorizationURL:[NSURL URLWithString:@"https://www.dropbox.com/1/oauth2/authorize"]
+                         authenticationMethod:WFOAuth2AuthMethodClientSecretPostBody
+                                     clientID:clientID
+                                 clientSecret:clientSecret];
 }
 
 #pragma mark - WFOAuth2RevocableSessionManager

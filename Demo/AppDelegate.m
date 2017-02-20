@@ -19,4 +19,13 @@
     return YES;
 }
 
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options {
+    if ([self.currentSession resumeSessionWithURL:url options:options]) {
+        self.currentSession = nil;
+        return YES;
+    }
+    
+    return NO;
+}
+
 @end

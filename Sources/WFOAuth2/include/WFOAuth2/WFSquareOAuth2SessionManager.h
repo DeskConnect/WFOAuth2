@@ -6,36 +6,43 @@
 //  Copyright © 2016 DeskConnect, Inc. All rights reserved.
 //
 
-#import <WFOAuth2/WFOAuth2ProviderSessionManager.h>
+#import <WFOAuth2/WFOAuth2SessionManager.h>
 #import <WFOAuth2/WFOAuth2RevocableSessionManager.h>
 #import <WFOAuth2/WFOAuth2Defines.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-WF_EXTERN NSString * const WFSquareMerchantProfileReadScope;
-WF_EXTERN NSString * const WFSquarePaymentsReadScope;
-WF_EXTERN NSString * const WFSquarePaymentsWriteScope;
-WF_EXTERN NSString * const WFSquareCustomersReadScope;
-WF_EXTERN NSString * const WFSquareCustomersWriteScope;
-WF_EXTERN NSString * const WFSquareSettlementsReadScope;
-WF_EXTERN NSString * const WFSquareBankAccountsReadScope;
-WF_EXTERN NSString * const WFSquareItemsReadScope;
-WF_EXTERN NSString * const WFSquareItemsWriteScope;
-WF_EXTERN NSString * const WFSquareOrdersReadScope;
-WF_EXTERN NSString * const WFSquareOrdersWriteScope;
-WF_EXTERN NSString * const WFSquareEmployeesReadScope;
-WF_EXTERN NSString * const WFSquareEmployeesWriteScope;
-WF_EXTERN NSString * const WFSquareTimecardsWriteScope;
+typedef NSString *WFSquareOAuth2Scope NS_EXTENSIBLE_STRING_ENUM;
+WF_EXTERN WFSquareOAuth2Scope const WFSquareMerchantProfileReadScope;
+WF_EXTERN WFSquareOAuth2Scope const WFSquarePaymentsReadScope;
+WF_EXTERN WFSquareOAuth2Scope const WFSquarePaymentsWriteScope;
+WF_EXTERN WFSquareOAuth2Scope const WFSquareCustomersReadScope;
+WF_EXTERN WFSquareOAuth2Scope const WFSquareCustomersWriteScope;
+WF_EXTERN WFSquareOAuth2Scope const WFSquareSettlementsReadScope;
+WF_EXTERN WFSquareOAuth2Scope const WFSquareBankAccountsReadScope;
+WF_EXTERN WFSquareOAuth2Scope const WFSquareItemsReadScope;
+WF_EXTERN WFSquareOAuth2Scope const WFSquareItemsWriteScope;
+WF_EXTERN WFSquareOAuth2Scope const WFSquareOrdersReadScope;
+WF_EXTERN WFSquareOAuth2Scope const WFSquareOrdersWriteScope;
+WF_EXTERN WFSquareOAuth2Scope const WFSquareEmployeesReadScope;
+WF_EXTERN WFSquareOAuth2Scope const WFSquareEmployeesWriteScope;
+WF_EXTERN WFSquareOAuth2Scope const WFSquareTimecardsWriteScope;
 
+@interface WFSquareOAuth2SessionManager : WFOAuth2SessionManager<WFSquareOAuth2Scope> <WFOAuth2RevocableSessionManager>
 
-@interface WFSquareOAuth2SessionManager : WFOAuth2ProviderSessionManager <WFOAuth2RevocableSessionManager>
+- (instancetype)initWithClientID:(NSString *)clientID
+                    clientSecret:(nullable NSString *)clientSecret;
 
-- (void)authenticateWithScope:(nullable NSString *)scope
-            completionHandler:(WFOAuth2AuthenticationHandler)completionHandler NS_UNAVAILABLE;
+- (instancetype)initWithSessionConfiguration:(nullable NSURLSessionConfiguration *)configuration
+                                    clientID:(NSString *)clientID
+                                clientSecret:(nullable NSString *)clientSecret;
+
+- (void)authenticateWithScopes:(nullable NSArray<WFSquareOAuth2Scope> *)scopes
+             completionHandler:(WFOAuth2AuthenticationHandler)completionHandler NS_UNAVAILABLE;
 
 - (void)authenticateWithUsername:(NSString *)username
                         password:(NSString *)password
-                           scope:(nullable NSString *)scope
+                          scopes:(nullable NSArray<WFSquareOAuth2Scope> *)scopes
                completionHandler:(WFOAuth2AuthenticationHandler)completionHandler NS_UNAVAILABLE;
 
 @end

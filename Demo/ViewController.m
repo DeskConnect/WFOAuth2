@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "ProviderConfiguration.h"
 
@@ -58,16 +59,34 @@ NS_ASSUME_NONNULL_BEGIN
         return;
     
     ProviderConfiguration *configuration = [[ProviderConfiguration allConfigurations] objectAtIndex:row];
-    WFOAuth2ProviderSessionManager *sessionManager = configuration.sessionManager;
+    WFOAuth2SessionManager *sessionManager = configuration.sessionManager;
     if (!sessionManager)
         return;
-
-    LoginViewController *loginViewController = [[LoginViewController alloc] initWithSessionManager:sessionManager scope:configuration.scope redirectURI:configuration.redirectURI];
-    loginViewController.delegate = self;
     
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
-    navigationController.modalPresentationStyle = UIModalPresentationFormSheet;
-    [self presentViewController:navigationController animated:YES completion:nil];
+    if ([configuration.redirectURI.scheme isEqualToString:@"wfoauth2"] ||
+        [configuration.redirectURI.scheme hasPrefix:@"com.googleusercontent"]) {
+        __weak __typeof__(self) weakSelf = self;
+        WFOAuth2AuthorizationSession *authorizationSession = [sessionManager authorizationSessionWithResponseType:WFOAuth2ResponseTypeCode scopes:configuration.scopes redirectURI:configuration.redirectURI completionHandler:^(WFOAuth2Credential * __nullable credential, NSError * __nullable error) {
+            if (credential) {
+                [weakSelf presentCredential:credential fromSessionManager:sessionManager];
+            } else if (error) {
+                [weakSelf presentError:error];
+            }
+        }];
+        
+        AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        delegate.currentSession = authorizationSession;
+        
+        SFSafariViewController *safariViewController = authorizationSession.safariViewController;
+        [self presentViewController:safariViewController animated:YES completion:nil];
+    } else {
+        LoginViewController *loginViewController = [[LoginViewController alloc] initWithSessionManager:sessionManager scopes:configuration.scopes redirectURI:configuration.redirectURI];
+        loginViewController.delegate = self;
+        
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
+        navigationController.modalPresentationStyle = UIModalPresentationFormSheet;
+        [self presentViewController:navigationController animated:YES completion:nil];
+    }
 }
 
 - (void)presentError:(NSError *)error {
@@ -81,7 +100,7 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (void)presentCredential:(WFOAuth2Credential *)credential
-       fromSessionManager:(WFOAuth2ProviderSessionManager *)sessionManager {
+       fromSessionManager:(WFOAuth2SessionManager *)sessionManager {
     
     NSString *accessToken = credential.accessToken;
     if (accessToken.length > 10)

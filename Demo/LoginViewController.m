@@ -20,7 +20,7 @@ static void *LoginViewControllerTitleContext = &LoginViewControllerTitleContext;
 
 @implementation LoginViewController
 
-- (instancetype)initWithSessionManager:(WFOAuth2ProviderSessionManager *)sessionManager scope:(nullable NSString *)scope redirectURI:(nullable NSURL *)redirectURI {
+- (instancetype)initWithSessionManager:(WFOAuth2SessionManager *)sessionManager scopes:(nullable NSArray<NSString *> *)scopes redirectURI:(nullable NSURL *)redirectURI {
     self = [super initWithNibName:nil bundle:nil];
     if (!self)
         return nil;
@@ -29,7 +29,7 @@ static void *LoginViewControllerTitleContext = &LoginViewControllerTitleContext;
     
     __weak __typeof__(self) weakSelf = self;
     _sessionManager = sessionManager;
-    _webView = [sessionManager authorizationWebViewWithScope:scope redirectURI:redirectURI completionHandler:^(WFOAuth2Credential * __nullable credential, NSError * __nullable error) {
+    _webView = [sessionManager authorizationWebViewWithResponseType:WFOAuth2ResponseTypeCode scopes:scopes redirectURI:redirectURI completionHandler:^(WFOAuth2Credential * __nullable credential, NSError * __nullable error) {
         id<LoginViewControllerDelegate> delegate = weakSelf.delegate;
         
         if (credential) {
@@ -49,7 +49,7 @@ static void *LoginViewControllerTitleContext = &LoginViewControllerTitleContext;
 }
 
 - (void)dealloc {
-    [self addObserver:self forKeyPath:@"webView.title" options:0 context:LoginViewControllerTitleContext];
+    [self removeObserver:self forKeyPath:@"webView.title" context:LoginViewControllerTitleContext];
 }
 
 - (void)observeValueForKeyPath:(nullable NSString *)keyPath ofObject:(nullable id)object change:(nullable NSDictionary *)change context:(nullable void *)context {

@@ -10,17 +10,25 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-extern NSString * const WFLyftPublicScope;
-extern NSString * const WFLyftReadRidesScope;
-extern NSString * const WFLyftRequestRidesScope;
-extern NSString * const WFLyftProfileScope;
-extern NSString * const WFLyftOfflineScope;
+typedef NSString *WFLyftOAuth2Scope NS_EXTENSIBLE_STRING_ENUM;
+extern WFLyftOAuth2Scope const WFLyftPublicScope;
+extern WFLyftOAuth2Scope const WFLyftReadRidesScope;
+extern WFLyftOAuth2Scope const WFLyftRequestRidesScope;
+extern WFLyftOAuth2Scope const WFLyftProfileScope;
+extern WFLyftOAuth2Scope const WFLyftOfflineScope;
 
-@interface WFLyftOAuth2SessionManager : WFOAuth2ProviderSessionManager <WFOAuth2RevocableSessionManager>
+@interface WFLyftOAuth2SessionManager : WFOAuth2SessionManager<WFLyftOAuth2Scope> <WFOAuth2RevocableSessionManager>
+
+- (instancetype)initWithClientID:(NSString *)clientID
+                    clientSecret:(nullable NSString *)clientSecret;
+
+- (instancetype)initWithSessionConfiguration:(nullable NSURLSessionConfiguration *)configuration
+                                    clientID:(NSString *)clientID
+                                clientSecret:(nullable NSString *)clientSecret;
 
 - (void)authenticateWithUsername:(NSString *)username
                         password:(NSString *)password
-                           scope:(nullable NSString *)scope
+                          scopes:(nullable NSArray<WFLyftOAuth2Scope> *)scopes
                completionHandler:(WFOAuth2AuthenticationHandler)completionHandler NS_UNAVAILABLE;
 
 @end

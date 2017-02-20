@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <WFOAuth2/WFOAuth2.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
-@property (strong, nonatomic) UIWindow *window;
+@property (nonatomic, strong) UIWindow *window;
+
+@property (nonatomic, strong) WFOAuth2AuthorizationSession *currentSession;
 
 @end

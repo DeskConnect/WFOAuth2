@@ -25,12 +25,12 @@ NS_ASSUME_NONNULL_BEGIN
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         allConfigurations = @[
-            [self newWithClass:[WFDropboxOAuth2SessionManager class] clientID:@"k3869owh4bj3zbt" clientSecret:@"49jy1mdm6o30w3t" scope:nil redirectURI:[NSURL URLWithString:@"http://localhost"]],
-            [self newWithClass:[WFGoogleOAuth2SessionManager class] clientID:@"266399808145-3avt9dudaqe71j6lr8haqigudqi91lf5.apps.googleusercontent.com" clientSecret:nil scope:WFGoogleProfileScope redirectURI:[NSURL URLWithString:WFGoogleNativeRedirectURIString]],
-            [self newWithClass:[WFLyftOAuth2SessionManager class] clientID:@"1v3Ec3XqBbqE" clientSecret:@"CD_IcdcyH3xdRsaflrd-roCiv1rVnJJX" scope:[@[WFLyftOfflineScope, WFLyftProfileScope] componentsJoinedByString:@" "] redirectURI:[NSURL URLWithString:@"http://localhost"]],
-            [self newWithClass:[WFSlackOAuth2SessionManager class] clientID:@"3214730525.4155085303" clientSecret:@"bac7521cf39042b46b35978b045d5ea0" scope:WFSlackChannelWriteScope redirectURI:[NSURL URLWithString:@"https://localhost"]],
-            [self newWithClass:[WFSquareOAuth2SessionManager class] clientID:nil clientSecret:nil scope:nil redirectURI:nil],
-            [self newWithClass:[WFUberOAuth2SessionManager class] clientID:@"FVZC8i9VfAn2DIi0TdBG0-I5T7RcU3_j" clientSecret:nil scope:WFUberUserProfileScope redirectURI:[NSURL URLWithString:@"https://localhost"]],
+            [self newWithClass:[WFDropboxOAuth2SessionManager class] clientID:@"k3869owh4bj3zbt" clientSecret:@"49jy1mdm6o30w3t" scopes:nil redirectURI:[NSURL URLWithString:@"http://localhost"]],
+            [self newWithClass:[WFGoogleOAuth2SessionManager class] clientID:@"266399808145-3avt9dudaqe71j6lr8haqigudqi91lf5.apps.googleusercontent.com" clientSecret:nil scopes:@[WFGoogleProfileScope] redirectURI:[NSURL URLWithString:@"com.googleusercontent.apps.266399808145-3avt9dudaqe71j6lr8haqigudqi91lf5:/callback"]],
+            [self newWithClass:[WFLyftOAuth2SessionManager class] clientID:@"1v3Ec3XqBbqE" clientSecret:@"CD_IcdcyH3xdRsaflrd-roCiv1rVnJJX" scopes:@[WFLyftOfflineScope, WFLyftProfileScope] redirectURI:[NSURL URLWithString:@"wfoauth2://callback"]],
+            [self newWithClass:[WFSlackOAuth2SessionManager class] clientID:@"3214730525.4155085303" clientSecret:@"bac7521cf39042b46b35978b045d5ea0" scopes:@[WFSlackChannelWriteScope] redirectURI:[NSURL URLWithString:@"wfoauth2://callback"]],
+            [self newWithClass:[WFSquareOAuth2SessionManager class] clientID:nil clientSecret:nil scopes:nil redirectURI:nil],
+            [self newWithClass:[WFUberOAuth2SessionManager class] clientID:@"FVZC8i9VfAn2DIi0TdBG0-I5T7RcU3_j" clientSecret:nil scopes:@[WFUberUserProfileScope] redirectURI:[NSURL URLWithString:@"https://localhost"]],
         ];
     });
     return allConfigurations;
@@ -39,19 +39,19 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)newWithClass:(Class)managerClass
                     clientID:(nullable NSString *)clientID
                 clientSecret:(nullable NSString *)clientSecret
-                       scope:(nullable NSString *)scope
+                      scopes:(nullable NSArray<NSString *> *)scopes
                  redirectURI:(nullable NSURL *)redirectURI {
     return [[self alloc] initWithClass:managerClass
                               clientID:clientID
                           clientSecret:clientSecret
-                                 scope:scope
+                                scopes:scopes
                            redirectURI:redirectURI];
 }
 
 - (instancetype)initWithClass:(Class)managerClass
                      clientID:(nullable NSString *)clientID
                  clientSecret:(nullable NSString *)clientSecret
-                        scope:(nullable NSString *)scope
+                       scopes:(nullable NSArray<NSString *> *)scopes
                   redirectURI:(nullable NSURL *)redirectURI {
     NSParameterAssert(managerClass);
     self = [super init];
@@ -61,7 +61,7 @@ NS_ASSUME_NONNULL_BEGIN
     _managerClass = managerClass;
     _clientID = clientID;
     _clientSecret = clientSecret;
-    _scope = scope;
+    _scopes = scopes;
     _redirectURI = redirectURI;
     
     return self;
@@ -78,7 +78,7 @@ NS_ASSUME_NONNULL_BEGIN
     return !!self.sessionManager;
 }
 
-- (nullable WFOAuth2ProviderSessionManager *)sessionManager {
+- (nullable WFOAuth2SessionManager *)sessionManager {
     if (!_clientID)
         return nil;
     

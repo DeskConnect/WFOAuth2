@@ -6,21 +6,29 @@
 //  Copyright © 2016-2017 DeskConnect, Inc. All rights reserved.
 //
 
-#import <WFOAuth2/WFOAuth2ProviderSessionManager.h>
+#import <WFOAuth2/WFOAuth2SessionManager.h>
 #import <WFOAuth2/WFOAuth2RevocableSessionManager.h>
 #import <WFOAuth2/WFOAuth2Defines.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-WF_EXTERN NSString * const WFUberUserProfileScope;
-WF_EXTERN NSString * const WFUberUserHistoryScope;
-WF_EXTERN NSString * const WFUberUserHistoryLiteScope;
-WF_EXTERN NSString * const WFUberUserPlacesScope;
-WF_EXTERN NSString * const WFUberRequestRideScope;
-WF_EXTERN NSString * const WFUberRequestReceiptScope;
-WF_EXTERN NSString * const WFUberAllTripsScope;
+typedef NSString *WFUberOAuth2Scope NS_EXTENSIBLE_STRING_ENUM;
+WF_EXTERN WFUberOAuth2Scope const WFUberUserProfileScope;
+WF_EXTERN WFUberOAuth2Scope const WFUberUserHistoryScope;
+WF_EXTERN WFUberOAuth2Scope const WFUberUserHistoryLiteScope;
+WF_EXTERN WFUberOAuth2Scope const WFUberUserPlacesScope;
+WF_EXTERN WFUberOAuth2Scope const WFUberRequestRideScope;
+WF_EXTERN WFUberOAuth2Scope const WFUberRequestReceiptScope;
+WF_EXTERN WFUberOAuth2Scope const WFUberAllTripsScope;
 
-@interface WFUberOAuth2SessionManager : WFOAuth2ProviderSessionManager <WFOAuth2RevocableSessionManager>
+@interface WFUberOAuth2SessionManager : WFOAuth2SessionManager<WFUberOAuth2Scope> <WFOAuth2RevocableSessionManager>
+
+- (instancetype)initWithClientID:(NSString *)clientID
+                    clientSecret:(nullable NSString *)clientSecret;
+
+- (instancetype)initWithSessionConfiguration:(nullable NSURLSessionConfiguration *)configuration
+                                    clientID:(NSString *)clientID
+                                clientSecret:(nullable NSString *)clientSecret;
 
 - (void)authenticateWithScope:(nullable NSString *)scope
             completionHandler:(WFOAuth2AuthenticationHandler)completionHandler NS_UNAVAILABLE;

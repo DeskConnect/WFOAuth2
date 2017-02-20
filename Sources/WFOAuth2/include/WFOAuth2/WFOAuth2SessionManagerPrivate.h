@@ -18,6 +18,12 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, readonly, strong) NSURLSession *session;
 
+- (WFOAuth2AuthorizationSession *)authorizationSessionWithAuthorizationURL:(NSURL *)authorizationURL
+                                                              responseType:(WFOAuth2ResponseType)responseType
+                                                                    scopes:(nullable NSArray<NSString *> *)scopes
+                                                               redirectURI:(nullable NSURL *)redirectURI
+                                                         completionHandler:(WFOAuth2AuthenticationHandler)completionHandler;
+
 @end
 
 NS_ASSUME_NONNULL_END

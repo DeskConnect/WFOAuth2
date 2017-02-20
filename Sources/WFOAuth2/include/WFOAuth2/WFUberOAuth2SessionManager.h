@@ -13,13 +13,13 @@
 NS_ASSUME_NONNULL_BEGIN
 
 typedef NSString *WFUberOAuth2Scope NS_EXTENSIBLE_STRING_ENUM;
-WF_EXTERN WFUberOAuth2Scope const WFUberUserProfileScope;
-WF_EXTERN WFUberOAuth2Scope const WFUberUserHistoryScope;
-WF_EXTERN WFUberOAuth2Scope const WFUberUserHistoryLiteScope;
-WF_EXTERN WFUberOAuth2Scope const WFUberUserPlacesScope;
-WF_EXTERN WFUberOAuth2Scope const WFUberRequestRideScope;
-WF_EXTERN WFUberOAuth2Scope const WFUberRequestReceiptScope;
-WF_EXTERN WFUberOAuth2Scope const WFUberAllTripsScope;
+WFO_EXTERN WFUberOAuth2Scope const WFUberUserProfileScope;
+WFO_EXTERN WFUberOAuth2Scope const WFUberUserHistoryScope;
+WFO_EXTERN WFUberOAuth2Scope const WFUberUserHistoryLiteScope;
+WFO_EXTERN WFUberOAuth2Scope const WFUberUserPlacesScope;
+WFO_EXTERN WFUberOAuth2Scope const WFUberRequestRideScope;
+WFO_EXTERN WFUberOAuth2Scope const WFUberRequestReceiptScope;
+WFO_EXTERN WFUberOAuth2Scope const WFUberAllTripsScope;
 
 @interface WFUberOAuth2SessionManager : WFOAuth2SessionManager<WFUberOAuth2Scope> <WFOAuth2RevocableSessionManager>
 

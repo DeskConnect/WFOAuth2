@@ -13,9 +13,9 @@
 NS_ASSUME_NONNULL_BEGIN
 
 typedef NSString *WFGoogleOAuth2Scope NS_EXTENSIBLE_STRING_ENUM;
-WF_EXTERN WFGoogleOAuth2Scope const WFGoogleNativeRedirectURIString;
-WF_EXTERN WFGoogleOAuth2Scope const WFGoogleEmailScope;
-WF_EXTERN WFGoogleOAuth2Scope const WFGoogleProfileScope;
+WFO_EXTERN WFGoogleOAuth2Scope const WFGoogleNativeRedirectURIString;
+WFO_EXTERN WFGoogleOAuth2Scope const WFGoogleEmailScope;
+WFO_EXTERN WFGoogleOAuth2Scope const WFGoogleProfileScope;
 
 @interface WFGoogleOAuth2SessionManager : WFOAuth2SessionManager<WFGoogleOAuth2Scope> <WFOAuth2RevocableSessionManager>
 

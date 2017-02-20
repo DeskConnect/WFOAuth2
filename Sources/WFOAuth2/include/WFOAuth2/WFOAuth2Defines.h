@@ -7,7 +7,7 @@
 //
 
 #ifdef __cplusplus
-#define WF_EXTERN        extern "C" __attribute__((visibility ("default")))
+#define WFO_EXTERN        extern "C" __attribute__((visibility ("default")))
 #else
-#define WF_EXTERN        extern __attribute__((visibility ("default")))
+#define WFO_EXTERN        extern __attribute__((visibility ("default")))
 #endif

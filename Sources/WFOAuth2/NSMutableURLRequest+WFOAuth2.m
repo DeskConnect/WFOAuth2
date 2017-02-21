@@ -7,6 +7,7 @@
 //
 
 #import <WFOAuth2/NSMutableURLRequest+WFOAuth2.h>
+#import <WFOAuth2/WFOAuth2Credential.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

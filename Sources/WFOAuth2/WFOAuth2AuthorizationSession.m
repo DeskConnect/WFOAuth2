@@ -7,6 +7,8 @@
 //
 
 #import <WFOAuth2/WFOAuth2AuthorizationSessionPrivate.h>
+#import <WFOAuth2/WFOAuth2Credential.h>
+#import <WFOAuth2/WFOAuth2Error.h>
 #import <WFOAuth2/NSURL+WFOAuth2.h>
 
 NS_ASSUME_NONNULL_BEGIN

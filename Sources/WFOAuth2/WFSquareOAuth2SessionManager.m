@@ -6,10 +6,10 @@
 //  Copyright © 2016 DeskConnect, Inc. All rights reserved.
 //
 
-#import <WFOAuth2/WFOAuth2SessionManagerPrivate.h>
-#import <WFOAuth2/NSMutableURLRequest+WFOAuth2.h>
-
 #import <WFOAuth2/WFSquareOAuth2SessionManager.h>
+#import <WFOAuth2/WFOAuth2SessionManagerPrivate.h>
+#import <WFOAuth2/WFOAuth2Credential.h>
+#import <WFOAuth2/NSMutableURLRequest+WFOAuth2.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

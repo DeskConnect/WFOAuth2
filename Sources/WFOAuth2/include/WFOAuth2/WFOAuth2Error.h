@@ -7,11 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <WFOAuth2/WFOAuth2Defines.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-WFO_EXTERN NSError * __nullable WFRFC6749Section5_2ErrorFromResponse(NSDictionary * __nullable responseObject);
+extern NSError * __nullable WFRFC6749Section5_2ErrorFromResponse(NSDictionary * __nullable responseObject);
 
 enum {
     WFOAuth2ErrorUnknown = -1,
@@ -29,6 +28,6 @@ enum {
     WFOAuth2InvalidTokenError = 201, // Google specific extension
     WFOAuth2MismatchingRedirectURIError = 202, // Python OAuthLib specific extension
 };
-WFO_EXTERN NSString * const WFOAuth2ErrorDomain;
+extern NSString * const WFOAuth2ErrorDomain;
 
 NS_ASSUME_NONNULL_END

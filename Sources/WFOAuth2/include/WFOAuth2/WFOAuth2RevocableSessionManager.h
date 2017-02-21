@@ -6,9 +6,11 @@
 //  Copyright © 2016-2017 DeskConnect, Inc. All rights reserved.
 //
 
-#import <WFOAuth2/WFOAuth2SessionManager.h>
+#import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
+
+@class WFOAuth2Credential;
 
 /**
  The `WFOAuth2RevocableSessionManager` protocol is a protocol intended to be adopted by provider-specific subclasses of `WFOAuth2SessionManager` when the provider supports revoking a token.

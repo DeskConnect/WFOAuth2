@@ -6,17 +6,18 @@
 //  Copyright © 2017 DeskConnect, Inc. All rights reserved.
 //
 
+#import <WFOAuth2/WFOAuth2SessionManager.h>
 #import <WFOAuth2/WFOAuth2ProviderSessionManager.h>
 #import <WFOAuth2/WFOAuth2RevocableSessionManager.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 typedef NSString *WFLyftOAuth2Scope NS_EXTENSIBLE_STRING_ENUM;
-WFO_EXTERN WFLyftOAuth2Scope const WFLyftPublicScope;
-WFO_EXTERN WFLyftOAuth2Scope const WFLyftReadRidesScope;
-WFO_EXTERN WFLyftOAuth2Scope const WFLyftRequestRidesScope;
-WFO_EXTERN WFLyftOAuth2Scope const WFLyftProfileScope;
-WFO_EXTERN WFLyftOAuth2Scope const WFLyftOfflineScope;
+extern WFLyftOAuth2Scope const WFLyftPublicScope;
+extern WFLyftOAuth2Scope const WFLyftReadRidesScope;
+extern WFLyftOAuth2Scope const WFLyftRequestRidesScope;
+extern WFLyftOAuth2Scope const WFLyftProfileScope;
+extern WFLyftOAuth2Scope const WFLyftOfflineScope;
 
 @interface WFLyftOAuth2SessionManager : WFOAuth2SessionManager<WFLyftOAuth2Scope> <WFOAuth2ProviderSessionManager, WFOAuth2RevocableSessionManager>
 

@@ -6,9 +6,11 @@
 //  Copyright © 2016-2017 DeskConnect, Inc. All rights reserved.
 //
 
-#import <WFOAuth2/WFOAuth2Credential.h>
+#import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
+
+@class WFOAuth2Credential;
 
 @interface NSMutableURLRequest (WFOAuth2)
 

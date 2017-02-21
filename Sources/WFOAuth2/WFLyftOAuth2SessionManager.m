@@ -12,6 +12,8 @@
 
 #import <WFOAuth2/WFLyftOAuth2SessionManager.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 WFLyftOAuth2Scope const WFLyftPublicScope = @"public";
 WFLyftOAuth2Scope const WFLyftReadRidesScope = @"rides.read";
 WFLyftOAuth2Scope const WFLyftRequestRidesScope = @"rides.request";
@@ -67,3 +69,5 @@ WFLyftOAuth2Scope const WFLyftOfflineScope = @"offline";
 }
 
 @end
+
+NS_ASSUME_NONNULL_END

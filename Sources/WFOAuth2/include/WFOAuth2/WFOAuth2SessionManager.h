@@ -12,16 +12,17 @@
 
 #import <WFOAuth2/WFOAuth2Credential.h>
 #import <WFOAuth2/WFOAuth2AuthorizationSession.h>
+#import <WFOAuth2/WFOAuth2Defines.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 typedef NSString *WFOAuth2ResponseType NS_EXTENSIBLE_STRING_ENUM;
-extern WFOAuth2ResponseType const WFOAuth2ResponseTypeCode;
-extern WFOAuth2ResponseType const WFOAuth2ResponseTypeToken;
+WFO_EXTERN WFOAuth2ResponseType const WFOAuth2ResponseTypeCode;
+WFO_EXTERN WFOAuth2ResponseType const WFOAuth2ResponseTypeToken;
 
 typedef NSString *WFOAuth2AuthMethod NS_EXTENSIBLE_STRING_ENUM;
-extern WFOAuth2AuthMethod const WFOAuth2AuthMethodClientSecretPostBody;
-extern WFOAuth2AuthMethod const WFOAuth2AuthMethodClientSecretBasicAuth;
+WFO_EXTERN WFOAuth2AuthMethod const WFOAuth2AuthMethodClientSecretPostBody;
+WFO_EXTERN WFOAuth2AuthMethod const WFOAuth2AuthMethodClientSecretBasicAuth;
 
 /**
  A block object to be executed when a token request finishes. This block has no return value and takes two arguments: the credential if the request succeeds, and the error that occurred, if any.

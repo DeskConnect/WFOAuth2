@@ -6,7 +6,6 @@
 //  Copyright © 2017 DeskConnect, Inc. All rights reserved.
 //
 
-#import <WFOAuth2/WFOAuth2SessionManager.h>
 #import <WFOAuth2/WFOAuth2RevocableSessionManager.h>
 
 NS_ASSUME_NONNULL_BEGIN

@@ -6,11 +6,7 @@
 //  Copyright © 2016-2017 DeskConnect, Inc. All rights reserved.
 //
 
-#ifdef SWIFT_PACKAGE
-#import "WFOAuth2SessionManager.h"
-#else
 #import <WFOAuth2/WFOAuth2SessionManager.h>
-#endif
 
 NS_ASSUME_NONNULL_BEGIN
 

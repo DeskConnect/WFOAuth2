@@ -8,25 +8,27 @@
 
 #import <Foundation/Foundation.h>
 
-#if __has_include(<UIKit/UIKit.h>)
+#if TARGET_OS_IOS
 #import <UIKit/UIKit.h>
-#endif
-#if __has_include(<SafariServices/SFSafariViewController.h>)
 #import <SafariServices/SFSafariViewController.h>
 #endif
+
+NS_ASSUME_NONNULL_BEGIN
 
 @interface WFOAuth2AuthorizationSession : NSObject
 
 @property (nonatomic, readonly, strong) NSURL *authorizationURL;
 
-#if __has_include(<SafariServices/SFSafariViewController.h>)
-@property (nonatomic, readonly) SFSafariViewController *safariViewController;
+#if TARGET_OS_IOS
+@property (nonatomic, readonly) SFSafariViewController *safariViewController NS_AVAILABLE_IOS(9_0);
 #endif
 
 - (BOOL)resumeSessionWithURL:(NSURL *)URL;
 
-#if __has_include(<UIKit/UIKit.h>)
-- (BOOL)resumeSessionWithURL:(NSURL *)URL options:(nullable NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options;
+#if TARGET_OS_IOS
+- (BOOL)resumeSessionWithURL:(NSURL *)URL options:(nullable NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options NS_AVAILABLE_IOS(9_0);
 #endif
 
 @end
+
+NS_ASSUME_NONNULL_END

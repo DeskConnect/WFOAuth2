@@ -10,6 +10,8 @@
 #import <WFOAuth2/WFOAuth2Error.h>
 #import <WFOAuth2/NSURL+WFOAuth2.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface WFOAuth2AuthorizationSession ()
 
 @property (nonatomic, readonly, copy) WFOAuth2SessionManager *sessionManager;
@@ -22,7 +24,7 @@
 
 @implementation WFOAuth2AuthorizationSession
 
-#if __has_include(<SafariServices/SFSafariViewController.h>)
+#if TARGET_OS_IOS
 @synthesize safariViewController = _safariViewController;
 #endif
 
@@ -61,7 +63,7 @@
     return self;
 }
 
-#if __has_include(<SafariServices/SFSafariViewController.h>)
+#if TARGET_OS_IOS
 - (SFSafariViewController *)safariViewController {
     if (!_safariViewController)
         _safariViewController = [[SFSafariViewController alloc] initWithURL:self.authorizationURL];
@@ -77,7 +79,7 @@
         return NO;
     }
     
-#if __has_include(<SafariServices/SFSafariViewController.h>)
+#if TARGET_OS_IOS
     [_safariViewController dismissViewControllerAnimated:YES completion:nil];
 #endif
     
@@ -151,7 +153,7 @@
     }
 }
 
-#if __has_include(<UIKit/UIKit.h>)
+#if TARGET_OS_IOS
 - (BOOL)resumeSessionWithURL:(NSURL *)URL options:(nullable NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options {
     NSString *sourceApplication = options[UIApplicationOpenURLOptionsSourceApplicationKey];
     if ([sourceApplication isEqualToString:@"com.apple.SafariViewService"] ||
@@ -164,3 +166,5 @@
 #endif
 
 @end
+
+NS_ASSUME_NONNULL_END

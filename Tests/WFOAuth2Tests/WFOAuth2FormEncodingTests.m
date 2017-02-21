@@ -18,6 +18,7 @@
 - (void)testEncodingNewlines {
     NSMutableURLRequest *request = [NSMutableURLRequest new];
     [request wfo_setBodyWithQueryItems:@[[NSURLQueryItem queryItemWithName:@"\rkey\r\n" value:@"\nvalue"]]];
+    XCTAssertEqualObjects([request valueForHTTPHeaderField:@"Content-Type"], @"application/x-www-form-urlencoded");
     XCTAssertEqualObjects(request.HTTPBody, [@"%0Dkey%0D%0A=%0D%0Avalue" dataUsingEncoding:NSUTF8StringEncoding]);
 }
 
@@ -30,6 +31,7 @@
     
     [request wfo_setBodyWithQueryItems:@[[NSURLQueryItem queryItemWithName:@"key2" value:@"value2"],
                                         [NSURLQueryItem queryItemWithName:@"key1" value:@"value1"]]];
+    XCTAssertEqualObjects([request valueForHTTPHeaderField:@"Content-Type"], @"application/x-www-form-urlencoded");
     XCTAssertEqualObjects(request.HTTPBody, [@"key2=value2&key1=value1" dataUsingEncoding:NSUTF8StringEncoding]);
 }
 
@@ -37,7 +39,16 @@
     NSMutableURLRequest *request = [NSMutableURLRequest new];
     
     [request wfo_setBodyWithQueryItems:@[[NSURLQueryItem queryItemWithName:@"key with space" value:@"1+2+3+4+5 6"]]];
+    XCTAssertEqualObjects([request valueForHTTPHeaderField:@"Content-Type"], @"application/x-www-form-urlencoded");
     XCTAssertEqualObjects(request.HTTPBody, [@"key+with+space=1%2B2%2B3%2B4%2B5+6" dataUsingEncoding:NSUTF8StringEncoding]);
+}
+
+- (void)testEncodingSymbols {
+    NSMutableURLRequest *request = [NSMutableURLRequest new];
+    
+    [request wfo_setBodyWithQueryItems:@[[NSURLQueryItem queryItemWithName:@"foo" value:@"bar%._-*@#&"]]];
+    XCTAssertEqualObjects([request valueForHTTPHeaderField:@"Content-Type"], @"application/x-www-form-urlencoded");
+    XCTAssertEqualObjects(request.HTTPBody, [@"foo=bar%25._-%2A%40%23%26" dataUsingEncoding:NSUTF8StringEncoding]);
 }
 
 @end

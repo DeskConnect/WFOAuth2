@@ -15,7 +15,10 @@
 
 #import <WFOAuth2/WFDropboxOAuth2SessionManager.h>
 #import <WFOAuth2/WFGoogleOAuth2SessionManager.h>
+#import <WFOAuth2/WFImgurOAuth2SessionManager.h>
 #import <WFOAuth2/WFLyftOAuth2SessionManager.h>
 #import <WFOAuth2/WFSlackOAuth2SessionManager.h>
 #import <WFOAuth2/WFSquareOAuth2SessionManager.h>
+#import <WFOAuth2/WFTodoistOAuth2SessionManager.h>
 #import <WFOAuth2/WFUberOAuth2SessionManager.h>
+#import <WFOAuth2/WFWunderlistOAuth2SessionManager.h>

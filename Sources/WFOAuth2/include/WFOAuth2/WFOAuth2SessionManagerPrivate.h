@@ -17,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, readonly, strong) NSURLSession *session;
 
++ (nullable NSString *)combinedScopeFromScopes:(nullable NSArray<NSString *> *)scopes;
+
 - (WFOAuth2AuthorizationSession *)authorizationSessionWithAuthorizationURL:(NSURL *)authorizationURL
                                                               responseType:(WFOAuth2ResponseType)responseType
                                                                     scopes:(nullable NSArray<NSString *> *)scopes

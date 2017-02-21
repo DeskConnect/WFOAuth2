@@ -7,7 +7,6 @@
 //
 
 #import <WFOAuth2/WFOAuth2SessionManagerPrivate.h>
-#import <WFOAuth2/WFOAuth2Error.h>
 
 #import <WFOAuth2/WFGoogleOAuth2SessionManager.h>
 

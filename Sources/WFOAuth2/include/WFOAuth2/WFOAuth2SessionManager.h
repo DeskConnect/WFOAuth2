@@ -12,7 +12,7 @@
 
 #import <WFOAuth2/WFOAuth2Credential.h>
 #import <WFOAuth2/WFOAuth2AuthorizationSession.h>
-#import <WFOAuth2/WFOAuth2Defines.h>
+#import <WFOAuth2/WFOAuth2Error.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

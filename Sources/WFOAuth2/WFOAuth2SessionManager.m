@@ -9,7 +9,6 @@
 #import <WFOAuth2/WFOAuth2SessionManagerPrivate.h>
 #import <WFOAuth2/WFOAuth2AuthorizationSessionPrivate.h>
 #import <WFOAuth2/WFOAuth2WebView.h>
-#import <WFOAuth2/WFOAuth2Error.h>
 #import <WFOAuth2/NSMutableURLRequest+WFOAuth2.h>
 #import <WFOAuth2/NSURL+WFOAuth2.h>
 

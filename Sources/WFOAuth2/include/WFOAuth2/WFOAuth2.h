@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 
 #import <WFOAuth2/WFOAuth2SessionManager.h>
+#import <WFOAuth2/WFOAuth2AuthorizationSession.h>
 #import <WFOAuth2/WFOAuth2Credential.h>
-#import <WFOAuth2/WFOAuth2Error.h>
 
 #import <WFOAuth2/WFDropboxOAuth2SessionManager.h>
 #import <WFOAuth2/WFGoogleOAuth2SessionManager.h>

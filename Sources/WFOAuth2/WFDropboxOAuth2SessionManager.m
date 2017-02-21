@@ -8,7 +8,6 @@
 
 #import <WFOAuth2/WFOAuth2SessionManagerPrivate.h>
 #import <WFOAuth2/NSMutableURLRequest+WFOAuth2.h>
-#import <WFOAuth2/WFOAuth2Error.h>
 
 #import <WFOAuth2/WFDropboxOAuth2SessionManager.h>
 

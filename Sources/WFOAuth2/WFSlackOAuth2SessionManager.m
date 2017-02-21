@@ -31,6 +31,8 @@ WFSlackOAuth2Scope const WFSlackDirectMessageReadScope = @"im:read";
 WFSlackOAuth2Scope const WFSlackMultipartyDirectMessageWriteScope = @"mpim:write";
 WFSlackOAuth2Scope const WFSlackMultipartyDirectMessageHistoryScope = @"mpim:history";
 WFSlackOAuth2Scope const WFSlackMultipartyDirectMessageReadScope = @"mpim:read";
+WFSlackOAuth2Scope const WFSlackUserReadScope = @"users:read";
+WFSlackOAuth2Scope const WFSlackUserWriteScope = @"users:write";
 
 @implementation WFSlackOAuth2SessionManager
 

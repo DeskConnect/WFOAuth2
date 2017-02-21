@@ -31,6 +31,8 @@ extern WFSlackOAuth2Scope const WFSlackDirectMessageReadScope;
 extern WFSlackOAuth2Scope const WFSlackMultipartyDirectMessageWriteScope;
 extern WFSlackOAuth2Scope const WFSlackMultipartyDirectMessageHistoryScope;
 extern WFSlackOAuth2Scope const WFSlackMultipartyDirectMessageReadScope;
+extern WFSlackOAuth2Scope const WFSlackUserReadScope;
+extern WFSlackOAuth2Scope const WFSlackUserWriteScope;
 
 @interface WFSlackOAuth2SessionManager : WFOAuth2SessionManager<WFSlackOAuth2Scope> <WFOAuth2ProviderSessionManager>
 

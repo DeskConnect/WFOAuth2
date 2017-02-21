@@ -6,6 +6,7 @@
 //  Copyright © 2016-2017 DeskConnect, Inc. All rights reserved.
 //
 
+#import <WFOAuth2/WFOAuth2ProviderSessionManager.h>
 #import <WFOAuth2/WFOAuth2RevocableSessionManager.h>
 
 NS_ASSUME_NONNULL_BEGIN
@@ -16,14 +17,7 @@ typedef NSString *WFGoogleOAuth2Scope NS_EXTENSIBLE_STRING_ENUM;
 WFO_EXTERN WFGoogleOAuth2Scope const WFGoogleEmailScope;
 WFO_EXTERN WFGoogleOAuth2Scope const WFGoogleProfileScope;
 
-@interface WFGoogleOAuth2SessionManager : WFOAuth2SessionManager<WFGoogleOAuth2Scope> <WFOAuth2RevocableSessionManager>
-
-- (instancetype)initWithClientID:(NSString *)clientID
-                    clientSecret:(nullable NSString *)clientSecret;
-
-- (instancetype)initWithSessionConfiguration:(nullable NSURLSessionConfiguration *)configuration
-                                    clientID:(NSString *)clientID
-                                clientSecret:(nullable NSString *)clientSecret;
+@interface WFGoogleOAuth2SessionManager : WFOAuth2SessionManager<WFGoogleOAuth2Scope> <WFOAuth2ProviderSessionManager, WFOAuth2RevocableSessionManager>
 
 - (void)authenticateWithScopes:(nullable NSArray<WFGoogleOAuth2Scope> *)scopes
              completionHandler:(WFOAuth2AuthenticationHandler)completionHandler NS_UNAVAILABLE;

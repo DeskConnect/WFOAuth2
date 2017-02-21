@@ -6,6 +6,7 @@
 //  Copyright © 2016-2017 DeskConnect, Inc. All rights reserved.
 //
 
+#import <WFOAuth2/WFOAuth2ProviderSessionManager.h>
 #import <WFOAuth2/WFOAuth2SessionManager.h>
 
 NS_ASSUME_NONNULL_BEGIN
@@ -31,14 +32,7 @@ WFO_EXTERN WFSlackOAuth2Scope const WFSlackMultipartyDirectMessageWriteScope;
 WFO_EXTERN WFSlackOAuth2Scope const WFSlackMultipartyDirectMessageHistoryScope;
 WFO_EXTERN WFSlackOAuth2Scope const WFSlackMultipartyDirectMessageReadScope;
 
-@interface WFSlackOAuth2SessionManager : WFOAuth2SessionManager<WFSlackOAuth2Scope>
-
-- (instancetype)initWithClientID:(NSString *)clientID
-                    clientSecret:(nullable NSString *)clientSecret;
-
-- (instancetype)initWithSessionConfiguration:(nullable NSURLSessionConfiguration *)configuration
-                                    clientID:(NSString *)clientID
-                                clientSecret:(nullable NSString *)clientSecret;
+@interface WFSlackOAuth2SessionManager : WFOAuth2SessionManager<WFSlackOAuth2Scope> <WFOAuth2ProviderSessionManager>
 
 - (void)authenticateWithScopes:(nullable NSArray<WFSlackOAuth2Scope> *)scopes
              completionHandler:(WFOAuth2AuthenticationHandler)completionHandler NS_UNAVAILABLE;

@@ -6,6 +6,7 @@
 //  Copyright © 2016 DeskConnect, Inc. All rights reserved.
 //
 
+#import <WFOAuth2/WFOAuth2ProviderSessionManager.h>
 #import <WFOAuth2/WFOAuth2RevocableSessionManager.h>
 
 NS_ASSUME_NONNULL_BEGIN
@@ -26,14 +27,7 @@ WFO_EXTERN WFSquareOAuth2Scope const WFSquareEmployeesReadScope;
 WFO_EXTERN WFSquareOAuth2Scope const WFSquareEmployeesWriteScope;
 WFO_EXTERN WFSquareOAuth2Scope const WFSquareTimecardsWriteScope;
 
-@interface WFSquareOAuth2SessionManager : WFOAuth2SessionManager<WFSquareOAuth2Scope> <WFOAuth2RevocableSessionManager>
-
-- (instancetype)initWithClientID:(NSString *)clientID
-                    clientSecret:(nullable NSString *)clientSecret;
-
-- (instancetype)initWithSessionConfiguration:(nullable NSURLSessionConfiguration *)configuration
-                                    clientID:(NSString *)clientID
-                                clientSecret:(nullable NSString *)clientSecret;
+@interface WFSquareOAuth2SessionManager : WFOAuth2SessionManager<WFSquareOAuth2Scope> <WFOAuth2ProviderSessionManager, WFOAuth2RevocableSessionManager>
 
 - (void)authenticateWithScopes:(nullable NSArray<WFSquareOAuth2Scope> *)scopes
              completionHandler:(WFOAuth2AuthenticationHandler)completionHandler NS_UNAVAILABLE;

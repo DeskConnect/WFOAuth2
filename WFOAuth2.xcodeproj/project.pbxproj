@@ -46,6 +46,10 @@
 		D076449D1E5818F100FA1D87 /* NSURL+WFOAuth2.m in Sources */ = {isa = PBXBuildFile; fileRef = D07644961E5818F100FA1D87 /* NSURL+WFOAuth2.m */; };
 		D076449E1E5818F100FA1D87 /* NSURL+WFOAuth2.m in Sources */ = {isa = PBXBuildFile; fileRef = D07644961E5818F100FA1D87 /* NSURL+WFOAuth2.m */; };
 		D076449F1E581B9000FA1D87 /* NSURL+WFOAuth2.h in Headers */ = {isa = PBXBuildFile; fileRef = D07644951E5818F100FA1D87 /* NSURL+WFOAuth2.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D07645531E5BE3D100FA1D87 /* WFOAuth2ProviderSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D07645521E5BE3D100FA1D87 /* WFOAuth2ProviderSessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D07645541E5BE3D100FA1D87 /* WFOAuth2ProviderSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D07645521E5BE3D100FA1D87 /* WFOAuth2ProviderSessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D07645551E5BE3D100FA1D87 /* WFOAuth2ProviderSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D07645521E5BE3D100FA1D87 /* WFOAuth2ProviderSessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D07645561E5BE3D100FA1D87 /* WFOAuth2ProviderSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D07645521E5BE3D100FA1D87 /* WFOAuth2ProviderSessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D082BB551E404EC8002CDC37 /* ProviderConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = D082BB541E404EC8002CDC37 /* ProviderConfiguration.m */; };
 		D082BB581E407BC5002CDC37 /* WFLyftOAuth2SessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D082BB561E407BC5002CDC37 /* WFLyftOAuth2SessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D082BB591E407BC5002CDC37 /* WFLyftOAuth2SessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D082BB561E407BC5002CDC37 /* WFLyftOAuth2SessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -206,6 +210,7 @@
 		D07644881E5814F200FA1D87 /* WFOAuth2WebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WFOAuth2WebView.m; sourceTree = "<group>"; };
 		D07644951E5818F100FA1D87 /* NSURL+WFOAuth2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSURL+WFOAuth2.h"; path = "include/WFOAuth2/NSURL+WFOAuth2.h"; sourceTree = "<group>"; };
 		D07644961E5818F100FA1D87 /* NSURL+WFOAuth2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+WFOAuth2.m"; sourceTree = "<group>"; };
+		D07645521E5BE3D100FA1D87 /* WFOAuth2ProviderSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WFOAuth2ProviderSessionManager.h; path = include/WFOAuth2/WFOAuth2ProviderSessionManager.h; sourceTree = "<group>"; };
 		D082BB531E404EC8002CDC37 /* ProviderConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProviderConfiguration.h; sourceTree = "<group>"; };
 		D082BB541E404EC8002CDC37 /* ProviderConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProviderConfiguration.m; sourceTree = "<group>"; };
 		D082BB561E407BC5002CDC37 /* WFLyftOAuth2SessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WFLyftOAuth2SessionManager.h; path = include/WFOAuth2/WFLyftOAuth2SessionManager.h; sourceTree = "<group>"; };
@@ -431,6 +436,7 @@
 		D0B8F79B1CA5FC62006B1E0D /* Providers */ = {
 			isa = PBXGroup;
 			children = (
+				D07645521E5BE3D100FA1D87 /* WFOAuth2ProviderSessionManager.h */,
 				D0B8F7BD1CA60AF1006B1E0D /* WFOAuth2RevocableSessionManager.h */,
 				D082BB7A1E409D6F002CDC37 /* WFDropboxOAuth2SessionManager.h */,
 				D082BB7B1E409D6F002CDC37 /* WFDropboxOAuth2SessionManager.m */,
@@ -525,6 +531,7 @@
 				D076447A1E5801B900FA1D87 /* WFOAuth2AuthorizationSession.h in Headers */,
 				D0B8F80C1CA8BBA2006B1E0D /* WFUberOAuth2SessionManager.h in Headers */,
 				E9BD9FD71D4962F1004BC387 /* WFSquareOAuth2SessionManager.h in Headers */,
+				D07645531E5BE3D100FA1D87 /* WFOAuth2ProviderSessionManager.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -550,6 +557,7 @@
 				D076447B1E5801B900FA1D87 /* WFOAuth2AuthorizationSession.h in Headers */,
 				D0B8F80D1CA8BBA2006B1E0D /* WFUberOAuth2SessionManager.h in Headers */,
 				E9BD9FD81D4962F1004BC387 /* WFSquareOAuth2SessionManager.h in Headers */,
+				D07645541E5BE3D100FA1D87 /* WFOAuth2ProviderSessionManager.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -575,6 +583,7 @@
 				D076447C1E5801B900FA1D87 /* WFOAuth2AuthorizationSession.h in Headers */,
 				D0B8F80E1CA8BBA2006B1E0D /* WFUberOAuth2SessionManager.h in Headers */,
 				E9BD9FD91D4962F1004BC387 /* WFSquareOAuth2SessionManager.h in Headers */,
+				D07645551E5BE3D100FA1D87 /* WFOAuth2ProviderSessionManager.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -600,6 +609,7 @@
 				D076447D1E5801B900FA1D87 /* WFOAuth2AuthorizationSession.h in Headers */,
 				D0B8F80F1CA8BBA2006B1E0D /* WFUberOAuth2SessionManager.h in Headers */,
 				E9BD9FDA1D4962F1004BC387 /* WFSquareOAuth2SessionManager.h in Headers */,
+				D07645561E5BE3D100FA1D87 /* WFOAuth2ProviderSessionManager.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

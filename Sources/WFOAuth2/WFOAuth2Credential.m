@@ -41,7 +41,7 @@ static inline __nullable id WFEnforceClass(id __nullable obj, Class objectClass)
 }
 
 - (BOOL)isExpired {
-    return (self.expirationDate.timeIntervalSinceNow > 0.0f);
+    return (self.expirationDate.timeIntervalSinceNow < 0.0f);
 }
 
 #pragma mark - NSObject

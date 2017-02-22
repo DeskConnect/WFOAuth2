@@ -125,10 +125,13 @@ NS_ASSUME_NONNULL_BEGIN
     for (NSURLQueryItem *item in components.queryItems)
         [responseObject setValue:item.value forKey:item.name];
     
-    NSURLComponents *fragmentComponents = [NSURLComponents new];
-    fragmentComponents.percentEncodedQuery = components.fragment;
-    for (NSURLQueryItem *item in fragmentComponents.queryItems)
-        [responseObject setValue:item.value forKey:item.name];
+    NSString *fragment = components.fragment;
+    if ([fragment rangeOfCharacterFromSet:[[NSCharacterSet URLQueryAllowedCharacterSet] invertedSet]].location == NSNotFound) {
+        NSURLComponents *fragmentComponents = [NSURLComponents new];
+        fragmentComponents.percentEncodedQuery = fragment;
+        for (NSURLQueryItem *item in fragmentComponents.queryItems)
+            [responseObject setValue:item.value forKey:item.name];
+    }
     
     [components setQuery:nil];
     [components setFragment:nil];

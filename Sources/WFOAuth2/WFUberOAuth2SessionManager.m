@@ -27,14 +27,28 @@ WFUberOAuth2Scope const WFUberAllTripsScope = @"all_trips";
                     clientSecret:(nullable NSString *)clientSecret {
     return [self initWithSessionConfiguration:nil
                                      clientID:clientID
-                                 clientSecret:clientSecret];
+                                 clientSecret:clientSecret
+                                 singleSignOn:YES];
 }
 
 - (instancetype)initWithSessionConfiguration:(nullable NSURLSessionConfiguration *)configuration
                                     clientID:(NSString *)clientID
                                 clientSecret:(nullable NSString *)clientSecret {
     return [self initWithSessionConfiguration:configuration
-                                     tokenURL:[NSURL URLWithString:@"https://login.uber.com/oauth/v2/mobile/token"]
+                                     clientID:clientID
+                                 clientSecret:clientSecret
+                                 singleSignOn:YES];
+}
+
+- (instancetype)initWithSessionConfiguration:(nullable NSURLSessionConfiguration *)configuration
+                                    clientID:(NSString *)clientID
+                                clientSecret:(nullable NSString *)clientSecret
+                                singleSignOn:(BOOL)singleSignOn {
+    NSURL *tokenURL = (singleSignOn ?
+                       [NSURL URLWithString:@"https://login.uber.com/oauth/v2/mobile/token"] :
+                       [NSURL URLWithString:@"https://login.uber.com/oauth/token"]);
+    return [self initWithSessionConfiguration:configuration
+                                     tokenURL:tokenURL
                              authorizationURL:[NSURL URLWithString:@"https://login.uber.com/oauth/v2/authorize"]
                          authenticationMethod:WFOAuth2AuthMethodClientSecretPostBody
                                      clientID:clientID

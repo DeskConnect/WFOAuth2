@@ -23,6 +23,11 @@ extern WFUberOAuth2Scope const WFUberAllTripsScope;
 
 @interface WFUberOAuth2SessionManager : WFOAuth2SessionManager<WFUberOAuth2Scope> <WFOAuth2ProviderSessionManager, WFOAuth2RevocableSessionManager>
 
+- (instancetype)initWithSessionConfiguration:(nullable NSURLSessionConfiguration *)configuration
+                                    clientID:(NSString *)clientID
+                                clientSecret:(nullable NSString *)clientSecret
+                                singleSignOn:(BOOL)singleSignOn;
+
 - (void)authenticateWithScope:(nullable NSString *)scope
             completionHandler:(WFOAuth2AuthenticationHandler)completionHandler NS_UNAVAILABLE;
 

@@ -15,10 +15,23 @@ NS_ASSUME_NONNULL_BEGIN
 extern NSString * const WFGoogleNativeRedirectURIString;
 
 typedef NSString *WFGoogleOAuth2Scope NS_EXTENSIBLE_STRING_ENUM;
-extern WFGoogleOAuth2Scope const WFGoogleEmailScope;
+extern WFGoogleOAuth2Scope const WFGoogleOpenIDScope;
 extern WFGoogleOAuth2Scope const WFGoogleProfileScope;
+extern WFGoogleOAuth2Scope const WFGoogleEmailScope;
 
 @interface WFGoogleOAuth2SessionManager : WFOAuth2SessionManager<WFGoogleOAuth2Scope> <WFOAuth2ProviderSessionManager, WFOAuth2RevocableSessionManager>
+
+- (WFOAuth2AuthorizationSession *)authorizationSessionWithScopes:(nullable NSArray<WFGoogleOAuth2Scope> *)scopes
+                                                       loginHint:(nullable NSString *)loginHint
+                                                     redirectURI:(nullable NSURL *)redirectURI
+                                               completionHandler:(WFOAuth2AuthenticationHandler)completionHandler;
+
+#if __has_include(<WebKit/WebKit.h>)
+- (WKWebView *)authorizationWebViewWithScopes:(nullable NSArray<WFGoogleOAuth2Scope> *)scopes
+                                    loginHint:(nullable NSString *)loginHint
+                                  redirectURI:(nullable NSURL *)redirectURI
+                            completionHandler:(WFOAuth2AuthenticationHandler)completionHandler;
+#endif
 
 - (void)authenticateWithScopes:(nullable NSArray<WFGoogleOAuth2Scope> *)scopes
              completionHandler:(WFOAuth2AuthenticationHandler)completionHandler NS_UNAVAILABLE;

@@ -63,8 +63,24 @@ NS_ASSUME_NONNULL_BEGIN
     if (!sessionManager)
         return;
     
-    if ([configuration.redirectURI.scheme isEqualToString:@"wfoauth2"] ||
-        [configuration.redirectURI.scheme hasPrefix:@"com.googleusercontent"]) {
+    if ([configuration.redirectURI.scheme hasPrefix:@"com.googleusercontent"]) {
+        // Test the loginHint parameter
+        __weak __typeof__(self) weakSelf = self;
+        WFOAuth2AuthorizationSession *authorizationSession = [(WFGoogleOAuth2SessionManager *)sessionManager authorizationSessionWithScopes:configuration.scopes loginHint:@"conrad@deskconnect.com" redirectURI:configuration.redirectURI completionHandler:^(WFOAuth2Credential * __nullable credential, NSError * __nullable error) {
+            if (credential) {
+                [weakSelf presentCredential:credential fromSessionManager:sessionManager];
+            } else if (error) {
+                [weakSelf presentError:error];
+            }
+        }];
+        
+        AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        delegate.currentSession = authorizationSession;
+        
+        SFSafariViewController *safariViewController = authorizationSession.safariViewController;
+        safariViewController.modalPresentationStyle = UIModalPresentationFormSheet;
+        [self presentViewController:safariViewController animated:YES completion:nil];
+    } else if ([configuration.redirectURI.scheme isEqualToString:@"wfoauth2"]) {
         __weak __typeof__(self) weakSelf = self;
         WFOAuth2AuthorizationSession *authorizationSession = [sessionManager authorizationSessionWithResponseType:WFOAuth2ResponseTypeCode scopes:configuration.scopes redirectURI:configuration.redirectURI completionHandler:^(WFOAuth2Credential * __nullable credential, NSError * __nullable error) {
             if (credential) {
@@ -78,6 +94,7 @@ NS_ASSUME_NONNULL_BEGIN
         delegate.currentSession = authorizationSession;
         
         SFSafariViewController *safariViewController = authorizationSession.safariViewController;
+        safariViewController.modalPresentationStyle = UIModalPresentationFormSheet;
         [self presentViewController:safariViewController animated:YES completion:nil];
     } else {
         LoginViewController *loginViewController = [[LoginViewController alloc] initWithSessionManager:sessionManager scopes:configuration.scopes redirectURI:configuration.redirectURI];

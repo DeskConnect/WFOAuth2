@@ -10,13 +10,16 @@
 #import <WFOAuth2/WFOAuth2SessionManagerPrivate.h>
 #import <WFOAuth2/WFOAuth2Credential.h>
 #import <WFOAuth2/WFOAuth2Error.h>
+#import <WFOAuth2/WFOAuth2WebView.h>
+#import <WFOAuth2/NSURL+WFOAuth2.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 NSString * const WFGoogleNativeRedirectURIString = @"urn:ietf:wg:oauth:2.0:oob:auto";
 
-WFGoogleOAuth2Scope const WFGoogleEmailScope = @"email";
+WFGoogleOAuth2Scope const WFGoogleOpenIDScope = @"openid";
 WFGoogleOAuth2Scope const WFGoogleProfileScope = @"profile";
+WFGoogleOAuth2Scope const WFGoogleEmailScope = @"email";
 
 @implementation WFGoogleOAuth2SessionManager
 
@@ -37,6 +40,28 @@ WFGoogleOAuth2Scope const WFGoogleProfileScope = @"profile";
                                      clientID:clientID
                                  clientSecret:clientSecret];
 }
+
+- (WFOAuth2AuthorizationSession *)authorizationSessionWithScopes:(nullable NSArray<WFGoogleOAuth2Scope> *)scopes
+                                                       loginHint:(nullable NSString *)loginHint
+                                                     redirectURI:(nullable NSURL *)redirectURI
+                                               completionHandler:(WFOAuth2AuthenticationHandler)completionHandler {
+    NSArray<NSURLQueryItem *> *queryItems = (loginHint.length ? @[[NSURLQueryItem queryItemWithName:@"login_hint" value:loginHint]] : nil);
+    NSURL *authorizationURL = [self.authorizationURL wfo_URLByAppendingQueryItems:queryItems];
+    return [self authorizationSessionWithAuthorizationURL:authorizationURL
+                                             responseType:WFOAuth2ResponseTypeCode
+                                                   scopes:scopes redirectURI:redirectURI
+                                        completionHandler:completionHandler];
+}
+
+#if __has_include(<WebKit/WebKit.h>)
+- (WKWebView *)authorizationWebViewWithScopes:(nullable NSArray<WFGoogleOAuth2Scope> *)scopes
+                                            loginHint:(nullable NSString *)loginHint
+                                          redirectURI:(nullable NSURL *)redirectURI
+                                    completionHandler:(WFOAuth2AuthenticationHandler)completionHandler {
+    WFOAuth2AuthorizationSession *authorizationSession = [self authorizationSessionWithScopes:scopes loginHint:loginHint redirectURI:redirectURI completionHandler:completionHandler];
+    return [[WFOAuth2WebView alloc] initWithAuthorizationSession:authorizationSession];
+}
+#endif
 
 #pragma mark - WFOAuth2RevocableSessionManager
 

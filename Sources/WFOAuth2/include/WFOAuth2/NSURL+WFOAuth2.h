@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NSURL (WFOAuth2)
 
-- (NSURL *)wfo_URLByAppendingQueryItems:(NSArray<NSURLQueryItem *> *)queryItems;
+- (NSURL *)wfo_URLByAppendingQueryItems:(nullable NSArray<NSURLQueryItem *> *)queryItems;
 
 @end
 

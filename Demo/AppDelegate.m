@@ -9,9 +9,11 @@
 #import "AppDelegate.h"
 #import "ViewController.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @implementation AppDelegate
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(nullable NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = [[ViewController alloc] init];
     [self.window makeKeyAndVisible];
@@ -29,3 +31,5 @@
 }
 
 @end
+
+NS_ASSUME_NONNULL_END

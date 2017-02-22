@@ -134,10 +134,12 @@ NS_ASSUME_NONNULL_BEGIN
     if (credential.refreshToken) {
         [alertController addAction:[UIAlertAction actionWithTitle:@"Refresh" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             [sessionManager authenticateWithRefreshCredential:credential completionHandler:^(WFOAuth2Credential * __nullable credential, NSError * __nullable error) {
-                if (credential)
-                    [self presentCredential:credential fromSessionManager:sessionManager];
-                else if (error)
-                    [self presentError:error];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (credential)
+                        [self presentCredential:credential fromSessionManager:sessionManager];
+                    else if (error)
+                        [self presentError:error];
+                });
             }];
         }]];
     }

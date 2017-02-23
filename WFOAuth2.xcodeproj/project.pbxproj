@@ -52,8 +52,8 @@
 		D07645561E5BE3D100FA1D87 /* WFOAuth2ProviderSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D07645521E5BE3D100FA1D87 /* WFOAuth2ProviderSessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D07645BD1E5CD2C700FA1D87 /* WFImgurOAuth2SessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D07645BC1E5CD2C600FA1D87 /* WFImgurOAuth2SessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D07645BE1E5CD2C700FA1D87 /* WFImgurOAuth2SessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D07645BC1E5CD2C600FA1D87 /* WFImgurOAuth2SessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D07645BF1E5CD2C700FA1D87 /* WFImgurOAuth2SessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D07645BC1E5CD2C600FA1D87 /* WFImgurOAuth2SessionManager.h */; };
-		D07645C01E5CD2C700FA1D87 /* WFImgurOAuth2SessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D07645BC1E5CD2C600FA1D87 /* WFImgurOAuth2SessionManager.h */; };
+		D07645BF1E5CD2C700FA1D87 /* WFImgurOAuth2SessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D07645BC1E5CD2C600FA1D87 /* WFImgurOAuth2SessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D07645C01E5CD2C700FA1D87 /* WFImgurOAuth2SessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D07645BC1E5CD2C600FA1D87 /* WFImgurOAuth2SessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D07645C21E5CD2CB00FA1D87 /* WFImgurOAuth2SessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D07645C11E5CD2CB00FA1D87 /* WFImgurOAuth2SessionManager.m */; };
 		D07645C31E5CD2CB00FA1D87 /* WFImgurOAuth2SessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D07645C11E5CD2CB00FA1D87 /* WFImgurOAuth2SessionManager.m */; };
 		D07645C41E5CD2CB00FA1D87 /* WFImgurOAuth2SessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D07645C11E5CD2CB00FA1D87 /* WFImgurOAuth2SessionManager.m */; };
@@ -64,7 +64,7 @@
 		D07645CA1E5CD2F900FA1D87 /* WFTodoistOAuth2SessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D07645C61E5CD2F900FA1D87 /* WFTodoistOAuth2SessionManager.m */; };
 		D07645CC1E5CD30000FA1D87 /* WFTodoistOAuth2SessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D07645CB1E5CD30000FA1D87 /* WFTodoistOAuth2SessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D07645CD1E5CD30000FA1D87 /* WFTodoistOAuth2SessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D07645CB1E5CD30000FA1D87 /* WFTodoistOAuth2SessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D07645CE1E5CD30000FA1D87 /* WFTodoistOAuth2SessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D07645CB1E5CD30000FA1D87 /* WFTodoistOAuth2SessionManager.h */; };
+		D07645CE1E5CD30000FA1D87 /* WFTodoistOAuth2SessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D07645CB1E5CD30000FA1D87 /* WFTodoistOAuth2SessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D07645CF1E5CD30000FA1D87 /* WFTodoistOAuth2SessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D07645CB1E5CD30000FA1D87 /* WFTodoistOAuth2SessionManager.h */; };
 		D07645D11E5CD32A00FA1D87 /* WFWunderlistOAuth2SessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D07645D01E5CD32A00FA1D87 /* WFWunderlistOAuth2SessionManager.m */; };
 		D07645D21E5CD32A00FA1D87 /* WFWunderlistOAuth2SessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D07645D01E5CD32A00FA1D87 /* WFWunderlistOAuth2SessionManager.m */; };

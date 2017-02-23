@@ -2,3 +2,4 @@ xcuserdata
 *.xcscmblueprint
 Carthage/Build
 .build
+docs

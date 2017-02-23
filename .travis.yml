@@ -1,61 +1,74 @@
 language: objective-c
 xcode_project: WFOAuth2.xcodeproj
 script:
-  - xcodebuild $XCODE_ACTION -project "$TRAVIS_XCODE_PROJECT" -scheme "$TRAVIS_XCODE_SCHEME" -sdk "$TRAVIS_XCODE_SDK" -destination "$XCODE_DESTINATION" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
+- xcodebuild $XCODE_ACTION -project "$TRAVIS_XCODE_PROJECT" -scheme "$TRAVIS_XCODE_SCHEME" -sdk "$TRAVIS_XCODE_SDK" -destination "$XCODE_DESTINATION" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
 matrix:
   include:
-    - xcode_scheme: "WFOAuth2-iOS"
-      xcode_sdk: iphoneos
-      osx_image: xcode8.2
-      env:
-        - XCODE_ACTION=build
-        - XCODE_DESTINATION="generic/platform=iOS"
-    - xcode_scheme: "WFOAuth2-iOS"
-      xcode_sdk: iphonesimulator
-      osx_image: xcode8.2
-      env:
-        - XCODE_ACTION=test
-        - XCODE_DESTINATION="platform=iOS Simulator,OS=10.2,name=iPad Air 2"
-    - xcode_scheme: "WFOAuth2-tvOS"
-      xcode_sdk: appletvos
-      osx_image: xcode8.2
-      env:
-        - XCODE_ACTION=build
-        - XCODE_DESTINATION="generic/platform=tvOS"
-    - xcode_scheme: "WFOAuth2-tvOS"
-      xcode_sdk: appletvsimulator
-      osx_image: xcode8.2
-      env:
-        - XCODE_ACTION=test
-        - XCODE_DESTINATION="platform=tvOS Simulator,name=Apple TV 1080p"
-    - xcode_scheme: "WFOAuth2-watchOS"
-      xcode_sdk: watchos
-      osx_image: xcode8.2
-      env:
-        - XCODE_ACTION=build
-        - XCODE_DESTINATION="generic/platform=watchOS"
-    - xcode_scheme: "WFOAuth2-watchOS"
-      xcode_sdk: watchsimulator
-      osx_image: xcode8.2
-      env:
-        - XCODE_ACTION=build
-        - XCODE_DESTINATION="platform=watchOS Simulator,name=Apple Watch - 38mm"
-    - xcode_scheme: "WFOAuth2-Mac"
-      xcode_sdk: macosx
-      osx_image: xcode8.2
-      env:
-        - XCODE_ACTION=test
-        - XCODE_DESTINATION="arch=x86_64"
-    - osx_image: xcode8.2
-      script:
-        - rm -rf Tests
-        - swift build
-    - osx_image: xcode8.2
-      script:
-        - pod lib lint --fail-fast --verbose
-    - xcode_scheme: "Demo"
-      xcode_sdk: iphonesimulator
-      osx_image: xcode8.2
-      env:
-        - XCODE_ACTION=build
-        - XCODE_DESTINATION="platform=iOS Simulator,OS=10.2,name=iPad Air 2"
+  - xcode_scheme: WFOAuth2-iOS
+    xcode_sdk: iphoneos
+    osx_image: xcode8.2
+    env:
+    - XCODE_ACTION=build
+    - XCODE_DESTINATION="generic/platform=iOS"
+  - xcode_scheme: WFOAuth2-iOS
+    xcode_sdk: iphonesimulator
+    osx_image: xcode8.2
+    env:
+    - XCODE_ACTION=test
+    - XCODE_DESTINATION="platform=iOS Simulator,OS=10.2,name=iPad Air 2"
+  - xcode_scheme: WFOAuth2-tvOS
+    xcode_sdk: appletvos
+    osx_image: xcode8.2
+    env:
+    - XCODE_ACTION=build
+    - XCODE_DESTINATION="generic/platform=tvOS"
+  - xcode_scheme: WFOAuth2-tvOS
+    xcode_sdk: appletvsimulator
+    osx_image: xcode8.2
+    env:
+    - XCODE_ACTION=test
+    - XCODE_DESTINATION="platform=tvOS Simulator,name=Apple TV 1080p"
+  - xcode_scheme: WFOAuth2-watchOS
+    xcode_sdk: watchos
+    osx_image: xcode8.2
+    env:
+    - XCODE_ACTION=build
+    - XCODE_DESTINATION="generic/platform=watchOS"
+  - xcode_scheme: WFOAuth2-watchOS
+    xcode_sdk: watchsimulator
+    osx_image: xcode8.2
+    env:
+    - XCODE_ACTION=build
+    - XCODE_DESTINATION="platform=watchOS Simulator,name=Apple Watch - 38mm"
+  - xcode_scheme: WFOAuth2-Mac
+    xcode_sdk: macosx
+    osx_image: xcode8.2
+    env:
+    - XCODE_ACTION=test
+    - XCODE_DESTINATION="arch=x86_64"
+  - osx_image: xcode8.2
+    script:
+    - rm -rf Tests
+    - swift build
+  - osx_image: xcode8.2
+    script:
+    - pod lib lint --fail-fast --verbose
+  - xcode_scheme: Demo
+    xcode_sdk: iphonesimulator
+    osx_image: xcode8.2
+    rvm:
+    - 2.4.0
+    env:
+    - XCODE_ACTION=build
+    - XCODE_DESTINATION="platform=iOS Simulator,OS=10.2,name=iPad Air 2"
+    after_success: |
+      [ $TRAVIS_BRANCH = develop ] &&
+      [ $TRAVIS_PULL_REQUEST = false ] &&
+      gem install jazzy &&
+      jazzy doc &&
+      sudo pip install ghp-import &&
+      ghp-import -n docs &&
+      mkdir -p ~/.ssh &&
+      openssl aes-256-cbc -K $encrypted_503757457452_key -iv $encrypted_503757457452_iv -in .deploy_rsa.enc -out ~/.ssh/id_rsa -d &&
+      chmod 600 ~/.ssh/id_rsa &&
+      git push -fq git@github.com:DeskConnect/WFOAuth2.git gh-pages

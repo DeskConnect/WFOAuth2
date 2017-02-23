@@ -8,6 +8,8 @@
 
 **WFOAuth2** is an extensible OAuth 2 library for macOS, iOS, tvOS and watchOS. It aims to simplify authenticating your app with a variety of services.
 
+[API Documentation](https://deskconnect.github.io/WFOAuth2)
+
 ## Supported Services
 
 <table>

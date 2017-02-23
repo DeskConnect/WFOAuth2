@@ -1,0 +1,9 @@
+author: DeskConnect, Inc.
+author_url: https://workflow.is
+objc: true
+framework_root: Sources/WFOAuth2/include
+umbrella_header: Sources/WFOAuth2/include/WFOAuth2/WFOAuth2.h
+sdk: iphonesimulator
+skip_undocumented: true
+hide_documentation_coverage: true
+module_version: 0.2

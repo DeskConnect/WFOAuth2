@@ -17,7 +17,7 @@ NSError * __nullable WFRFC6749Section5_2ErrorFromResponse(NSDictionary * __nulla
     NSString *description = nil;
     
     NSString *errorCode = responseObject[@"error"];
-    if (!errorCode)
+    if (![errorCode isKindOfClass:[NSString class]])
         return nil;
     
     if ([errorCode isEqualToString:@"invalid_request"]) {

@@ -116,10 +116,7 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (BOOL)resumeSessionWithURL:(NSURL *)URL {
-    NSURL *redirectURI = self.redirectURI;
-    
     NSURLComponents *components = [NSURLComponents componentsWithURL:URL resolvingAgainstBaseURL:NO];
-    NSURLComponents *redirectComponents = (redirectURI ? [NSURLComponents componentsWithURL:redirectURI resolvingAgainstBaseURL:NO] : nil);
     
     NSMutableDictionary<NSString *, NSString *> *responseObject = [NSMutableDictionary new];
     for (NSURLQueryItem *item in components.queryItems)
@@ -133,19 +130,10 @@ NS_ASSUME_NONNULL_BEGIN
             [responseObject setValue:item.value forKey:item.name];
     }
     
-    [components setQuery:nil];
-    [components setFragment:nil];
-    if ([components.path hasSuffix:@"/"])
-        components.path = [components.path substringToIndex:(components.path.length - 1)];
-    
-    [redirectComponents setQuery:nil];
-    [redirectComponents setFragment:nil];
-    if ([redirectComponents.path hasSuffix:@"/"])
-        redirectComponents.path = [redirectComponents.path substringToIndex:(redirectComponents.path.length - 1)];
-    
+    NSURL *redirectURI = self.redirectURI;
     if (redirectURI) {
         // Uber redirects errors to a different endpoint
-        if (![components isEqual:redirectComponents] && !responseObject[@"error"])
+        if (![URL wfo_isEqualToRedirectURI:redirectURI] && !responseObject[@"error"])
             return NO;
         
         return [self resumeSessionWithResponseObject:responseObject];

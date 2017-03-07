@@ -21,6 +21,23 @@ NS_ASSUME_NONNULL_BEGIN
     return components.URL;
 }
 
+- (NSURLComponents *)wfo_normalizedURLComponents {
+    NSURLComponents *components = [NSURLComponents componentsWithURL:self resolvingAgainstBaseURL:NO];
+    components.query = nil;
+    components.fragment = nil;
+    if ([components.path hasSuffix:@"/"])
+        components.path = [components.path substringToIndex:(components.path.length - 1)];
+    
+    return components;
+}
+
+- (BOOL)wfo_isEqualToRedirectURI:(nullable NSURL *)redirectURI {
+    if (!redirectURI)
+        return NO;
+    
+    return [[self wfo_normalizedURLComponents] isEqual:[redirectURI wfo_normalizedURLComponents]];
+}
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D0412B8E1D06B18C002CA55A /* WFOAuth2FormEncodingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D0412B8D1D06B18C002CA55A /* WFOAuth2FormEncodingTests.m */; };
-		D0412B8F1D06B18C002CA55A /* WFOAuth2FormEncodingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D0412B8D1D06B18C002CA55A /* WFOAuth2FormEncodingTests.m */; };
-		D0412B901D06B18C002CA55A /* WFOAuth2FormEncodingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D0412B8D1D06B18C002CA55A /* WFOAuth2FormEncodingTests.m */; };
 		D04429101CB65052005837F9 /* WFSlackOAuth2SessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D044290E1CB65052005837F9 /* WFSlackOAuth2SessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D04429111CB65052005837F9 /* WFSlackOAuth2SessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D044290E1CB65052005837F9 /* WFSlackOAuth2SessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D04429121CB65052005837F9 /* WFSlackOAuth2SessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D044290E1CB65052005837F9 /* WFSlackOAuth2SessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -18,6 +15,13 @@
 		D04429151CB65052005837F9 /* WFSlackOAuth2SessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D044290F1CB65052005837F9 /* WFSlackOAuth2SessionManager.m */; };
 		D04429161CB65052005837F9 /* WFSlackOAuth2SessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D044290F1CB65052005837F9 /* WFSlackOAuth2SessionManager.m */; };
 		D04429171CB65052005837F9 /* WFSlackOAuth2SessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D044290F1CB65052005837F9 /* WFSlackOAuth2SessionManager.m */; };
+		D05A1DE31E6E6C4100801092 /* WFOAuth2NSURLRequestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D05A1DD91E6E6C3C00801092 /* WFOAuth2NSURLRequestTests.m */; };
+		D05A1DE41E6E6C4100801092 /* WFOAuth2NSURLTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D05A1DDA1E6E6C3C00801092 /* WFOAuth2NSURLTests.m */; };
+		D05A1DE51E6E6C4100801092 /* WFOAuth2NSURLRequestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D05A1DD91E6E6C3C00801092 /* WFOAuth2NSURLRequestTests.m */; };
+		D05A1DE61E6E6C4100801092 /* WFOAuth2NSURLTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D05A1DDA1E6E6C3C00801092 /* WFOAuth2NSURLTests.m */; };
+		D05A1DE71E6E6C4200801092 /* WFOAuth2NSURLRequestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D05A1DD91E6E6C3C00801092 /* WFOAuth2NSURLRequestTests.m */; };
+		D05A1DE81E6E6C4200801092 /* WFOAuth2NSURLTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D05A1DDA1E6E6C3C00801092 /* WFOAuth2NSURLTests.m */; };
+		D05A1DE91E6E713700801092 /* WFOAuth2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D084DA3D1CA492B500F92933 /* WFOAuth2.framework */; };
 		D076447A1E5801B900FA1D87 /* WFOAuth2AuthorizationSession.h in Headers */ = {isa = PBXBuildFile; fileRef = D07644781E5801B900FA1D87 /* WFOAuth2AuthorizationSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D076447B1E5801B900FA1D87 /* WFOAuth2AuthorizationSession.h in Headers */ = {isa = PBXBuildFile; fileRef = D07644781E5801B900FA1D87 /* WFOAuth2AuthorizationSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D076447C1E5801B900FA1D87 /* WFOAuth2AuthorizationSession.h in Headers */ = {isa = PBXBuildFile; fileRef = D07644781E5801B900FA1D87 /* WFOAuth2AuthorizationSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -151,7 +155,6 @@
 		D0B8F7C51CA60B69006B1E0D /* WFOAuth2SessionManagerPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = D0B8F7C21CA60B69006B1E0D /* WFOAuth2SessionManagerPrivate.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D0B8F7C61CA60B69006B1E0D /* WFOAuth2SessionManagerPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = D0B8F7C21CA60B69006B1E0D /* WFOAuth2SessionManagerPrivate.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D0B8F7CF1CA89ED7006B1E0D /* WFOAuth2CredentialTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B8F7CE1CA89ED7006B1E0D /* WFOAuth2CredentialTests.m */; };
-		D0B8F7D11CA89ED7006B1E0D /* WFOAuth2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D084DA3D1CA492B500F92933 /* WFOAuth2.framework */; };
 		D0B8F7E31CA8B842006B1E0D /* WFOAuth2CredentialTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B8F7CE1CA89ED7006B1E0D /* WFOAuth2CredentialTests.m */; };
 		D0B8F7E51CA8B842006B1E0D /* WFOAuth2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D084DA3D1CA492B500F92933 /* WFOAuth2.framework */; };
 		D0B8F7F01CA8B845006B1E0D /* WFOAuth2CredentialTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B8F7CE1CA89ED7006B1E0D /* WFOAuth2CredentialTests.m */; };
@@ -220,9 +223,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		D0412B8D1D06B18C002CA55A /* WFOAuth2FormEncodingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WFOAuth2FormEncodingTests.m; sourceTree = "<group>"; };
 		D044290E1CB65052005837F9 /* WFSlackOAuth2SessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WFSlackOAuth2SessionManager.h; path = include/WFOAuth2/WFSlackOAuth2SessionManager.h; sourceTree = "<group>"; };
 		D044290F1CB65052005837F9 /* WFSlackOAuth2SessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WFSlackOAuth2SessionManager.m; sourceTree = "<group>"; };
+		D05A1DD91E6E6C3C00801092 /* WFOAuth2NSURLRequestTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WFOAuth2NSURLRequestTests.m; sourceTree = "<group>"; };
+		D05A1DDA1E6E6C3C00801092 /* WFOAuth2NSURLTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WFOAuth2NSURLTests.m; sourceTree = "<group>"; };
 		D07644781E5801B900FA1D87 /* WFOAuth2AuthorizationSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WFOAuth2AuthorizationSession.h; path = include/WFOAuth2/WFOAuth2AuthorizationSession.h; sourceTree = "<group>"; };
 		D07644791E5801B900FA1D87 /* WFOAuth2AuthorizationSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WFOAuth2AuthorizationSession.m; sourceTree = "<group>"; };
 		D07644821E5803A100FA1D87 /* WFOAuth2AuthorizationSessionPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WFOAuth2AuthorizationSessionPrivate.h; path = include/WFOAuth2/WFOAuth2AuthorizationSessionPrivate.h; sourceTree = "<group>"; };
@@ -335,7 +339,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0B8F7D11CA89ED7006B1E0D /* WFOAuth2.framework in Frameworks */,
+				D05A1DE91E6E713700801092 /* WFOAuth2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,7 +500,8 @@
 			isa = PBXGroup;
 			children = (
 				D0B8F7CE1CA89ED7006B1E0D /* WFOAuth2CredentialTests.m */,
-				D0412B8D1D06B18C002CA55A /* WFOAuth2FormEncodingTests.m */,
+				D05A1DD91E6E6C3C00801092 /* WFOAuth2NSURLRequestTests.m */,
+				D05A1DDA1E6E6C3C00801092 /* WFOAuth2NSURLTests.m */,
 				D0B8F7DD1CA89F6A006B1E0D /* Configuration */,
 				D0B8F7DE1CA8A178006B1E0D /* Supporting Files */,
 			);
@@ -1013,8 +1018,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0412B8E1D06B18C002CA55A /* WFOAuth2FormEncodingTests.m in Sources */,
 				D0B8F7CF1CA89ED7006B1E0D /* WFOAuth2CredentialTests.m in Sources */,
+				D05A1DE41E6E6C4100801092 /* WFOAuth2NSURLTests.m in Sources */,
+				D05A1DE31E6E6C4100801092 /* WFOAuth2NSURLRequestTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1022,8 +1028,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0412B8F1D06B18C002CA55A /* WFOAuth2FormEncodingTests.m in Sources */,
 				D0B8F7E31CA8B842006B1E0D /* WFOAuth2CredentialTests.m in Sources */,
+				D05A1DE61E6E6C4100801092 /* WFOAuth2NSURLTests.m in Sources */,
+				D05A1DE51E6E6C4100801092 /* WFOAuth2NSURLRequestTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1031,8 +1038,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0412B901D06B18C002CA55A /* WFOAuth2FormEncodingTests.m in Sources */,
 				D0B8F7F01CA8B845006B1E0D /* WFOAuth2CredentialTests.m in Sources */,
+				D05A1DE81E6E6C4200801092 /* WFOAuth2NSURLTests.m in Sources */,
+				D05A1DE71E6E6C4200801092 /* WFOAuth2NSURLRequestTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,20 +11,20 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface WFOAuth2FormEncodingTests : XCTestCase
+@interface WFOAuth2NSURLRequestTests : XCTestCase
 
 @end
 
-@implementation WFOAuth2FormEncodingTests
+@implementation WFOAuth2NSURLRequestTests
 
-- (void)testEncodingNewlines {
+- (void)testFormEncodingNewlines {
     NSMutableURLRequest *request = [NSMutableURLRequest new];
     [request wfo_setBodyWithQueryItems:@[[NSURLQueryItem queryItemWithName:@"\rkey\r\n" value:@"\nvalue"]]];
     XCTAssertEqualObjects([request valueForHTTPHeaderField:@"Content-Type"], @"application/x-www-form-urlencoded");
     XCTAssertEqualObjects(request.HTTPBody, [@"%0Dkey%0D%0A=%0D%0Avalue" dataUsingEncoding:NSUTF8StringEncoding]);
 }
 
-- (void)testEncodingOrder {
+- (void)testFormEncodingOrder {
     NSMutableURLRequest *request = [NSMutableURLRequest new];
     
     [request wfo_setBodyWithQueryItems:@[[NSURLQueryItem queryItemWithName:@"key1" value:@"value1"],
@@ -37,7 +37,7 @@ NS_ASSUME_NONNULL_BEGIN
     XCTAssertEqualObjects(request.HTTPBody, [@"key2=value2&key1=value1" dataUsingEncoding:NSUTF8StringEncoding]);
 }
 
-- (void)testEncodingSpaces {
+- (void)testFormEncodingSpaces {
     NSMutableURLRequest *request = [NSMutableURLRequest new];
     
     [request wfo_setBodyWithQueryItems:@[[NSURLQueryItem queryItemWithName:@"key with space" value:@"1+2+3+4+5 6"]]];
@@ -45,7 +45,7 @@ NS_ASSUME_NONNULL_BEGIN
     XCTAssertEqualObjects(request.HTTPBody, [@"key+with+space=1%2B2%2B3%2B4%2B5+6" dataUsingEncoding:NSUTF8StringEncoding]);
 }
 
-- (void)testEncodingSymbols {
+- (void)testFormEncodingSymbols {
     NSMutableURLRequest *request = [NSMutableURLRequest new];
     
     [request wfo_setBodyWithQueryItems:@[[NSURLQueryItem queryItemWithName:@"foo" value:@"bar%._-*@#&"]]];

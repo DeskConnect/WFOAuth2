@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSURL *)wfo_URLByAppendingQueryItems:(nullable NSArray<NSURLQueryItem *> *)queryItems;
 
+- (BOOL)wfo_isEqualToRedirectURI:(nullable NSURL *)redirectURI;
+
 @end
 
 NS_ASSUME_NONNULL_END

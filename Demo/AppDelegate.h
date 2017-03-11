@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) UIWindow *window;
 
-@property (nonatomic, strong, nullable) WFOAuth2AuthorizationSession *currentSession;
+@property (nonatomic, strong, nullable) id<WFOAuth2AuthorizationSession> currentSession;
 
 @end
 

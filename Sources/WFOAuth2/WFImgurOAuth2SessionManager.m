@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @implementation WFImgurOAuth2SessionManager
 
+#pragma mark - WFOAuth2ProviderSessionManager
+
 - (instancetype)initWithClientID:(NSString *)clientID
                     clientSecret:(nullable NSString *)clientSecret {
     return [self initWithSessionConfiguration:nil

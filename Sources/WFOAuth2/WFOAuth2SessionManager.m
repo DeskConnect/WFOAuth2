@@ -7,7 +7,7 @@
 //
 
 #import <WFOAuth2/WFOAuth2SessionManagerPrivate.h>
-#import <WFOAuth2/WFOAuth2AuthorizationSessionPrivate.h>
+#import <WFOAuth2/WFOAuth2WebAuthorizationSessionPrivate.h>
 #import <WFOAuth2/WFOAuth2Credential.h>
 #import <WFOAuth2/WFOAuth2WebView.h>
 #import <WFOAuth2/NSMutableURLRequest+WFOAuth2.h>
@@ -132,6 +132,20 @@ WFOAuth2AuthMethod const WFOAuth2AuthMethodClientSecretBasicAuth = @"client_secr
     
     [request wfo_setBodyWithQueryItems:parameters];
     
+    NSString *refreshToken = nil;
+    for (NSURLQueryItem *item in parameters) {
+        if ([item.name isEqualToString:@"refresh_token"]) {
+            refreshToken = item.value;
+            break;
+        }
+    }
+    
+    [self authenticateWithRequest:request refreshToken:refreshToken completionHandler:completionHandler];
+}
+
+- (void)authenticateWithRequest:(NSURLRequest *)request
+                   refreshToken:(nullable NSString *)refreshToken
+              completionHandler:(WFOAuth2AuthenticationHandler)completionHandler {
     [[self.session dataTaskWithRequest:request completionHandler:^(NSData * __nullable data, NSURLResponse * __nullable __unused response, NSError * __nullable error) {
         if (!data.length) {
             completionHandler(nil, error);
@@ -161,14 +175,6 @@ WFOAuth2AuthMethod const WFOAuth2AuthMethodClientSecretBasicAuth = @"client_secr
             return;
         }
         
-        NSString *refreshToken = nil;
-        for (NSURLQueryItem *item in parameters) {
-            if ([item.name isEqualToString:@"refresh_token"]) {
-                refreshToken = item.value;
-                break;
-            }
-        }
-        
         NSString *newRefreshToken = responseObject[@"refresh_token"];
         if (refreshToken && !newRefreshToken) {
             NSMutableDictionary *newResponseObject = [responseObject mutableCopy];
@@ -181,34 +187,37 @@ WFOAuth2AuthMethod const WFOAuth2AuthMethodClientSecretBasicAuth = @"client_secr
     }] resume];
 }
 
-- (WFOAuth2AuthorizationSession *)authorizationSessionWithResponseType:(WFOAuth2ResponseType)responseType
-                                                                scopes:(nullable NSArray<NSString *> *)scopes
-                                                           redirectURI:(nullable NSURL *)redirectURI
-                                                     completionHandler:(WFOAuth2AuthenticationHandler)completionHandler {
+- (WFOAuth2WebAuthorizationSession *)authorizationSessionWithResponseType:(WFOAuth2ResponseType)responseType
+                                                                   scopes:(nullable NSArray<NSString *> *)scopes
+                                                              redirectURI:(nullable NSURL *)redirectURI
+                                                        completionHandler:(WFOAuth2AuthenticationHandler)completionHandler {
     return [self authorizationSessionWithAuthorizationURL:self.authorizationURL
                                              responseType:responseType
                                                    scopes:scopes
                                               redirectURI:redirectURI
+                                       specifyRedirectURI:YES
                                         completionHandler:completionHandler];
 }
 
-- (WFOAuth2AuthorizationSession *)authorizationSessionWithAuthorizationURL:(NSURL *)authorizationURL
-                                                              responseType:(WFOAuth2ResponseType)responseType
-                                                                    scopes:(nullable NSArray<NSString *> *)scopes
-                                                               redirectURI:(nullable NSURL *)redirectURI
-                                                         completionHandler:(WFOAuth2AuthenticationHandler)completionHandler {    
+- (WFOAuth2WebAuthorizationSession *)authorizationSessionWithAuthorizationURL:(NSURL *)authorizationURL
+                                                                 responseType:(WFOAuth2ResponseType)responseType
+                                                                       scopes:(nullable NSArray<NSString *> *)scopes
+                                                                  redirectURI:(nullable NSURL *)redirectURI
+                                                           specifyRedirectURI:(BOOL)specifyRedirectURI
+                                                            completionHandler:(WFOAuth2AuthenticationHandler)completionHandler {
     NSString *scope = [[self class] combinedScopeFromScopes:scopes];
     
     NSMutableArray<NSURLQueryItem *> *parameters = [NSMutableArray new];
     [parameters addObject:[NSURLQueryItem queryItemWithName:@"client_id" value:self.clientID]];
     if (scope)
         [parameters addObject:[NSURLQueryItem queryItemWithName:@"scope" value:scope]];
-
-    return [[WFOAuth2AuthorizationSession alloc] initWithSessionManager:self
-                                                       authorizationURL:[authorizationURL wfo_URLByAppendingQueryItems:parameters]
-                                                           responseType:responseType
-                                                            redirectURI:redirectURI
-                                                      completionHandler:completionHandler];
+    
+    return [[WFOAuth2WebAuthorizationSession alloc] initWithSessionManager:self
+                                                          authorizationURL:[authorizationURL wfo_URLByAppendingQueryItems:parameters]
+                                                              responseType:responseType
+                                                               redirectURI:redirectURI
+                                                        specifyRedirectURI:specifyRedirectURI
+                                                         completionHandler:completionHandler];
 }
 
 #if __has_include(<WebKit/WebKit.h>)
@@ -216,7 +225,7 @@ WFOAuth2AuthMethod const WFOAuth2AuthMethodClientSecretBasicAuth = @"client_secr
                                              scopes:(nullable NSArray<NSString *> *)scopes
                                         redirectURI:(nullable NSURL *)redirectURI
                                   completionHandler:(WFOAuth2AuthenticationHandler)completionHandler {
-    WFOAuth2AuthorizationSession *authorizationSession = [self authorizationSessionWithResponseType:responseType scopes:scopes redirectURI:redirectURI completionHandler:completionHandler];
+    WFOAuth2WebAuthorizationSession *authorizationSession = [self authorizationSessionWithResponseType:responseType scopes:scopes redirectURI:redirectURI completionHandler:completionHandler];
     return [[WFOAuth2WebView alloc] initWithAuthorizationSession:authorizationSession];
 }
 #endif

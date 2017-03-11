@@ -20,26 +20,26 @@ NS_ASSUME_NONNULL_BEGIN
  
  @see [Section 1.4](https://tools.ietf.org/html/rfc6749#section-1.4)
  */
-@property (nonatomic, readonly, copy) NSString *accessToken;
+@property (nonatomic, readonly) NSString *accessToken;
 
 /**
  The type of access token. This defaults to "bearer".
  
  @see [Section 7.1](https://tools.ietf.org/html/rfc6749#section-7.1)
  */
-@property (nonatomic, readonly, copy) NSString *tokenType;
+@property (nonatomic, readonly) NSString *tokenType;
 
 /**
  The refresh token which can be used to refresh the access token.
  
  @see [Section 1.5](https://tools.ietf.org/html/rfc6749#section-1.5)
  */
-@property (nonatomic, readonly, copy, nullable) NSString *refreshToken;
+@property (nonatomic, readonly, nullable) NSString *refreshToken;
 
 /**
  The expiration date of the access token, or `nil` if the access token does not expire.
  */
-@property (nonatomic, readonly, copy, nullable) NSDate *expirationDate;
+@property (nonatomic, readonly, nullable) NSDate *expirationDate;
 
 /**
  A token is valid if it either has a refresh token, or the access token is not expired.

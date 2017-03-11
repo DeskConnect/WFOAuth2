@@ -32,6 +32,7 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>wfoauth2</string>
+				<string>db-k3869owh4bj3zbt</string>
 				<string>com.googleusercontent.apps.266399808145-3avt9dudaqe71j6lr8haqigudqi91lf5</string>
 			</array>
 		</dict>

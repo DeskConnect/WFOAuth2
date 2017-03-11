@@ -19,11 +19,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (nullable NSString *)combinedScopeFromScopes:(nullable NSArray<NSString *> *)scopes;
 
-- (WFOAuth2AuthorizationSession *)authorizationSessionWithAuthorizationURL:(NSURL *)authorizationURL
-                                                              responseType:(WFOAuth2ResponseType)responseType
-                                                                    scopes:(nullable NSArray<NSString *> *)scopes
-                                                               redirectURI:(nullable NSURL *)redirectURI
-                                                         completionHandler:(WFOAuth2AuthenticationHandler)completionHandler;
+- (void)authenticateWithRequest:(NSURLRequest *)request
+                   refreshToken:(nullable NSString *)refreshToken
+              completionHandler:(WFOAuth2AuthenticationHandler)completionHandler;
+
+- (WFOAuth2WebAuthorizationSession *)authorizationSessionWithAuthorizationURL:(NSURL *)authorizationURL
+                                                                 responseType:(WFOAuth2ResponseType)responseType
+                                                                       scopes:(nullable NSArray<NSString *> *)scopes
+                                                                  redirectURI:(nullable NSURL *)redirectURI
+                                                           specifyRedirectURI:(BOOL)specifyRedirectURI
+                                                            completionHandler:(WFOAuth2AuthenticationHandler)completionHandler;
 
 @end
 

@@ -22,6 +22,8 @@ WFLyftOAuth2Scope const WFLyftOfflineScope = @"offline";
 
 @implementation WFLyftOAuth2SessionManager
 
+#pragma mark - WFOAuth2ProviderSessionManager
+
 - (instancetype)initWithClientID:(NSString *)clientID
                     clientSecret:(nullable NSString *)clientSecret {
     return [self initWithSessionConfiguration:nil

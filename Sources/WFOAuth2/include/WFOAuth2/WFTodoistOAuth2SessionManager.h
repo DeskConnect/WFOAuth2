@@ -21,6 +21,9 @@ extern WFTodoistOAuth2Scope const WFTodoistDeleteProjectScope;
 
 @interface WFTodoistOAuth2SessionManager : WFOAuth2SessionManager<WFTodoistOAuth2Scope> <WFOAuth2ProviderSessionManager, WFOAuth2RevocableSessionManager>
 
+- (void)authenticateWithScopes:(nullable NSArray<WFTodoistOAuth2Scope> *)scopes
+             completionHandler:(WFOAuth2AuthenticationHandler)completionHandler NS_UNAVAILABLE;
+
 - (void)authenticateWithUsername:(NSString *)username
                         password:(NSString *)password
                           scopes:(nullable NSArray<WFTodoistOAuth2Scope> *)scopes

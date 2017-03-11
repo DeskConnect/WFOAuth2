@@ -36,6 +36,8 @@ WFSlackOAuth2Scope const WFSlackUserWriteScope = @"users:write";
 
 @implementation WFSlackOAuth2SessionManager
 
+#pragma mark - WFOAuth2ProviderSessionManager
+
 - (instancetype)initWithClientID:(NSString *)clientID
                     clientSecret:(nullable NSString *)clientSecret {
     return [self initWithSessionConfiguration:nil

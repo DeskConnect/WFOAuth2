@@ -26,6 +26,8 @@ WFTodoistOAuth2Scope const WFTodoistDeleteProjectScope = @"project:delete";
     return [scopes componentsJoinedByString:@","];
 }
 
+#pragma mark - WFOAuth2ProviderSessionManager
+
 - (instancetype)initWithClientID:(NSString *)clientID
                     clientSecret:(nullable NSString *)clientSecret {
     return [self initWithSessionConfiguration:nil

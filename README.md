@@ -3,7 +3,7 @@
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/WFOAuth2.svg)](https://img.shields.io/cocoapods/v/WFOAuth2.svg)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-brightgreen.svg)](https://github.com/Carthage/Carthage)
 ![Swift Package Manager](https://img.shields.io/badge/SPM-compatible-brightgreen.svg)
-[![Travis CI](https://img.shields.io/travis/DeskConnect/WFOAuth2.svg)](https://travis-ci.org/DeskConnect/WFOAuth2)
+[![Build Status](https://travis-ci.org/DeskConnect/WFOAuth2.svg?branch=master)](https://travis-ci.org/DeskConnect/WFOAuth2)
 [![Platform](https://img.shields.io/cocoapods/p/WFOAuth2.svg?style=flat)](http://cocoadocs.org/docsets/WFOAuth2)
 
 **WFOAuth2** is an extensible OAuth 2 library for macOS, iOS, tvOS and watchOS. It aims to simplify authenticating your app with a variety of services.
@@ -14,19 +14,21 @@
 
 <table>
   <tr>
+    <td><img src="https://s3.amazonaws.com/workflow-actions/icons/net.box.BoxNet@2x.png" alt="Box" width="29"/></td><td>Box</td>
+    <td><img src="https://s3.amazonaws.com/workflow-actions/icons/imgurmobile@2x.png" alt="Imgur" width="29"/></td><td>Imgur</td>
+    <td><img src="https://s3.amazonaws.com/workflow-actions/icons/com.squareup.square@2x.png" alt="Square" width="29"/></td><td>Square</td>
+    <td><img src="https://s3.amazonaws.com/workflow-actions/icons/net.kortina.labs.Venmo@2x.png" alt="Wunderlist" width="29"/></td><td>Venmo</td>
+  </tr>
+  <tr>
     <td><img src="https://s3.amazonaws.com/workflow-actions/icons/com.getdropbox.Dropbox@2x.png" alt="Dropbox" width="29"/></td><td>Dropbox</td>
     <td><img src="https://s3.amazonaws.com/workflow-actions/icons/com.zimride.instant@2x.png" alt="Lyft" width="29"/></td><td>Lyft</td>
     <td><img src="https://s3.amazonaws.com/workflow-actions/icons/com.todoist.ios@2x.png" alt="Todoist" width="29"/></td><td>Todoist</td>
+    <td><img src="https://s3.amazonaws.com/workflow-actions/icons/com.6wunderkinder.wunderlistmobile@2x.png" alt="Wunderlist" width="29"/></td><td>Wunderlist</td>
   </tr>
   <tr>
     <td><img src="https://s3.amazonaws.com/workflow-actions/icons/com.google.GoogleMobile@2x.png" alt="Google" width="29"/></td><td>Google</td>
     <td><img src="https://s3.amazonaws.com/workflow-actions/icons/com.tinyspeck.chatlyio@2x.png" alt="Slack" width="29"/></td><td>Slack</td>
     <td><img src="https://s3.amazonaws.com/workflow-actions/icons/com.ubercab.UberClient@2x.png" alt="Uber" width="29"/></td><td>Uber</td>
-  </tr>
-  <tr>
-    <td><img src="https://s3.amazonaws.com/workflow-actions/icons/imgurmobile@2x.png" alt="Imgur" width="29"/></td><td>Imgur</td>
-    <td><img src="https://s3.amazonaws.com/workflow-actions/icons/com.squareup.square@2x.png" alt="Square" width="29"/></td><td>Square</td>
-    <td><img src="https://s3.amazonaws.com/workflow-actions/icons/com.6wunderkinder.wunderlistmobile@2x.png" alt="Wunderlist" width="29"/></td><td>Wunderlist</td>
   </tr>
 </table>
 

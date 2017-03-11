@@ -15,7 +15,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @class WFOAuth2Credential;
-@class WFOAuth2AuthorizationSession;
+@class WFOAuth2WebAuthorizationSession;
 
 typedef NSString *WFOAuth2ResponseType NS_EXTENSIBLE_STRING_ENUM;
 extern WFOAuth2ResponseType const WFOAuth2ResponseTypeCode;
@@ -145,10 +145,10 @@ typedef void (^WFOAuth2AuthenticationHandler)(WFOAuth2Credential * __nullable cr
  @return A URL request containing all of the specified parameters
  @see [Section 4.1.1](https://tools.ietf.org/html/rfc6749#section-4.1.1)
  */
-- (WFOAuth2AuthorizationSession *)authorizationSessionWithResponseType:(WFOAuth2ResponseType)responseType
-                                                                scopes:(nullable NSArray<ScopeType> *)scopes
-                                                           redirectURI:(nullable NSURL *)redirectURI
-                                                     completionHandler:(WFOAuth2AuthenticationHandler)completionHandler;
+- (WFOAuth2WebAuthorizationSession *)authorizationSessionWithResponseType:(WFOAuth2ResponseType)responseType
+                                                                   scopes:(nullable NSArray<ScopeType> *)scopes
+                                                              redirectURI:(nullable NSURL *)redirectURI
+                                                        completionHandler:(WFOAuth2AuthenticationHandler)completionHandler;
 
 #if __has_include(<WebKit/WebKit.h>)
 /**

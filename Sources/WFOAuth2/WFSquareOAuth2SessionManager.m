@@ -31,6 +31,8 @@ WFSquareOAuth2Scope const WFSquareTimecardsWriteScope = @"TIMECARDS_WRITE";
 
 @implementation WFSquareOAuth2SessionManager
 
+#pragma mark - WFOAuth2ProviderSessionManager
+
 - (instancetype)initWithClientID:(NSString *)clientID
                     clientSecret:(nullable NSString *)clientSecret {
     return [self initWithSessionConfiguration:nil

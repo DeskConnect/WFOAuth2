@@ -57,12 +57,12 @@ matrix:
     xcode_sdk: iphonesimulator
     osx_image: xcode8.2
     rvm:
-    - 2.4.0
+    - ruby-2.3.0
     env:
     - XCODE_ACTION=build
     - XCODE_DESTINATION="platform=iOS Simulator,OS=10.2,name=iPad Air 2"
     after_success: |
-      [ $TRAVIS_BRANCH = develop ] &&
+      [ $TRAVIS_BRANCH = master ] &&
       [ $TRAVIS_PULL_REQUEST = false ] &&
       gem install jazzy &&
       jazzy doc &&

@@ -11,13 +11,13 @@
 #import <objc/runtime.h>
 
 #import <WFOAuth2/WFOAuth2WebView.h>
-#import <WFOAuth2/WFOAuth2AuthorizationSessionPrivate.h>
+#import <WFOAuth2/WFOAuth2WebAuthorizationSessionPrivate.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface WFOAuth2WebView () <WKNavigationDelegate>
 
-@property (nonatomic, readonly, strong) WFOAuth2AuthorizationSession *authorizationSession;
+@property (nonatomic, readonly, strong) WFOAuth2WebAuthorizationSession *authorizationSession;
 @property (nonatomic, weak) id<WKNavigationDelegate> realNavigationDelegate;
 
 @end
@@ -26,7 +26,7 @@ static void *WFOAuth2WebViewTitleContext = &WFOAuth2WebViewTitleContext;
 
 @implementation WFOAuth2WebView
 
-- (instancetype)initWithAuthorizationSession:(WFOAuth2AuthorizationSession *)authorizationSession {
+- (instancetype)initWithAuthorizationSession:(WFOAuth2WebAuthorizationSession *)authorizationSession {
     NSParameterAssert(authorizationSession);
     
     WKWebViewConfiguration *configuration = [WKWebViewConfiguration new];
@@ -63,7 +63,7 @@ static void *WFOAuth2WebViewTitleContext = &WFOAuth2WebViewTitleContext;
                 [responseObject setValue:item.value forKey:item.name];
         }
         
-        WFOAuth2AuthorizationSession *authorizationSession = self.authorizationSession;
+        WFOAuth2WebAuthorizationSession *authorizationSession = self.authorizationSession;
         NSString *responseKey = authorizationSession.responseKey;
         if (responseObject[responseKey] || responseObject[@"state"] || responseObject[@"error"]) {
             [self loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];

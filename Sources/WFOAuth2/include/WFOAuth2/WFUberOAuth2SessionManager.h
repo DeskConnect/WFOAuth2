@@ -12,6 +12,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class WFUberAppAuthorizationSession;
+
 typedef NSString *WFUberOAuth2Scope NS_EXTENSIBLE_STRING_ENUM;
 extern WFUberOAuth2Scope const WFUberUserProfileScope;
 extern WFUberOAuth2Scope const WFUberUserHistoryScope;
@@ -28,12 +30,19 @@ extern WFUberOAuth2Scope const WFUberAllTripsScope;
                                 clientSecret:(nullable NSString *)clientSecret
                                 singleSignOn:(BOOL)singleSignOn;
 
-- (void)authenticateWithScope:(nullable NSString *)scope
-            completionHandler:(WFOAuth2AuthenticationHandler)completionHandler NS_UNAVAILABLE;
+#if TARGET_OS_IOS
+- (WFUberAppAuthorizationSession *)appAuthorizationSessionWithAppName:(NSString *)name
+                                                               scopes:(nullable NSArray<WFUberOAuth2Scope> *)scopes
+                                                          redirectURI:(nullable NSURL *)redirectURI
+                                                    completionHandler:(WFOAuth2AuthenticationHandler)completionHandler;
+#endif
+
+- (void)authenticateWithScopes:(nullable NSArray<WFUberOAuth2Scope> *)scopes
+             completionHandler:(WFOAuth2AuthenticationHandler)completionHandler NS_UNAVAILABLE;
 
 - (void)authenticateWithUsername:(NSString *)username
                         password:(NSString *)password
-                           scope:(nullable NSString *)scope
+                          scopes:(nullable NSArray<WFUberOAuth2Scope> *)scopes
                completionHandler:(WFOAuth2AuthenticationHandler)completionHandler NS_UNAVAILABLE;
 
 @end

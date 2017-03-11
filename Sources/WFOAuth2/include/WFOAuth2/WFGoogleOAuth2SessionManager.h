@@ -21,16 +21,16 @@ extern WFGoogleOAuth2Scope const WFGoogleEmailScope;
 
 @interface WFGoogleOAuth2SessionManager : WFOAuth2SessionManager<WFGoogleOAuth2Scope> <WFOAuth2ProviderSessionManager, WFOAuth2RevocableSessionManager>
 
-- (WFOAuth2AuthorizationSession *)authorizationSessionWithScopes:(nullable NSArray<WFGoogleOAuth2Scope> *)scopes
-                                                       loginHint:(nullable NSString *)loginHint
-                                                     redirectURI:(nullable NSURL *)redirectURI
-                                               completionHandler:(WFOAuth2AuthenticationHandler)completionHandler;
+- (WFOAuth2WebAuthorizationSession *)authorizationSessionWithScopes:(nullable NSArray<WFGoogleOAuth2Scope> *)scopes
+                                                          loginHint:(nullable NSString *)loginHint
+                                                        redirectURI:(nullable NSURL *)redirectURI
+                                                  completionHandler:(WFOAuth2AuthenticationHandler)completionHandler;
 
 #if __has_include(<WebKit/WebKit.h>)
 - (WKWebView *)authorizationWebViewWithScopes:(nullable NSArray<WFGoogleOAuth2Scope> *)scopes
                                     loginHint:(nullable NSString *)loginHint
                                   redirectURI:(nullable NSURL *)redirectURI
-                            completionHandler:(WFOAuth2AuthenticationHandler)completionHandler;
+                            completionHandler:(WFOAuth2AuthenticationHandler)completionHandler __attribute__((deprecated("Google has deprecated support for OAuth 2.0 authorization in web views", "authorizationSessionWithScopes")));
 #endif
 
 - (void)authenticateWithScopes:(nullable NSArray<WFGoogleOAuth2Scope> *)scopes

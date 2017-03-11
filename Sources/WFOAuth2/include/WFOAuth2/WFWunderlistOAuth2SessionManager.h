@@ -13,6 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface WFWunderlistOAuth2SessionManager : WFOAuth2SessionManager <WFOAuth2ProviderSessionManager>
 
+- (void)authenticateWithScopes:(nullable NSArray<NSString *> *)scopes
+             completionHandler:(WFOAuth2AuthenticationHandler)completionHandler NS_UNAVAILABLE;
+
 - (void)authenticateWithUsername:(NSString *)username
                         password:(NSString *)password
                           scopes:(nullable NSArray<NSString *> *)scopes

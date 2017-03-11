@@ -1,29 +1,28 @@
 //
-//  WFOAuth2AuthorizationSession.m
+//  WFOAuth2WebAuthorizationSession.m
 //  WFOAuth2
 //
 //  Created by Conrad Kramer on 2/17/17.
 //  Copyright © 2017 DeskConnect, Inc. All rights reserved.
 //
 
-#import <WFOAuth2/WFOAuth2AuthorizationSessionPrivate.h>
+#import <WFOAuth2/WFOAuth2WebAuthorizationSessionPrivate.h>
 #import <WFOAuth2/WFOAuth2Credential.h>
 #import <WFOAuth2/WFOAuth2Error.h>
 #import <WFOAuth2/NSURL+WFOAuth2.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface WFOAuth2AuthorizationSession ()
+@interface WFOAuth2WebAuthorizationSession ()
 
-@property (nonatomic, readonly, copy) WFOAuth2SessionManager *sessionManager;
+@property (nonatomic, readonly) WFOAuth2SessionManager *sessionManager;
 @property (nonatomic, readonly, copy) WFOAuth2ResponseType responseType;
-@property (nonatomic, readonly, copy, nullable) NSURL *redirectURI;
-@property (nonatomic, readonly, copy) NSString *state;
+@property (nonatomic, readonly) NSString *state;
 @property (nonatomic, copy, nullable) WFOAuth2AuthenticationHandler completionHandler;
 
 @end
 
-@implementation WFOAuth2AuthorizationSession
+@implementation WFOAuth2WebAuthorizationSession
 
 #if TARGET_OS_IOS
 @synthesize safariViewController = _safariViewController;
@@ -33,6 +32,7 @@ NS_ASSUME_NONNULL_BEGIN
                       authorizationURL:(NSURL *)authorizationURL
                           responseType:(WFOAuth2ResponseType)responseType
                            redirectURI:(nullable NSURL *)redirectURI
+                    specifyRedirectURI:(BOOL)specifyRedirectURI
                      completionHandler:(WFOAuth2AuthenticationHandler)completionHandler {
     NSParameterAssert(sessionManager);
     NSParameterAssert(authorizationURL);
@@ -56,7 +56,7 @@ NS_ASSUME_NONNULL_BEGIN
     NSMutableArray<NSURLQueryItem *> *parameters = [NSMutableArray new];
     [parameters addObject:[NSURLQueryItem queryItemWithName:@"response_type" value:responseType]];
     [parameters addObject:[NSURLQueryItem queryItemWithName:@"state" value:_state]];
-    if (redirectURI)
+    if (redirectURI && specifyRedirectURI)
         [parameters addObject:[NSURLQueryItem queryItemWithName:@"redirect_uri" value:redirectURI.absoluteString]];
     
     _authorizationURL = [authorizationURL wfo_URLByAppendingQueryItems:parameters];
@@ -115,6 +115,8 @@ NS_ASSUME_NONNULL_BEGIN
     return YES;
 }
 
+#pragma mark - WFOAuth2AuthorizationSession
+
 - (BOOL)resumeSessionWithURL:(NSURL *)URL {
     NSURLComponents *components = [NSURLComponents componentsWithURL:URL resolvingAgainstBaseURL:NO];
     
@@ -129,7 +131,7 @@ NS_ASSUME_NONNULL_BEGIN
         for (NSURLQueryItem *item in fragmentComponents.queryItems)
             [responseObject setValue:item.value forKey:item.name];
     }
-    
+
     NSURL *redirectURI = self.redirectURI;
     if (redirectURI) {
         // Uber redirects errors to a different endpoint
@@ -145,7 +147,7 @@ NS_ASSUME_NONNULL_BEGIN
     }
 }
 
-#if TARGET_OS_IOS
+#if TARGET_OS_IOS || TARGET_OS_TV
 - (BOOL)resumeSessionWithURL:(NSURL *)URL options:(nullable NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options {
     NSString *sourceApplication = options[UIApplicationOpenURLOptionsSourceApplicationKey];
     if ([sourceApplication isEqualToString:@"com.apple.SafariViewService"] ||

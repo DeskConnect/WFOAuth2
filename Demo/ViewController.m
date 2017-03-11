@@ -63,47 +63,125 @@ NS_ASSUME_NONNULL_BEGIN
     if (!sessionManager)
         return;
     
-    if ([configuration.redirectURI.scheme hasPrefix:@"com.googleusercontent"]) {
-        // Test the loginHint parameter
-        __weak __typeof__(self) weakSelf = self;
-        WFOAuth2AuthorizationSession *authorizationSession = [(WFGoogleOAuth2SessionManager *)sessionManager authorizationSessionWithScopes:configuration.scopes loginHint:@"conrad@deskconnect.com" redirectURI:configuration.redirectURI completionHandler:^(WFOAuth2Credential * __nullable credential, NSError * __nullable error) {
-            if (credential) {
-                [weakSelf presentCredential:credential fromSessionManager:sessionManager];
-            } else if (error) {
-                [weakSelf presentError:error];
+    __weak __typeof__(self) weakSelf = self;
+    WFOAuth2AuthenticationHandler completionHandler = ^(WFOAuth2Credential * __nullable credential, NSError * __nullable error) {
+        if (credential) {
+            [weakSelf presentCredential:credential fromSessionManager:sessionManager];
+        } else if (error) {
+            [weakSelf presentError:error];
+        }
+    };
+    
+    // Use app auth if available for Dropbox
+    if ([sessionManager isKindOfClass:[WFDropboxOAuth2SessionManager class]]) {
+        WFDropboxAppAuthorizationSession *authorizationSession = [(WFDropboxOAuth2SessionManager *)sessionManager appAuthorizationSessionWithCompletionHandler:completionHandler];
+        
+        NSMutableArray<NSURL *> *authorizationURLs = [authorizationSession.authorizationURLs mutableCopy];
+        __weak __block void (^recursiveCompletion)(BOOL) = nil;
+        void (^completion)(BOOL) = ^(BOOL success) {
+            if (success) {
+                AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                delegate.currentSession = authorizationSession;
+                return;
             }
-        }];
-        
-        AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        delegate.currentSession = authorizationSession;
-        
-        SFSafariViewController *safariViewController = authorizationSession.safariViewController;
-        safariViewController.modalPresentationStyle = UIModalPresentationFormSheet;
-        [self presentViewController:safariViewController animated:YES completion:nil];
-    } else if ([configuration.redirectURI.scheme isEqualToString:@"wfoauth2"]) {
-        __weak __typeof__(self) weakSelf = self;
-        WFOAuth2AuthorizationSession *authorizationSession = [sessionManager authorizationSessionWithResponseType:WFOAuth2ResponseTypeCode scopes:configuration.scopes redirectURI:configuration.redirectURI completionHandler:^(WFOAuth2Credential * __nullable credential, NSError * __nullable error) {
-            if (credential) {
-                [weakSelf presentCredential:credential fromSessionManager:sessionManager];
-            } else if (error) {
-                [weakSelf presentError:error];
+            
+            NSURL *authorizationURL = authorizationURLs.firstObject;
+            if (!authorizationURL) {
+                [self presentSafariViewControllerForConfiguration:configuration];
+                return;
             }
-        }];
+            
+            [authorizationURLs removeObjectAtIndex:0];
+            [[UIApplication sharedApplication] openURL:authorizationURL options:@{} completionHandler:recursiveCompletion];
+        };
+        recursiveCompletion = completion;
         
-        AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        delegate.currentSession = authorizationSession;
-        
-        SFSafariViewController *safariViewController = authorizationSession.safariViewController;
-        safariViewController.modalPresentationStyle = UIModalPresentationFormSheet;
-        [self presentViewController:safariViewController animated:YES completion:nil];
-    } else {
-        LoginViewController *loginViewController = [[LoginViewController alloc] initWithSessionManager:sessionManager scopes:configuration.scopes redirectURI:configuration.redirectURI];
-        loginViewController.delegate = self;
-        
-        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
-        navigationController.modalPresentationStyle = UIModalPresentationFormSheet;
-        [self presentViewController:navigationController animated:YES completion:nil];
+        completion(NO);
+        return;
     }
+    
+    // Use app auth if available for Uber
+    if ([sessionManager isKindOfClass:[WFUberOAuth2SessionManager class]]) {
+        WFUberAppAuthorizationSession *authorizationSession = [(WFUberOAuth2SessionManager *)sessionManager appAuthorizationSessionWithAppName:@"WFOAuth2" scopes:configuration.scopes redirectURI:configuration.redirectURI completionHandler:completionHandler];
+        [[UIApplication sharedApplication] openURL:authorizationSession.authorizationURL options:@{} completionHandler:^(BOOL success) {
+            if (success) {
+                AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                delegate.currentSession = authorizationSession;
+            }
+        }];
+        return;
+    }
+    
+    // Use app auth if available for Venmo
+    if ([sessionManager isKindOfClass:[WFVenmoOAuth2SessionManager class]]) {
+        WFVenmoAppAuthorizationSession *authorizationSession = [(WFVenmoOAuth2SessionManager *)sessionManager appAuthorizationSessionWithScopes:configuration.scopes completionHandler:completionHandler];
+        [[UIApplication sharedApplication] openURL:authorizationSession.authorizationURL options:@{} completionHandler:^(BOOL success) {
+            if (success) {
+                AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                delegate.currentSession = authorizationSession;
+            } else {
+                [self presentSafariViewControllerForConfiguration:configuration];
+            }
+        }];
+        return;
+    }
+    
+    // Use SFSafariViewController if possible
+    if ([configuration.redirectURI.scheme isEqualToString:@"wfoauth2"] ||
+        [configuration.redirectURI.scheme hasPrefix:@"com.googleusercontent"]) {
+        [self presentSafariViewControllerForConfiguration:configuration];
+    } else {
+        [self presentWebViewForConfiguration:configuration];
+    }
+}
+
+- (void)presentSafariViewControllerForConfiguration:(ProviderConfiguration *)configuration {
+    WFOAuth2SessionManager *sessionManager = configuration.sessionManager;
+    if (!sessionManager)
+        return;
+    
+    __weak __typeof__(self) weakSelf = self;
+    WFOAuth2AuthenticationHandler completionHandler = ^(WFOAuth2Credential * __nullable credential, NSError * __nullable error) {
+        if (credential) {
+            [weakSelf presentCredential:credential fromSessionManager:sessionManager];
+        } else if (error) {
+            [weakSelf presentError:error];
+        }
+    };
+    
+    WFOAuth2WebAuthorizationSession *authorizationSession = nil;
+    if ([sessionManager isKindOfClass:[WFGoogleOAuth2SessionManager class]]) {
+        // Test the loginHint parameter for Google
+        authorizationSession = [(WFGoogleOAuth2SessionManager *)sessionManager authorizationSessionWithScopes:configuration.scopes loginHint:@"conrad@deskconnect.com" redirectURI:configuration.redirectURI completionHandler:completionHandler];
+    } else if ([sessionManager isKindOfClass:[WFDropboxOAuth2SessionManager class]]) {
+        // Test the Dropbox convenience method for initializting an authorization session
+        authorizationSession = [(WFDropboxOAuth2SessionManager *)sessionManager authorizationSessionWithCompletionHandler:completionHandler];
+    } else if ([sessionManager isKindOfClass:[WFVenmoOAuth2SessionManager class]]) {
+        // Test the Venmo convenience method for initializting an authorization session
+        authorizationSession = [(WFVenmoOAuth2SessionManager *)sessionManager authorizationSessionWithScopes:configuration.scopes completionHandler:completionHandler];
+    } else {
+        authorizationSession = [sessionManager authorizationSessionWithResponseType:WFOAuth2ResponseTypeCode scopes:configuration.scopes redirectURI:configuration.redirectURI completionHandler:completionHandler];
+    }
+
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    delegate.currentSession = authorizationSession;
+    
+    SFSafariViewController *safariViewController = authorizationSession.safariViewController;
+    safariViewController.modalPresentationStyle = UIModalPresentationFormSheet;
+    [self presentViewController:safariViewController animated:YES completion:nil];
+}
+
+- (void)presentWebViewForConfiguration:(ProviderConfiguration *)configuration {
+    WFOAuth2SessionManager *sessionManager = configuration.sessionManager;
+    if (!sessionManager)
+        return;
+    
+    LoginViewController *loginViewController = [[LoginViewController alloc] initWithSessionManager:sessionManager scopes:configuration.scopes redirectURI:configuration.redirectURI];
+    loginViewController.delegate = self;
+    
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
+    navigationController.modalPresentationStyle = UIModalPresentationFormSheet;
+    [self presentViewController:navigationController animated:YES completion:nil];
 }
 
 - (void)presentError:(NSError *)error {

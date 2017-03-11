@@ -7,6 +7,7 @@
 //
 
 #import <WFOAuth2/WFUberOAuth2SessionManager.h>
+#import <WFOAuth2/WFUberAppAuthorizationSession.h>
 #import <WFOAuth2/WFOAuth2SessionManagerPrivate.h>
 #import <WFOAuth2/WFOAuth2Credential.h>
 #import <WFOAuth2/NSMutableURLRequest+WFOAuth2.h>
@@ -22,6 +23,36 @@ WFUberOAuth2Scope const WFUberRequestReceiptScope = @"request_receipt";
 WFUberOAuth2Scope const WFUberAllTripsScope = @"all_trips";
 
 @implementation WFUberOAuth2SessionManager
+
+- (instancetype)initWithSessionConfiguration:(nullable NSURLSessionConfiguration *)configuration
+                                    clientID:(NSString *)clientID
+                                clientSecret:(nullable NSString *)clientSecret
+                                singleSignOn:(BOOL)singleSignOn {
+    NSURL *tokenURL = (singleSignOn ?
+                       [NSURL URLWithString:@"https://login.uber.com/oauth/v2/mobile/token"] :
+                       [NSURL URLWithString:@"https://login.uber.com/oauth/token"]);
+    return [self initWithSessionConfiguration:configuration
+                                     tokenURL:tokenURL
+                             authorizationURL:[NSURL URLWithString:@"https://login.uber.com/oauth/v2/authorize"]
+                         authenticationMethod:WFOAuth2AuthMethodClientSecretPostBody
+                                     clientID:clientID
+                                 clientSecret:clientSecret];
+}
+
+#if TARGET_OS_IOS
+- (WFUberAppAuthorizationSession *)appAuthorizationSessionWithAppName:(NSString *)name
+                                                               scopes:(nullable NSArray<WFUberOAuth2Scope> *)scopes
+                                                          redirectURI:(nullable NSURL *)redirectURI
+                                                    completionHandler:(WFOAuth2AuthenticationHandler)completionHandler {
+    return [[WFUberAppAuthorizationSession alloc] initWithClientID:self.clientID
+                                                           appName:name
+                                                            scopes:scopes
+                                                       redirectURI:redirectURI
+                                                 completionHandler:completionHandler];
+}
+#endif
+
+#pragma mark - WFOAuth2ProviderSessionManager
 
 - (instancetype)initWithClientID:(NSString *)clientID
                     clientSecret:(nullable NSString *)clientSecret {
@@ -40,21 +71,6 @@ WFUberOAuth2Scope const WFUberAllTripsScope = @"all_trips";
                                  singleSignOn:YES];
 }
 
-- (instancetype)initWithSessionConfiguration:(nullable NSURLSessionConfiguration *)configuration
-                                    clientID:(NSString *)clientID
-                                clientSecret:(nullable NSString *)clientSecret
-                                singleSignOn:(BOOL)singleSignOn {
-    NSURL *tokenURL = (singleSignOn ?
-                       [NSURL URLWithString:@"https://login.uber.com/oauth/v2/mobile/token"] :
-                       [NSURL URLWithString:@"https://login.uber.com/oauth/token"]);
-    return [self initWithSessionConfiguration:configuration
-                                     tokenURL:tokenURL
-                             authorizationURL:[NSURL URLWithString:@"https://login.uber.com/oauth/v2/authorize"]
-                         authenticationMethod:WFOAuth2AuthMethodClientSecretPostBody
-                                     clientID:clientID
-                                 clientSecret:clientSecret];
-}
-
 #pragma mark - WFOAuth2RevocableSessionManager
 
 - (void)revokeCredential:(WFOAuth2Credential *)credential
@@ -68,7 +84,7 @@ WFUberOAuth2Scope const WFUberAllTripsScope = @"all_trips";
     if (clientSecret)
         parameters = [parameters arrayByAddingObject:[NSURLQueryItem queryItemWithName:@"client_secret" value:clientSecret]];
     
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://login.uber.com/oauth/revoke"]];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://login.uber.com/oauth/v2/revoke"]];
     [request setHTTPMethod:@"POST"];
     [request wfo_setBodyWithQueryItems:parameters];
     

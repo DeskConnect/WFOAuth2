@@ -22,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (NSURLComponents *)wfo_normalizedURLComponents {
-    NSURLComponents *components = [NSURLComponents componentsWithURL:self resolvingAgainstBaseURL:NO];
+    NSURLComponents *components = [NSURLComponents componentsWithURL:self.absoluteURL resolvingAgainstBaseURL:NO];
     components.query = nil;
     components.fragment = nil;
     if ([components.path hasSuffix:@"/"])

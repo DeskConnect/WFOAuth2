@@ -1,0 +1,1265 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFBoxOAuth2SessionManager.h",
+      "line": 15,
+      "symbol": "WFBoxOAuth2Scope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.typedef",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFBoxOAuth2SessionManager.h",
+      "line": 16,
+      "symbol": "WFBoxReadWriteScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFBoxOAuth2SessionManager.h",
+      "line": 17,
+      "symbol": "WFBoxManageEnterpriseScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFBoxOAuth2SessionManager.h",
+      "line": 18,
+      "symbol": "WFBoxManageManagedUsersScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFBoxOAuth2SessionManager.h",
+      "line": 19,
+      "symbol": "WFBoxManageGroupsScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFBoxOAuth2SessionManager.h",
+      "line": 20,
+      "symbol": "WFBoxManagePropertiesScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFBoxOAuth2SessionManager.h",
+      "line": 21,
+      "symbol": "WFBoxManageDataRetentionScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFBoxOAuth2SessionManager.h",
+      "line": 22,
+      "symbol": "WFBoxManageAppUsersScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFBoxOAuth2SessionManager.h",
+      "line": 23,
+      "symbol": "WFBoxManageWebhooksScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFBoxOAuth2SessionManager.h",
+      "line": 25,
+      "symbol": "WFBoxOAuth2SessionManager",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFBoxOAuth2SessionManager.h",
+      "line": 27,
+      "symbol": "WFBoxOAuth2SessionManager.-authenticateWithScopes:completionHandler:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFBoxOAuth2SessionManager.h",
+      "line": 30,
+      "symbol": "WFBoxOAuth2SessionManager.-authenticateWithUsername:password:scopes:completionHandler:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFDropboxAppAuthorizationSession.h",
+      "line": 16,
+      "symbol": "WFDropboxAppAuthorizationSession",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFDropboxAppAuthorizationSession.h",
+      "line": 18,
+      "symbol": "WFDropboxAppAuthorizationSession.authorizationURLs",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFDropboxAppAuthorizationSession.h",
+      "line": 19,
+      "symbol": "WFDropboxAppAuthorizationSession.successURI",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFDropboxAppAuthorizationSession.h",
+      "line": 20,
+      "symbol": "WFDropboxAppAuthorizationSession.cancelURI",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFDropboxAppAuthorizationSession.h",
+      "line": 22,
+      "symbol": "WFDropboxAppAuthorizationSession.-init",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFDropboxAppAuthorizationSession.h",
+      "line": 24,
+      "symbol": "WFDropboxAppAuthorizationSession.-initWithClientID:completionHandler:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFDropboxOAuth2SessionManager.h",
+      "line": 17,
+      "symbol": "WFDropboxOAuth2SessionManager",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFDropboxOAuth2SessionManager.h",
+      "line": 19,
+      "symbol": "WFDropboxOAuth2SessionManager.-authorizationSessionWithCompletionHandler:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFDropboxOAuth2SessionManager.h",
+      "line": 22,
+      "symbol": "WFDropboxOAuth2SessionManager.-appAuthorizationSessionWithCompletionHandler:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFDropboxOAuth2SessionManager.h",
+      "line": 26,
+      "symbol": "WFDropboxOAuth2SessionManager.-authorizationWebViewWithRedirectURI:completionHandler:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFDropboxOAuth2SessionManager.h",
+      "line": 30,
+      "symbol": "WFDropboxOAuth2SessionManager.-authenticateWithLegacyAccessToken:accessTokenSecret:completionHandler:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFDropboxOAuth2SessionManager.h",
+      "line": 34,
+      "symbol": "WFDropboxOAuth2SessionManager.-authenticateWithScopes:completionHandler:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFDropboxOAuth2SessionManager.h",
+      "line": 37,
+      "symbol": "WFDropboxOAuth2SessionManager.-authenticateWithUsername:password:scopes:completionHandler:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFGoogleOAuth2SessionManager.h",
+      "line": 15,
+      "symbol": "WFGoogleNativeRedirectURIString",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFGoogleOAuth2SessionManager.h",
+      "line": 17,
+      "symbol": "WFGoogleOAuth2Scope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.typedef",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFGoogleOAuth2SessionManager.h",
+      "line": 18,
+      "symbol": "WFGoogleOpenIDScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFGoogleOAuth2SessionManager.h",
+      "line": 19,
+      "symbol": "WFGoogleProfileScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFGoogleOAuth2SessionManager.h",
+      "line": 20,
+      "symbol": "WFGoogleEmailScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFGoogleOAuth2SessionManager.h",
+      "line": 22,
+      "symbol": "WFGoogleOAuth2SessionManager",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFGoogleOAuth2SessionManager.h",
+      "line": 24,
+      "symbol": "WFGoogleOAuth2SessionManager.-authorizationSessionWithScopes:loginHint:redirectURI:completionHandler:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFGoogleOAuth2SessionManager.h",
+      "line": 30,
+      "symbol": "WFGoogleOAuth2SessionManager.-authorizationWebViewWithScopes:loginHint:redirectURI:completionHandler:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFGoogleOAuth2SessionManager.h",
+      "line": 36,
+      "symbol": "WFGoogleOAuth2SessionManager.-authenticateWithScopes:completionHandler:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFGoogleOAuth2SessionManager.h",
+      "line": 39,
+      "symbol": "WFGoogleOAuth2SessionManager.-authenticateWithUsername:password:scopes:completionHandler:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFImgurOAuth2SessionManager.h",
+      "line": 14,
+      "symbol": "WFImgurOAuth2SessionManager",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFImgurOAuth2SessionManager.h",
+      "line": 16,
+      "symbol": "WFImgurOAuth2SessionManager.-authenticateWithScopes:completionHandler:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFImgurOAuth2SessionManager.h",
+      "line": 19,
+      "symbol": "WFImgurOAuth2SessionManager.-authenticateWithUsername:password:scopes:completionHandler:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFLyftOAuth2SessionManager.h",
+      "line": 15,
+      "symbol": "WFLyftOAuth2Scope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.typedef",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFLyftOAuth2SessionManager.h",
+      "line": 16,
+      "symbol": "WFLyftPublicScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFLyftOAuth2SessionManager.h",
+      "line": 17,
+      "symbol": "WFLyftReadRidesScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFLyftOAuth2SessionManager.h",
+      "line": 18,
+      "symbol": "WFLyftRequestRidesScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFLyftOAuth2SessionManager.h",
+      "line": 19,
+      "symbol": "WFLyftProfileScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFLyftOAuth2SessionManager.h",
+      "line": 20,
+      "symbol": "WFLyftOfflineScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFLyftOAuth2SessionManager.h",
+      "line": 22,
+      "symbol": "WFLyftOAuth2SessionManager",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFLyftOAuth2SessionManager.h",
+      "line": 24,
+      "symbol": "WFLyftOAuth2SessionManager.-authenticateWithUsername:password:scopes:completionHandler:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFOAuth2AuthorizationSession.h",
+      "line": 17,
+      "symbol": "WFOAuth2AuthorizationSession",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFOAuth2AuthorizationSession.h",
+      "line": 19,
+      "symbol": "WFOAuth2AuthorizationSession.-resumeSessionWithURL:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFOAuth2AuthorizationSession.h",
+      "line": 21,
+      "symbol": "WFOAuth2AuthorizationSession.-resumeSessionWithURL:options:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFOAuth2Credential.h",
+      "line": 54,
+      "symbol": "WFOAuth2Credential.-init",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFOAuth2Credential.h",
+      "line": 62,
+      "symbol": "WFOAuth2Credential.-initWithResponseObject:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFOAuth2Credential.h",
+      "line": 64,
+      "symbol": "WFOAuth2Credential.-initWithCoder:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFOAuth2Error.h",
+      "line": 13,
+      "symbol": "WFRFC6749Section5_2ErrorFromResponse",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.function",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFOAuth2Error.h",
+      "line": 15,
+      "symbol": "",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFOAuth2Error.h",
+      "line": 16,
+      "symbol": ".WFOAuth2ErrorUnknown",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFOAuth2Error.h",
+      "line": 17,
+      "symbol": ".WFOAuth2InvalidRequestError",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFOAuth2Error.h",
+      "line": 18,
+      "symbol": ".WFOAuth2InvalidClientError",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFOAuth2Error.h",
+      "line": 19,
+      "symbol": ".WFOAuth2InvalidGrantError",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFOAuth2Error.h",
+      "line": 20,
+      "symbol": ".WFOAuth2UnauthorizedClientError",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFOAuth2Error.h",
+      "line": 21,
+      "symbol": ".WFOAuth2UnsupportedGrantTypeError",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFOAuth2Error.h",
+      "line": 22,
+      "symbol": ".WFOAuth2InvalidScopeError",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFOAuth2Error.h",
+      "line": 23,
+      "symbol": ".WFOAuth2AccessDeniedError",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFOAuth2Error.h",
+      "line": 24,
+      "symbol": ".WFOAuth2UnsupportedResponseTypeError",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFOAuth2Error.h",
+      "line": 25,
+      "symbol": ".WFOAuth2ServerError",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFOAuth2Error.h",
+      "line": 26,
+      "symbol": ".WFOAuth2TemporarilyUnavailableError",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFOAuth2Error.h",
+      "line": 27,
+      "symbol": ".WFOAuth2InvalidCallbackError",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFOAuth2Error.h",
+      "line": 28,
+      "symbol": ".WFOAuth2InvalidTokenError",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFOAuth2Error.h",
+      "line": 29,
+      "symbol": ".WFOAuth2MismatchingRedirectURIError",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFOAuth2Error.h",
+      "line": 31,
+      "symbol": "WFOAuth2ErrorDomain",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFOAuth2ProviderSessionManager.h",
+      "line": 18,
+      "symbol": "WFOAuth2ProviderSessionManager.-initWithClientID:clientSecret:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFOAuth2ProviderSessionManager.h",
+      "line": 21,
+      "symbol": "WFOAuth2ProviderSessionManager.-initWithSessionConfiguration:clientID:clientSecret:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFOAuth2RevocableSessionManager.h",
+      "line": 20,
+      "symbol": "WFOAuth2RevocableSessionManager.-revokeCredential:completionHandler:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFOAuth2SessionManager.h",
+      "line": 20,
+      "symbol": "WFOAuth2ResponseType",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.typedef",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFOAuth2SessionManager.h",
+      "line": 21,
+      "symbol": "WFOAuth2ResponseTypeCode",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFOAuth2SessionManager.h",
+      "line": 22,
+      "symbol": "WFOAuth2ResponseTypeToken",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFOAuth2SessionManager.h",
+      "line": 24,
+      "symbol": "WFOAuth2AuthMethod",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.typedef",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFOAuth2SessionManager.h",
+      "line": 25,
+      "symbol": "WFOAuth2AuthMethodClientSecretPostBody",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFOAuth2SessionManager.h",
+      "line": 26,
+      "symbol": "WFOAuth2AuthMethodClientSecretBasicAuth",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFOAuth2SessionManager.h",
+      "line": 71,
+      "symbol": "WFOAuth2SessionManager.-init",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFOAuth2WebAuthorizationSession.h",
+      "line": 18,
+      "symbol": "WFOAuth2WebAuthorizationSession",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFOAuth2WebAuthorizationSession.h",
+      "line": 20,
+      "symbol": "WFOAuth2WebAuthorizationSession.authorizationURL",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFOAuth2WebAuthorizationSession.h",
+      "line": 22,
+      "symbol": "WFOAuth2WebAuthorizationSession.redirectURI",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFOAuth2WebAuthorizationSession.h",
+      "line": 25,
+      "symbol": "WFOAuth2WebAuthorizationSession.safariViewController",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFOAuth2WebAuthorizationSession.h",
+      "line": 28,
+      "symbol": "WFOAuth2WebAuthorizationSession.-init",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFOAuth2WebAuthorizationSession.h",
+      "line": 30,
+      "symbol": "WFOAuth2WebAuthorizationSession.-initWithSessionManager:authorizationURL:responseType:redirectURI:specifyRedirectURI:completionHandler:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFSlackOAuth2SessionManager.h",
+      "line": 14,
+      "symbol": "WFSlackOAuth2Scope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.typedef",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFSlackOAuth2SessionManager.h",
+      "line": 15,
+      "symbol": "WFSlackChannelWriteScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFSlackOAuth2SessionManager.h",
+      "line": 16,
+      "symbol": "WFSlackChannelHistoryScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFSlackOAuth2SessionManager.h",
+      "line": 17,
+      "symbol": "WFSlackChannelReadScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFSlackOAuth2SessionManager.h",
+      "line": 18,
+      "symbol": "WFSlackChannelWriteAsUserScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFSlackOAuth2SessionManager.h",
+      "line": 19,
+      "symbol": "WFSlackChannelWriteAsBotScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFSlackOAuth2SessionManager.h",
+      "line": 20,
+      "symbol": "WFSlackDoNotDisturbWriteScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFSlackOAuth2SessionManager.h",
+      "line": 21,
+      "symbol": "WFSlackDoNotDisturbReadScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFSlackOAuth2SessionManager.h",
+      "line": 22,
+      "symbol": "WFSlackEmojiReadScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFSlackOAuth2SessionManager.h",
+      "line": 23,
+      "symbol": "WFSlackFileWriteAsUserScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFSlackOAuth2SessionManager.h",
+      "line": 24,
+      "symbol": "WFSlackFileReadScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFSlackOAuth2SessionManager.h",
+      "line": 25,
+      "symbol": "WFSlackGroupWriteScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFSlackOAuth2SessionManager.h",
+      "line": 26,
+      "symbol": "WFSlackGroupHistoryScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFSlackOAuth2SessionManager.h",
+      "line": 27,
+      "symbol": "WFSlackGroupReadScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFSlackOAuth2SessionManager.h",
+      "line": 28,
+      "symbol": "WFSlackDirectMessageWriteScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFSlackOAuth2SessionManager.h",
+      "line": 29,
+      "symbol": "WFSlackDirectMessageHistoryScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFSlackOAuth2SessionManager.h",
+      "line": 30,
+      "symbol": "WFSlackDirectMessageReadScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFSlackOAuth2SessionManager.h",
+      "line": 31,
+      "symbol": "WFSlackMultipartyDirectMessageWriteScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFSlackOAuth2SessionManager.h",
+      "line": 32,
+      "symbol": "WFSlackMultipartyDirectMessageHistoryScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFSlackOAuth2SessionManager.h",
+      "line": 33,
+      "symbol": "WFSlackMultipartyDirectMessageReadScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFSlackOAuth2SessionManager.h",
+      "line": 34,
+      "symbol": "WFSlackUserReadScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFSlackOAuth2SessionManager.h",
+      "line": 35,
+      "symbol": "WFSlackUserWriteScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFSlackOAuth2SessionManager.h",
+      "line": 37,
+      "symbol": "WFSlackOAuth2SessionManager",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFSlackOAuth2SessionManager.h",
+      "line": 39,
+      "symbol": "WFSlackOAuth2SessionManager.-authenticateWithScopes:completionHandler:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFSlackOAuth2SessionManager.h",
+      "line": 42,
+      "symbol": "WFSlackOAuth2SessionManager.-authenticateWithUsername:password:scopes:completionHandler:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFSlackOAuth2SessionManager.h",
+      "line": 47,
+      "symbol": "WFSlackOAuth2SessionManager.-authenticateWithRefreshCredential:completionHandler:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFSquareOAuth2SessionManager.h",
+      "line": 15,
+      "symbol": "WFSquareOAuth2Scope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.typedef",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFSquareOAuth2SessionManager.h",
+      "line": 16,
+      "symbol": "WFSquareMerchantProfileReadScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFSquareOAuth2SessionManager.h",
+      "line": 17,
+      "symbol": "WFSquarePaymentsReadScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFSquareOAuth2SessionManager.h",
+      "line": 18,
+      "symbol": "WFSquarePaymentsWriteScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFSquareOAuth2SessionManager.h",
+      "line": 19,
+      "symbol": "WFSquareCustomersReadScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFSquareOAuth2SessionManager.h",
+      "line": 20,
+      "symbol": "WFSquareCustomersWriteScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFSquareOAuth2SessionManager.h",
+      "line": 21,
+      "symbol": "WFSquareSettlementsReadScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFSquareOAuth2SessionManager.h",
+      "line": 22,
+      "symbol": "WFSquareBankAccountsReadScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFSquareOAuth2SessionManager.h",
+      "line": 23,
+      "symbol": "WFSquareItemsReadScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFSquareOAuth2SessionManager.h",
+      "line": 24,
+      "symbol": "WFSquareItemsWriteScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFSquareOAuth2SessionManager.h",
+      "line": 25,
+      "symbol": "WFSquareOrdersReadScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFSquareOAuth2SessionManager.h",
+      "line": 26,
+      "symbol": "WFSquareOrdersWriteScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFSquareOAuth2SessionManager.h",
+      "line": 27,
+      "symbol": "WFSquareEmployeesReadScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFSquareOAuth2SessionManager.h",
+      "line": 28,
+      "symbol": "WFSquareEmployeesWriteScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFSquareOAuth2SessionManager.h",
+      "line": 29,
+      "symbol": "WFSquareTimecardsWriteScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFSquareOAuth2SessionManager.h",
+      "line": 31,
+      "symbol": "WFSquareOAuth2SessionManager",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFSquareOAuth2SessionManager.h",
+      "line": 33,
+      "symbol": "WFSquareOAuth2SessionManager.-authenticateWithScopes:completionHandler:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFSquareOAuth2SessionManager.h",
+      "line": 36,
+      "symbol": "WFSquareOAuth2SessionManager.-authenticateWithUsername:password:scopes:completionHandler:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFTodoistOAuth2SessionManager.h",
+      "line": 15,
+      "symbol": "WFTodoistOAuth2Scope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.typedef",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFTodoistOAuth2SessionManager.h",
+      "line": 16,
+      "symbol": "WFTodoistAddTaskScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFTodoistOAuth2SessionManager.h",
+      "line": 17,
+      "symbol": "WFTodoistReadDataScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFTodoistOAuth2SessionManager.h",
+      "line": 18,
+      "symbol": "WFTodoistReadWriteDataScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFTodoistOAuth2SessionManager.h",
+      "line": 19,
+      "symbol": "WFTodoistDeleteDataScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFTodoistOAuth2SessionManager.h",
+      "line": 20,
+      "symbol": "WFTodoistDeleteProjectScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFTodoistOAuth2SessionManager.h",
+      "line": 22,
+      "symbol": "WFTodoistOAuth2SessionManager",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFTodoistOAuth2SessionManager.h",
+      "line": 24,
+      "symbol": "WFTodoistOAuth2SessionManager.-authenticateWithScopes:completionHandler:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFTodoistOAuth2SessionManager.h",
+      "line": 27,
+      "symbol": "WFTodoistOAuth2SessionManager.-authenticateWithUsername:password:scopes:completionHandler:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFTodoistOAuth2SessionManager.h",
+      "line": 32,
+      "symbol": "WFTodoistOAuth2SessionManager.-authenticateWithRefreshCredential:completionHandler:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFUberAppAuthorizationSession.h",
+      "line": 16,
+      "symbol": "WFUberAppAuthorizationSession",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFUberAppAuthorizationSession.h",
+      "line": 18,
+      "symbol": "WFUberAppAuthorizationSession.authorizationURL",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFUberAppAuthorizationSession.h",
+      "line": 19,
+      "symbol": "WFUberAppAuthorizationSession.redirectURI",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFUberAppAuthorizationSession.h",
+      "line": 21,
+      "symbol": "WFUberAppAuthorizationSession.-init",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFUberAppAuthorizationSession.h",
+      "line": 23,
+      "symbol": "WFUberAppAuthorizationSession.-initWithClientID:appName:scopes:redirectURI:completionHandler:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFUberOAuth2SessionManager.h",
+      "line": 17,
+      "symbol": "WFUberOAuth2Scope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.typedef",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFUberOAuth2SessionManager.h",
+      "line": 18,
+      "symbol": "WFUberUserProfileScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFUberOAuth2SessionManager.h",
+      "line": 19,
+      "symbol": "WFUberUserHistoryScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFUberOAuth2SessionManager.h",
+      "line": 20,
+      "symbol": "WFUberUserHistoryLiteScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFUberOAuth2SessionManager.h",
+      "line": 21,
+      "symbol": "WFUberUserPlacesScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFUberOAuth2SessionManager.h",
+      "line": 22,
+      "symbol": "WFUberRequestRideScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFUberOAuth2SessionManager.h",
+      "line": 23,
+      "symbol": "WFUberRequestReceiptScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFUberOAuth2SessionManager.h",
+      "line": 24,
+      "symbol": "WFUberAllTripsScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFUberOAuth2SessionManager.h",
+      "line": 26,
+      "symbol": "WFUberOAuth2SessionManager",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFUberOAuth2SessionManager.h",
+      "line": 28,
+      "symbol": "WFUberOAuth2SessionManager.-initWithSessionConfiguration:clientID:clientSecret:singleSignOn:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFUberOAuth2SessionManager.h",
+      "line": 34,
+      "symbol": "WFUberOAuth2SessionManager.-appAuthorizationSessionWithAppName:scopes:redirectURI:completionHandler:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFUberOAuth2SessionManager.h",
+      "line": 40,
+      "symbol": "WFUberOAuth2SessionManager.-authenticateWithScopes:completionHandler:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFUberOAuth2SessionManager.h",
+      "line": 43,
+      "symbol": "WFUberOAuth2SessionManager.-authenticateWithUsername:password:scopes:completionHandler:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFVenmoAppAuthorizationSession.h",
+      "line": 16,
+      "symbol": "WFVenmoAppAuthorizationSession",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFVenmoAppAuthorizationSession.h",
+      "line": 18,
+      "symbol": "WFVenmoAppAuthorizationSession.authorizationURL",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFVenmoAppAuthorizationSession.h",
+      "line": 19,
+      "symbol": "WFVenmoAppAuthorizationSession.redirectURI",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFVenmoAppAuthorizationSession.h",
+      "line": 21,
+      "symbol": "WFVenmoAppAuthorizationSession.-init",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFVenmoAppAuthorizationSession.h",
+      "line": 23,
+      "symbol": "WFVenmoAppAuthorizationSession.-initWithSessionManager:scopes:completionHandler:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFVenmoOAuth2SessionManager.h",
+      "line": 16,
+      "symbol": "WFVenmoOAuth2Scope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.typedef",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFVenmoOAuth2SessionManager.h",
+      "line": 17,
+      "symbol": "WFVenmoMakePaymentsScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFVenmoOAuth2SessionManager.h",
+      "line": 18,
+      "symbol": "WFVenmoPaymentHistoryScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFVenmoOAuth2SessionManager.h",
+      "line": 19,
+      "symbol": "WFVenmoFeedScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFVenmoOAuth2SessionManager.h",
+      "line": 20,
+      "symbol": "WFVenmoProfileScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFVenmoOAuth2SessionManager.h",
+      "line": 21,
+      "symbol": "WFVenmoEmailScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFVenmoOAuth2SessionManager.h",
+      "line": 22,
+      "symbol": "WFVenmoPhoneScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFVenmoOAuth2SessionManager.h",
+      "line": 23,
+      "symbol": "WFVenmoBalanceScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFVenmoOAuth2SessionManager.h",
+      "line": 24,
+      "symbol": "WFVenmoFriendsScope",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFVenmoOAuth2SessionManager.h",
+      "line": 26,
+      "symbol": "WFVenmoOAuth2SessionManager",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFVenmoOAuth2SessionManager.h",
+      "line": 28,
+      "symbol": "WFVenmoOAuth2SessionManager.-authorizationSessionWithScopes:completionHandler:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFVenmoOAuth2SessionManager.h",
+      "line": 32,
+      "symbol": "WFVenmoOAuth2SessionManager.-appAuthorizationSessionWithScopes:completionHandler:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFVenmoOAuth2SessionManager.h",
+      "line": 36,
+      "symbol": "WFVenmoOAuth2SessionManager.-authenticateWithScopes:completionHandler:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFVenmoOAuth2SessionManager.h",
+      "line": 39,
+      "symbol": "WFVenmoOAuth2SessionManager.-authenticateWithUsername:password:scopes:completionHandler:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFWunderlistOAuth2SessionManager.h",
+      "line": 14,
+      "symbol": "WFWunderlistOAuth2SessionManager",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFWunderlistOAuth2SessionManager.h",
+      "line": 16,
+      "symbol": "WFWunderlistOAuth2SessionManager.-authenticateWithScopes:completionHandler:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFWunderlistOAuth2SessionManager.h",
+      "line": 19,
+      "symbol": "WFWunderlistOAuth2SessionManager.-authenticateWithUsername:password:scopes:completionHandler:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/DeskConnect/WFOAuth2/Sources/WFOAuth2/include/WFOAuth2/WFWunderlistOAuth2SessionManager.h",
+      "line": 24,
+      "symbol": "WFWunderlistOAuth2SessionManager.-authenticateWithRefreshCredential:completionHandler:",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/travis/build/DeskConnect/WFOAuth2"
+}

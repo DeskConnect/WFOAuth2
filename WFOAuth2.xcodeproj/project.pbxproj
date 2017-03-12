@@ -122,6 +122,14 @@
 		D07918571E74ACE70046ECF5 /* WFOAuth2AuthorizationSession.h in Headers */ = {isa = PBXBuildFile; fileRef = D07918551E74ACE70046ECF5 /* WFOAuth2AuthorizationSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D07918581E74ACE70046ECF5 /* WFOAuth2AuthorizationSession.h in Headers */ = {isa = PBXBuildFile; fileRef = D07918551E74ACE70046ECF5 /* WFOAuth2AuthorizationSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D07918591E74ACE70046ECF5 /* WFOAuth2AuthorizationSession.h in Headers */ = {isa = PBXBuildFile; fileRef = D07918551E74ACE70046ECF5 /* WFOAuth2AuthorizationSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D07918651E74E2C00046ECF5 /* WFBoxAppAuthorizationSession.h in Headers */ = {isa = PBXBuildFile; fileRef = D07918641E74E2C00046ECF5 /* WFBoxAppAuthorizationSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D07918661E74E2C00046ECF5 /* WFBoxAppAuthorizationSession.h in Headers */ = {isa = PBXBuildFile; fileRef = D07918641E74E2C00046ECF5 /* WFBoxAppAuthorizationSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D07918671E74E2C00046ECF5 /* WFBoxAppAuthorizationSession.h in Headers */ = {isa = PBXBuildFile; fileRef = D07918641E74E2C00046ECF5 /* WFBoxAppAuthorizationSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D07918681E74E2C00046ECF5 /* WFBoxAppAuthorizationSession.h in Headers */ = {isa = PBXBuildFile; fileRef = D07918641E74E2C00046ECF5 /* WFBoxAppAuthorizationSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D079186A1E74E3010046ECF5 /* WFBoxAppAuthorizationSession.m in Sources */ = {isa = PBXBuildFile; fileRef = D07918691E74E3010046ECF5 /* WFBoxAppAuthorizationSession.m */; };
+		D079186B1E74E3010046ECF5 /* WFBoxAppAuthorizationSession.m in Sources */ = {isa = PBXBuildFile; fileRef = D07918691E74E3010046ECF5 /* WFBoxAppAuthorizationSession.m */; };
+		D079186C1E74E3010046ECF5 /* WFBoxAppAuthorizationSession.m in Sources */ = {isa = PBXBuildFile; fileRef = D07918691E74E3010046ECF5 /* WFBoxAppAuthorizationSession.m */; };
+		D079186D1E74E3010046ECF5 /* WFBoxAppAuthorizationSession.m in Sources */ = {isa = PBXBuildFile; fileRef = D07918691E74E3010046ECF5 /* WFBoxAppAuthorizationSession.m */; };
 		D082BB551E404EC8002CDC37 /* ProviderConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = D082BB541E404EC8002CDC37 /* ProviderConfiguration.m */; };
 		D082BB581E407BC5002CDC37 /* WFLyftOAuth2SessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D082BB561E407BC5002CDC37 /* WFLyftOAuth2SessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D082BB591E407BC5002CDC37 /* WFLyftOAuth2SessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D082BB561E407BC5002CDC37 /* WFLyftOAuth2SessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -296,6 +304,8 @@
 		D07645D01E5CD32A00FA1D87 /* WFWunderlistOAuth2SessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WFWunderlistOAuth2SessionManager.m; sourceTree = "<group>"; };
 		D07645D51E5CD33000FA1D87 /* WFWunderlistOAuth2SessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WFWunderlistOAuth2SessionManager.h; path = include/WFOAuth2/WFWunderlistOAuth2SessionManager.h; sourceTree = "<group>"; };
 		D07918551E74ACE70046ECF5 /* WFOAuth2AuthorizationSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WFOAuth2AuthorizationSession.h; path = include/WFOAuth2/WFOAuth2AuthorizationSession.h; sourceTree = "<group>"; };
+		D07918641E74E2C00046ECF5 /* WFBoxAppAuthorizationSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WFBoxAppAuthorizationSession.h; path = include/WFOAuth2/WFBoxAppAuthorizationSession.h; sourceTree = "<group>"; };
+		D07918691E74E3010046ECF5 /* WFBoxAppAuthorizationSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WFBoxAppAuthorizationSession.m; sourceTree = "<group>"; };
 		D082BB531E404EC8002CDC37 /* ProviderConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProviderConfiguration.h; sourceTree = "<group>"; };
 		D082BB541E404EC8002CDC37 /* ProviderConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProviderConfiguration.m; sourceTree = "<group>"; };
 		D082BB561E407BC5002CDC37 /* WFLyftOAuth2SessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WFLyftOAuth2SessionManager.h; path = include/WFOAuth2/WFLyftOAuth2SessionManager.h; sourceTree = "<group>"; };
@@ -524,6 +534,8 @@
 				D0B8F7BD1CA60AF1006B1E0D /* WFOAuth2RevocableSessionManager.h */,
 				D07097B01E6F95C400474913 /* WFBoxOAuth2SessionManager.h */,
 				D07097B51E6F95DC00474913 /* WFBoxOAuth2SessionManager.m */,
+				D07918641E74E2C00046ECF5 /* WFBoxAppAuthorizationSession.h */,
+				D07918691E74E3010046ECF5 /* WFBoxAppAuthorizationSession.m */,
 				D082BB7A1E409D6F002CDC37 /* WFDropboxOAuth2SessionManager.h */,
 				D082BB7B1E409D6F002CDC37 /* WFDropboxOAuth2SessionManager.m */,
 				D033972A1E627997009F3436 /* WFDropboxAppAuthorizationSession.h */,
@@ -614,6 +626,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D07918651E74E2C00046ECF5 /* WFBoxAppAuthorizationSession.h in Headers */,
 				D07645D61E5CD33000FA1D87 /* WFWunderlistOAuth2SessionManager.h in Headers */,
 				D07644891E5814F200FA1D87 /* WFOAuth2WebView.h in Headers */,
 				D0B8F7C31CA60B69006B1E0D /* WFOAuth2SessionManagerPrivate.h in Headers */,
@@ -648,6 +661,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D07918661E74E2C00046ECF5 /* WFBoxAppAuthorizationSession.h in Headers */,
 				D07645D71E5CD33000FA1D87 /* WFWunderlistOAuth2SessionManager.h in Headers */,
 				D076448A1E5814F200FA1D87 /* WFOAuth2WebView.h in Headers */,
 				D0B8F7C41CA60B69006B1E0D /* WFOAuth2SessionManagerPrivate.h in Headers */,
@@ -682,6 +696,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D07918671E74E2C00046ECF5 /* WFBoxAppAuthorizationSession.h in Headers */,
 				D07645D81E5CD33000FA1D87 /* WFWunderlistOAuth2SessionManager.h in Headers */,
 				D07644911E58189500FA1D87 /* WFOAuth2WebView.h in Headers */,
 				D0B8F7C51CA60B69006B1E0D /* WFOAuth2SessionManagerPrivate.h in Headers */,
@@ -716,6 +731,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D07918681E74E2C00046ECF5 /* WFBoxAppAuthorizationSession.h in Headers */,
 				D07645D91E5CD33000FA1D87 /* WFWunderlistOAuth2SessionManager.h in Headers */,
 				D07644921E58189500FA1D87 /* WFOAuth2WebView.h in Headers */,
 				D0B8F7C61CA60B69006B1E0D /* WFOAuth2SessionManagerPrivate.h in Headers */,
@@ -1021,6 +1037,7 @@
 				D076449B1E5818F100FA1D87 /* NSURL+WFOAuth2.m in Sources */,
 				D0B8F77E1CA49840006B1E0D /* WFOAuth2Credential.m in Sources */,
 				D076448D1E5814F200FA1D87 /* WFOAuth2WebView.m in Sources */,
+				D079186A1E74E3010046ECF5 /* WFBoxAppAuthorizationSession.m in Sources */,
 				E9BD9FCD1D495159004BC387 /* WFSquareOAuth2SessionManager.m in Sources */,
 				D0B8F7A71CA5FCE6006B1E0D /* WFGoogleOAuth2SessionManager.m in Sources */,
 				D07097B61E6F95DC00474913 /* WFBoxOAuth2SessionManager.m in Sources */,
@@ -1049,6 +1066,7 @@
 				D076449C1E5818F100FA1D87 /* NSURL+WFOAuth2.m in Sources */,
 				D0B8F77F1CA49840006B1E0D /* WFOAuth2Credential.m in Sources */,
 				D076448E1E5814F200FA1D87 /* WFOAuth2WebView.m in Sources */,
+				D079186B1E74E3010046ECF5 /* WFBoxAppAuthorizationSession.m in Sources */,
 				E9BD9FCE1D495159004BC387 /* WFSquareOAuth2SessionManager.m in Sources */,
 				D0B8F7A81CA5FCE6006B1E0D /* WFGoogleOAuth2SessionManager.m in Sources */,
 				D07097B71E6F95DC00474913 /* WFBoxOAuth2SessionManager.m in Sources */,
@@ -1077,6 +1095,7 @@
 				D076449D1E5818F100FA1D87 /* NSURL+WFOAuth2.m in Sources */,
 				D0B8F7801CA49840006B1E0D /* WFOAuth2Credential.m in Sources */,
 				D07644931E58189B00FA1D87 /* WFOAuth2WebView.m in Sources */,
+				D079186C1E74E3010046ECF5 /* WFBoxAppAuthorizationSession.m in Sources */,
 				E9BD9FCF1D495159004BC387 /* WFSquareOAuth2SessionManager.m in Sources */,
 				D0B8F7A91CA5FCE6006B1E0D /* WFGoogleOAuth2SessionManager.m in Sources */,
 				D07097B81E6F95DC00474913 /* WFBoxOAuth2SessionManager.m in Sources */,
@@ -1105,6 +1124,7 @@
 				D076449E1E5818F100FA1D87 /* NSURL+WFOAuth2.m in Sources */,
 				D0B8F7811CA49840006B1E0D /* WFOAuth2Credential.m in Sources */,
 				D07644941E58189C00FA1D87 /* WFOAuth2WebView.m in Sources */,
+				D079186D1E74E3010046ECF5 /* WFBoxAppAuthorizationSession.m in Sources */,
 				E9BD9FD01D495159004BC387 /* WFSquareOAuth2SessionManager.m in Sources */,
 				D0B8F7AA1CA5FCE6006B1E0D /* WFGoogleOAuth2SessionManager.m in Sources */,
 				D07097B91E6F95DC00474913 /* WFBoxOAuth2SessionManager.m in Sources */,

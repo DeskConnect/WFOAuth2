@@ -12,6 +12,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+#if TARGET_OS_IOS
+@class WFBoxAppAuthorizationSession;
+#endif
+
 typedef NSString *WFBoxOAuth2Scope NS_EXTENSIBLE_STRING_ENUM;
 extern WFBoxOAuth2Scope const WFBoxReadWriteScope;
 extern WFBoxOAuth2Scope const WFBoxManageEnterpriseScope;
@@ -23,6 +27,12 @@ extern WFBoxOAuth2Scope const WFBoxManageAppUsersScope;
 extern WFBoxOAuth2Scope const WFBoxManageWebhooksScope;
 
 @interface WFBoxOAuth2SessionManager : WFOAuth2SessionManager<WFBoxOAuth2Scope> <WFOAuth2ProviderSessionManager, WFOAuth2RevocableSessionManager>
+
+#if TARGET_OS_IOS
+- (WFBoxAppAuthorizationSession *)appAuthorizationSessionWithAppName:(NSString *)name
+                                                         redirectURI:(nullable NSURL *)redirectURI
+                                                   completionHandler:(WFOAuth2AuthenticationHandler)completionHandler;
+#endif
 
 - (void)authenticateWithScopes:(nullable NSArray<WFBoxOAuth2Scope> *)scopes
              completionHandler:(WFOAuth2AuthenticationHandler)completionHandler NS_UNAVAILABLE;

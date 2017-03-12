@@ -72,6 +72,20 @@ NS_ASSUME_NONNULL_BEGIN
         }
     };
     
+    // Use app auth if available for Box
+    if ([sessionManager isKindOfClass:[WFBoxOAuth2SessionManager class]]) {
+        WFBoxAppAuthorizationSession *authorizationSession = [(WFBoxOAuth2SessionManager *)sessionManager appAuthorizationSessionWithAppName:@"WFOAuth2" redirectURI:configuration.redirectURI completionHandler:completionHandler];
+        [[UIApplication sharedApplication] openURL:authorizationSession.authorizationURL options:@{} completionHandler:^(BOOL success) {
+            if (success) {
+                AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                delegate.currentSession = authorizationSession;
+            } else {
+                [self presentSafariViewControllerForConfiguration:configuration];
+            }
+        }];
+        return;
+    }
+    
     // Use app auth if available for Dropbox
     if ([sessionManager isKindOfClass:[WFDropboxOAuth2SessionManager class]]) {
         WFDropboxAppAuthorizationSession *authorizationSession = [(WFDropboxOAuth2SessionManager *)sessionManager appAuthorizationSessionWithCompletionHandler:completionHandler];

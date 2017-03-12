@@ -7,6 +7,7 @@
 //
 
 #import <WFOAuth2/WFBoxOAuth2SessionManager.h>
+#import <WFOAuth2/WFBoxAppAuthorizationSession.h>
 #import <WFOAuth2/WFOAuth2SessionManagerPrivate.h>
 #import <WFOAuth2/NSMutableURLRequest+WFOAuth2.h>
 #import <WFOAuth2/WFOAuth2Credential.h>
@@ -24,6 +25,17 @@ WFBoxOAuth2Scope const WFBoxManageAppUsersScope = @"manage_app_users";
 WFBoxOAuth2Scope const WFBoxManageWebhooksScope = @"manage_webhook";
 
 @implementation WFBoxOAuth2SessionManager
+
+#if TARGET_OS_IOS
+- (WFBoxAppAuthorizationSession *)appAuthorizationSessionWithAppName:(NSString *)name
+                                                         redirectURI:(nullable NSURL *)redirectURI
+                                                   completionHandler:(WFOAuth2AuthenticationHandler)completionHandler {
+    return [[WFBoxAppAuthorizationSession alloc] initWithSessionManager:self
+                                                                appName:name
+                                                            redirectURI:redirectURI
+                                                      completionHandler:completionHandler];
+}
+#endif
 
 #pragma mark - WFOAuth2ProviderSessionManager
 

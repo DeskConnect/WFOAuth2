@@ -11,7 +11,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+#if TARGET_OS_IOS
 @class WFVenmoAppAuthorizationSession;
+#endif
 
 typedef NSString *WFVenmoOAuth2Scope NS_EXTENSIBLE_STRING_ENUM;
 extern WFVenmoOAuth2Scope const WFVenmoMakePaymentsScope;

@@ -25,6 +25,7 @@
 #import <WFOAuth2/WFVenmoOAuth2SessionManager.h>
 #import <WFOAuth2/WFWunderlistOAuth2SessionManager.h>
 
+#import <WFOAuth2/WFBoxAppAuthorizationSession.h>
 #import <WFOAuth2/WFDropboxAppAuthorizationSession.h>
 #import <WFOAuth2/WFUberAppAuthorizationSession.h>
 #import <WFOAuth2/WFVenmoAppAuthorizationSession.h>

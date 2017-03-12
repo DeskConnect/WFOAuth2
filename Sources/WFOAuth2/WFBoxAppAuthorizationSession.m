@@ -1,13 +1,12 @@
 //
-//  WFVenmoAppAuthorizationSession.m
+//  WFBoxAppAuthorizationSession.m
 //  WFOAuth2
 //
-//  Created by Conrad Kramer on 3/7/17.
+//  Created by Conrad Kramer on 3/11/17.
 //  Copyright © 2017 DeskConnect, Inc. All rights reserved.
 //
 
-#import <WFOAuth2/WFVenmoAppAuthorizationSession.h>
-#import <WFOAuth2/WFOAuth2SessionManagerPrivate.h>
+#import <WFOAuth2/WFBoxAppAuthorizationSession.h>
 #import <WFOAuth2/NSURL+WFOAuth2.h>
 #import <WFOAuth2/WFOAuth2Error.h>
 
@@ -15,17 +14,19 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface WFVenmoAppAuthorizationSession ()
+@interface WFBoxAppAuthorizationSession ()
 
-@property (nonatomic, readonly) WFVenmoOAuth2SessionManager *sessionManager;
+@property (nonatomic, readonly) WFBoxOAuth2SessionManager *sessionManager;
+@property (nonatomic, readonly) NSString *state;
 @property (nonatomic, copy, nullable) WFOAuth2AuthenticationHandler completionHandler;
 
 @end
 
-@implementation WFVenmoAppAuthorizationSession
+@implementation WFBoxAppAuthorizationSession
 
-- (instancetype)initWithSessionManager:(WFVenmoOAuth2SessionManager *)sessionManager
-                                scopes:(nullable NSArray<WFVenmoOAuth2Scope> *)scopes
+- (instancetype)initWithSessionManager:(WFBoxOAuth2SessionManager *)sessionManager
+                               appName:(NSString *)name
+                           redirectURI:(nullable NSURL *)redirectURI
                      completionHandler:(WFOAuth2AuthenticationHandler)completionHandler {
     NSParameterAssert(sessionManager);
     NSParameterAssert(completionHandler);
@@ -34,19 +35,21 @@ NS_ASSUME_NONNULL_BEGIN
         return nil;
     
     _sessionManager = sessionManager;
-    _redirectURI = [NSURL URLWithString:[NSString stringWithFormat:@"venmo%@://oauth", sessionManager.clientID]];
+    _state = [[[[NSUUID UUID] UUIDString] stringByReplacingOccurrencesOfString:@"-" withString:@""] lowercaseString];
+    _redirectURI = [redirectURI copy];
     _completionHandler = completionHandler;
 
-    NSString *scope = [WFVenmoOAuth2SessionManager combinedScopeFromScopes:scopes];
-    
     NSMutableArray<NSURLQueryItem *> *parameters = [NSMutableArray new];
+    [parameters addObject:[NSURLQueryItem queryItemWithName:@"BoxApplicationName" value:name]];
+    [parameters addObject:[NSURLQueryItem queryItemWithName:@"BoxMessageAction" value:@"login"]];
     [parameters addObject:[NSURLQueryItem queryItemWithName:@"client_id" value:sessionManager.clientID]];
-    [parameters addObject:[NSURLQueryItem queryItemWithName:@"response_type" value:@"code"]];
-    [parameters addObject:[NSURLQueryItem queryItemWithName:@"sdk" value:@"ios"]];
-    if (scope)
-        [parameters addObject:[NSURLQueryItem queryItemWithName:@"scope" value:scope]];
-    
-    _authorizationURL = [[NSURL URLWithString:@"venmo://oauth/authorize"] wfo_URLByAppendingQueryItems:parameters];
+    [parameters addObject:[NSURLQueryItem queryItemWithName:@"state" value:_state]];
+    if (redirectURI) {
+        [parameters addObject:[NSURLQueryItem queryItemWithName:@"BoxMessageReturnURLScheme" value:redirectURI.scheme]];
+        [parameters addObject:[NSURLQueryItem queryItemWithName:@"redirect_uri" value:redirectURI.absoluteString]];
+    }
+
+    _authorizationURL = [[NSURL URLWithString:@"box-onecloud://"] wfo_URLByAppendingQueryItems:parameters];
     
     return self;
 }
@@ -55,7 +58,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (BOOL)resumeSessionWithURL:(NSURL *)URL {
     WFOAuth2AuthenticationHandler completionHandler = self.completionHandler;
-    if (!completionHandler || ![URL wfo_isEqualToRedirectURI:self.redirectURI]) {
+    NSURL *redirectURI = self.redirectURI;
+    if (!completionHandler || ![URL wfo_isEqualToRedirectURI:redirectURI]) {
         return NO;
     }
     
@@ -79,13 +83,13 @@ NS_ASSUME_NONNULL_BEGIN
         return YES;
     }
     
-    [self.sessionManager authenticateWithCode:code redirectURI:nil completionHandler:completionHandler];
+    [self.sessionManager authenticateWithCode:code redirectURI:redirectURI completionHandler:completionHandler];
     return YES;
 }
 
 - (BOOL)resumeSessionWithURL:(NSURL *)URL options:(nullable NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options {
     NSString *sourceApplication = options[UIApplicationOpenURLOptionsSourceApplicationKey];
-    if ([sourceApplication isEqualToString:@"net.kortina.labs.Venmo"]) {
+    if ([sourceApplication isEqualToString:@"net.box.BoxNet"]) {
         return [self resumeSessionWithURL:URL];
     }
     

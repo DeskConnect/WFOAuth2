@@ -12,7 +12,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+#if TARGET_OS_IOS
 @class WFUberAppAuthorizationSession;
+#endif
 
 typedef NSString *WFUberOAuth2Scope NS_EXTENSIBLE_STRING_ENUM;
 extern WFUberOAuth2Scope const WFUberUserProfileScope;

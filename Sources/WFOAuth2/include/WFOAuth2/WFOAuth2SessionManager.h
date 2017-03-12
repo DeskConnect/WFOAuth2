@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @class WFOAuth2Credential;
 @class WFOAuth2WebAuthorizationSession;
 
-typedef NSString *WFOAuth2ResponseType NS_EXTENSIBLE_STRING_ENUM;
+typedef NSString *WFOAuth2ResponseType NS_STRING_ENUM;
 extern WFOAuth2ResponseType const WFOAuth2ResponseTypeCode;
 extern WFOAuth2ResponseType const WFOAuth2ResponseTypeToken;
 

@@ -28,6 +28,6 @@ enum {
     WFOAuth2InvalidTokenError = 201, // Google specific extension
     WFOAuth2MismatchingRedirectURIError = 202, // Python OAuthLib specific extension
 };
-extern NSString * const WFOAuth2ErrorDomain;
+extern NSErrorDomain const WFOAuth2ErrorDomain;
 
 NS_ASSUME_NONNULL_END

@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-NSString * const WFOAuth2ErrorDomain = @"WFOAuth2ErrorDomain";
+NSErrorDomain const WFOAuth2ErrorDomain = @"WFOAuth2ErrorDomain";
 
 NSError * __nullable WFRFC6749Section5_2ErrorFromResponse(NSDictionary * __nullable responseObject) {
     NSInteger code = WFOAuth2ErrorUnknown;

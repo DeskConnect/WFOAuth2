@@ -7,8 +7,14 @@
 //
 
 #import <WFOAuth2/WFImgurOAuth2SessionManager.h>
+#import <WFOAuth2/WFOAuth2SessionManagerPrivate.h>
+#import <WFOAuth2/WFOAuth2Error.h>
 
 NS_ASSUME_NONNULL_BEGIN
+
+static inline __nullable id WFEnforceClass(id __nullable obj, Class objectClass) {
+    return ([obj isKindOfClass:objectClass] ? obj : nil);
+}
 
 @implementation WFImgurOAuth2SessionManager
 
@@ -30,6 +36,17 @@ NS_ASSUME_NONNULL_BEGIN
                          authenticationMethod:WFOAuth2AuthMethodClientSecretPostBody
                                      clientID:clientID
                                  clientSecret:clientSecret];
+}
+
+- (void)sendRequest:(NSURLRequest *)request completionHandler:(void (^)(NSDictionary * __nullable responseObject, NSHTTPURLResponse * __nullable response, NSError * __nullable error))completionHandler {
+    [super sendRequest:request completionHandler:^(NSDictionary * __nullable responseObject, NSHTTPURLResponse * __nullable __unused response, NSError * __nullable error) {
+        NSDictionary *dataObject = WFEnforceClass(responseObject[@"data"], [NSDictionary class]);
+        NSString *errorDescription = WFEnforceClass(dataObject[@"error"], [NSString class]);
+        if (!error && errorDescription) {
+            error = [NSError errorWithDomain:WFOAuth2ErrorDomain code:WFOAuth2ErrorUnknown userInfo:@{NSLocalizedDescriptionKey: errorDescription}];
+        }
+        completionHandler(responseObject, response, error);
+    }];
 }
 
 @end

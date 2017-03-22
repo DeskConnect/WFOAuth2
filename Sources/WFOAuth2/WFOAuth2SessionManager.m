@@ -146,9 +146,23 @@ WFOAuth2AuthMethod const WFOAuth2AuthMethodClientSecretBasicAuth = @"client_secr
 - (void)authenticateWithRequest:(NSURLRequest *)request
                    refreshToken:(nullable NSString *)refreshToken
               completionHandler:(WFOAuth2AuthenticationHandler)completionHandler {
-    [[self.session dataTaskWithRequest:request completionHandler:^(NSData * __nullable data, NSURLResponse * __nullable __unused response, NSError * __nullable error) {
+    [self sendRequest:request completionHandler:^(NSDictionary * _Nullable responseObject, NSHTTPURLResponse * __nullable __unused response, NSError * _Nullable error) {
+        NSString *newRefreshToken = responseObject[@"refresh_token"];
+        if (refreshToken && !newRefreshToken) {
+            NSMutableDictionary *newResponseObject = [responseObject mutableCopy];
+            newResponseObject[@"refresh_token"] = refreshToken;
+            responseObject = [newResponseObject copy];
+        }
+        
+        WFOAuth2Credential *credential = [[WFOAuth2Credential alloc] initWithResponseObject:responseObject];
+        completionHandler(credential, (error ?: WFRFC6749Section5_2ErrorFromResponse(responseObject)));
+    }];
+}
+
+- (void)sendRequest:(NSURLRequest *)request completionHandler:(void (^)(NSDictionary * __nullable responseObject, NSHTTPURLResponse * __nullable response, NSError * __nullable error))completionHandler {
+    [[self.session dataTaskWithRequest:request completionHandler:^(NSData * __nullable data, NSURLResponse * __nullable response, NSError * __nullable error) {
         if (!data.length) {
-            completionHandler(nil, error);
+            completionHandler(nil, (NSHTTPURLResponse *)response, error);
             return;
         }
         
@@ -170,20 +184,7 @@ WFOAuth2AuthMethod const WFOAuth2AuthMethodClientSecretBasicAuth = @"client_secr
             }
         }
         
-        if (!responseObject) {
-            completionHandler(nil, error);
-            return;
-        }
-        
-        NSString *newRefreshToken = responseObject[@"refresh_token"];
-        if (refreshToken && !newRefreshToken) {
-            NSMutableDictionary *newResponseObject = [responseObject mutableCopy];
-            newResponseObject[@"refresh_token"] = refreshToken;
-            responseObject = [newResponseObject copy];
-        }
-        
-        WFOAuth2Credential *credential = [[WFOAuth2Credential alloc] initWithResponseObject:responseObject];
-        completionHandler(credential, (error ?: WFRFC6749Section5_2ErrorFromResponse(responseObject)));
+        completionHandler(responseObject, (NSHTTPURLResponse *)response, error);
     }] resume];
 }
 

@@ -23,6 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
                    refreshToken:(nullable NSString *)refreshToken
               completionHandler:(WFOAuth2AuthenticationHandler)completionHandler;
 
+- (void)sendRequest:(NSURLRequest *)request completionHandler:(void (^)(NSDictionary * __nullable responseObject, NSHTTPURLResponse * __nullable response, NSError * __nullable error))completionHandler;
+
 - (WFOAuth2WebAuthorizationSession *)authorizationSessionWithAuthorizationURL:(NSURL *)authorizationURL
                                                                  responseType:(WFOAuth2ResponseType)responseType
                                                                        scopes:(nullable NSArray<NSString *> *)scopes
